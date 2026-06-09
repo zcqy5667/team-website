@@ -1,7 +1,7 @@
 ---
 import type { Team } from "../data/siteData";
+import OptimizedImage from "./OptimizedImage.astro";
 import TagList from "./TagList.astro";
-import { withBase } from "../utils/paths";
 
 type Props = {
   team: Team;
@@ -12,7 +12,7 @@ const { team } = Astro.props;
 
 <div class="team-showcase">
   <div class="team-showcase-media">
-    <img src={withBase(team.cover)} alt={`${team.name}封面`} loading="lazy" />
+    <OptimizedImage src={team.cover} alt={`${team.name}封面`} loading="lazy" />
   </div>
   <div class="team-showcase-content">
     <p class="eyebrow">{team.school}</p>

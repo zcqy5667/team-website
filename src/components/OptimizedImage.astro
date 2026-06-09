@@ -1,0 +1,49 @@
+---
+import { withBase } from "../utils/paths";
+
+type Props = {
+  src: string;
+  alt: string;
+  class?: string;
+  loading?: "eager" | "lazy";
+  width?: number | string;
+  height?: number | string;
+  fetchpriority?: "high" | "low" | "auto";
+  decoding?: "async" | "sync" | "auto";
+};
+
+const {
+  src,
+  alt,
+  class: className,
+  loading = "lazy",
+  width,
+  height,
+  fetchpriority,
+  decoding = "async"
+} = Astro.props;
+
+const webpSrc = src.replace(/\.png(?=($|[?#]))/i, ".webp");
+const hasWebp = webpSrc !== src;
+const imageAttrs = {
+  src: withBase(src),
+  alt,
+  class: className,
+  loading,
+  width,
+  height,
+  fetchpriority,
+  decoding
+};
+---
+
+{
+  hasWebp ? (
+    <picture>
+      <source srcset={withBase(webpSrc)} type="image/webp" />
+      <img {...imageAttrs} />
+    </picture>
+  ) : (
+    <img {...imageAttrs} />
+  )
+}

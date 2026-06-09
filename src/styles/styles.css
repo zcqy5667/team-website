@@ -76,6 +76,10 @@ iframe {
   max-width: 100%;
 }
 
+picture {
+  display: contents;
+}
+
 button {
   font: inherit;
 }

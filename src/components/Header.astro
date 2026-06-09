@@ -1,5 +1,6 @@
 ---
 import type { Team } from "../data/siteData";
+import OptimizedImage from "./OptimizedImage.astro";
 import { withBase } from "../utils/paths";
 
 type NavItem = {
@@ -34,7 +35,7 @@ function isCurrent(item: NavItem) {
 <header class="site-header">
   <a class="brand" href={withBase("/")} aria-label={`${team.name}首页`}>
     <span class="brand-mark">
-      <img src={withBase(team.emblem)} alt="" width="42" height="42" />
+      <OptimizedImage src={team.emblem} alt="" width="42" height="42" loading="eager" />
     </span>
     <span class="brand-text">{team.name}</span>
   </a>

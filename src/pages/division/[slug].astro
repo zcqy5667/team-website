@@ -1,8 +1,11 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import OptimizedImage from "../../components/OptimizedImage.astro";
 import TagList from "../../components/TagList.astro";
 import { divisionGroups } from "../../data/siteData";
 import { withBase } from "../../utils/paths";
+
+const webpPath = (path: string) => path.replace(/\.png(?=($|[?#]))/i, ".webp");
 
 export function getStaticPaths() {
   return divisionGroups.map((group) => ({
@@ -12,10 +15,13 @@ export function getStaticPaths() {
 }
 
 const { group } = Astro.props;
+const backgroundImage = group.image.toLowerCase().includes(".png")
+  ? `image-set(url("${withBase(webpPath(group.image))}") type("image/webp"), url("${withBase(group.image)}") type("image/png"))`
+  : `url("${withBase(group.image)}")`;
 ---
 
 <Layout title={`RoboMaster ${group.name}`} description={group.summary} footerBackHref="/division/" footerBackLabel="返回分工">
-  <section class="page-hero page-hero-division-detail" style={`--page-hero-image: url("${withBase(group.image)}")`}>
+  <section class="page-hero page-hero-division-detail" style={`--page-hero-image: ${backgroundImage}`}>
     <div class="page-hero-content">
       <p class="eyebrow">{group.kicker}</p>
       <h1>{group.name}</h1>
@@ -26,7 +32,7 @@ const { group } = Astro.props;
   <section class="section division-detail-section" aria-labelledby="division-detail-title">
     <div class="division-detail">
       <div class="division-detail-media">
-        <img src={withBase(group.image)} alt={`${group.name}展示图`} loading="lazy" />
+        <OptimizedImage src={group.image} alt={`${group.name}展示图`} loading="lazy" />
       </div>
       <div class="division-detail-content">
         <p class="eyebrow">Role Detail</p>

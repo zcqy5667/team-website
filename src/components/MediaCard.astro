@@ -1,5 +1,6 @@
 ---
 import type { MediaItem } from "../data/siteData";
+import OptimizedImage from "./OptimizedImage.astro";
 import { withBase } from "../utils/paths";
 
 type Props = {
@@ -15,7 +16,7 @@ const recordImage = item.src || "/assets/images/media-stage.svg";
   item.type === "record" ? (
     <article class="media-card media-card-record">
       <div class="media-frame">
-        <img src={withBase(recordImage)} alt={item.title} loading="lazy" />
+        <OptimizedImage src={recordImage} alt={item.title} loading="lazy" />
       </div>
       <div class="media-meta">
         <span class="record-chip">记录</span>
@@ -26,7 +27,7 @@ const recordImage = item.src || "/assets/images/media-stage.svg";
   ) : item.type === "video" ? (
     <article class="media-card">
       <div class="media-frame media-frame-video">
-        {item.src ? <video src={withBase(item.src)} poster={withBase(poster)} controls preload="metadata" /> : <img src={withBase(poster)} alt={item.title} loading="lazy" />}
+        {item.src ? <video src={withBase(item.src)} poster={withBase(poster)} controls preload="none" /> : <OptimizedImage src={poster} alt={item.title} loading="lazy" />}
         <span class="play-chip">PLAY</span>
       </div>
       <div class="media-meta">
@@ -37,7 +38,7 @@ const recordImage = item.src || "/assets/images/media-stage.svg";
   ) : (
     <article class="media-card">
       <div class="media-frame">
-        <img src={withBase(item.src)} alt={item.title} loading="lazy" />
+        <OptimizedImage src={item.src} alt={item.title} loading="lazy" />
       </div>
       <div class="media-meta">
         <strong>{item.title}</strong>

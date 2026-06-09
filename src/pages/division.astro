@@ -3,10 +3,13 @@ import DivisionEntryCard from "../components/DivisionEntryCard.astro";
 import Layout from "../layouts/Layout.astro";
 import { divisionGroups } from "../data/siteData";
 import { withBase } from "../utils/paths";
+
+const heroImage = "/assets/images/unit-engineer.png";
+const heroImageWebp = heroImage.replace(".png", ".webp");
 ---
 
 <Layout title="RoboMaster 分工中心" description="展示 RoboMaster 战队机械组、电控组、算法组、硬件组、运营组五大分工方向。" footerBackHref="/" footerBackLabel="返回首页">
-  <section class="page-hero page-hero-division" style={`--page-hero-image: url("${withBase("/assets/images/unit-engineer.png")}")`}>
+  <section class="page-hero page-hero-division" style={`--page-hero-image: image-set(url("${withBase(heroImageWebp)}") type("image/webp"), url("${withBase(heroImage)}") type("image/png"))`}>
     <div class="page-hero-content">
       <p class="eyebrow">Division Gateway</p>
       <h1>战队五大分工</h1>

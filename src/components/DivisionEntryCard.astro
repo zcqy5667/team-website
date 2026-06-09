@@ -1,5 +1,6 @@
 ---
 import type { DivisionGroup } from "../data/siteData";
+import OptimizedImage from "./OptimizedImage.astro";
 import TagList from "./TagList.astro";
 import { withBase } from "../utils/paths";
 
@@ -12,7 +13,7 @@ const { group } = Astro.props;
 
 <a class="division-entry-card media-entry-card" href={withBase(`/division/${group.slug}/`)}>
   <div class="media-frame division-frame">
-    <img src={withBase(group.image)} alt={`${group.name}代表图`} loading="lazy" />
+    <OptimizedImage src={group.image} alt={`${group.name}代表图`} loading="lazy" />
   </div>
   <div class="media-meta division-meta">
     <span class="media-entry-kicker">{group.kicker}</span>
