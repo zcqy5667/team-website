@@ -82,7 +82,7 @@ export const heroSlides: HeroSlide[] = [
     description: "英雄、工程、步兵、哨兵、空中、飞镖和雷达共同构成 RoboMaster 的多角色协作网络。",
     primaryLabel: "查看兵种",
     primaryHref: "/units/",
-    image: "/assets/images/unit-hero.svg"
+    image: "/assets/images/unit-hero.png"
   },
   {
     kicker: "Media Bay",
@@ -100,7 +100,7 @@ export const units: Unit[] = [
     number: "01",
     name: "英雄机器人",
     role: "重火力核心",
-    image: "/assets/images/unit-hero.svg",
+    image: "/assets/images/unit-hero.png",
     summary: "承担关键输出与目标打击任务，是队伍火力上限的重要来源。",
     functions: ["远距离火力压制", "关键目标打击", "牵制对方防线"],
     tags: ["高能弹丸", "高精度发射", "核心输出"]
@@ -110,7 +110,7 @@ export const units: Unit[] = [
     number: "02",
     name: "工程机器人",
     role: "资源与任务执行",
-    image: "/assets/images/unit-engineer.svg",
+    image: "/assets/images/unit-engineer.png",
     summary: "负责资源获取、补给协助和场地任务，是队伍经济与持续作战能力的保障。",
     functions: ["矿石搬运", "补给协助", "场地机关交互"],
     tags: ["机构设计", "稳定搬运", "团队保障"]
@@ -120,7 +120,7 @@ export const units: Unit[] = [
     number: "03",
     name: "步兵机器人",
     role: "机动作战主力",
-    image: "/assets/images/unit-infantry.svg",
+    image: "/assets/images/unit-infantry.png",
     summary: "数量多、机动性强，承担持续对抗、阵地推进和战术执行任务。",
     functions: ["正面对抗", "阵地压制", "战术穿插"],
     tags: ["机动底盘", "快速响应", "持续输出"]
@@ -130,7 +130,7 @@ export const units: Unit[] = [
     number: "04",
     name: "哨兵机器人",
     role: "自动防守单位",
-    image: "/assets/images/unit-sentry.svg",
+    image: "/assets/images/unit-sentry.png",
     summary: "以自动化巡逻和防守为主，守护关键区域并提供持续火力威慑。",
     functions: ["自动巡逻", "基地防守", "目标识别"],
     tags: ["自动控制", "防守火力", "感知决策"]
@@ -140,7 +140,7 @@ export const units: Unit[] = [
     number: "05",
     name: "空中机器人",
     role: "空中支援",
-    image: "/assets/images/unit-aerial.svg",
+    image: "/assets/images/unit-aerial.png",
     summary: "提供空中视角、战术支援和特殊打击能力，拓展队伍的信息与攻击维度。",
     functions: ["空中侦察", "战术支援", "高点打击"],
     tags: ["飞控", "轻量化", "视野优势"]
@@ -150,7 +150,7 @@ export const units: Unit[] = [
     number: "06",
     name: "飞镖系统",
     role: "远程固定打击",
-    image: "/assets/images/unit-dart.svg",
+    image: "/assets/images/unit-dart.png",
     summary: "通过固定发射系统完成远程目标打击，强调定位、发射稳定性与时机判断。",
     functions: ["远程发射", "目标命中", "战术爆发"],
     tags: ["发射机构", "轨迹控制", "关键时机"]
@@ -160,7 +160,7 @@ export const units: Unit[] = [
     number: "07",
     name: "雷达",
     role: "战场信息感知",
-    image: "/assets/images/unit-radar.svg",
+    image: "/assets/images/unit-radar.png",
     summary: "为队伍提供感知、定位与信息辅助，让战术决策更及时、更有依据。",
     functions: ["场上感知", "目标定位", "信息辅助"],
     tags: ["视觉识别", "地图信息", "战术辅助"]
@@ -179,7 +179,7 @@ export const media: MediaItem[] = [
     type: "image",
     title: "机器人特写",
     caption: "用于展示底盘、云台、发射机构或传感器模块。",
-    src: "/assets/images/unit-hero.svg",
+    src: "/assets/images/unit-hero.png",
     featured: true
   },
   {
