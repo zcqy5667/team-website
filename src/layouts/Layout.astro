@@ -28,7 +28,7 @@ const pageTitle = normalizedPath === "/" ? team.name : `${team.name} | ${title}`
     <link rel="icon" type="image/png" href={withBase(team.emblem)} />
   </head>
   <body>
-    <Header team={team} currentPath={currentPath} />
+    <Header currentPath={currentPath} />
     <main>
       <slot />
     </main>

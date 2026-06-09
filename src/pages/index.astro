@@ -33,6 +33,10 @@ const mediaEntries = [
 ---
 
 <Layout title="RoboMaster 单战队展示" description="RoboMaster 机甲大师单战队展示站，包含首屏轮播、兵种功能、图片视频媒体展示。">
+  <section class="home-brand-strip" aria-label="基地名称">
+    <a href={withBase("/")} class="home-brand-title">{team.name}</a>
+  </section>
+
   <HeroSlider slides={heroSlides} />
 
   <section id="overview" class="section overview-section" aria-labelledby="overview-title">

@@ -1,6 +1,4 @@
 ---
-import type { Team } from "../data/siteData";
-import OptimizedImage from "./OptimizedImage.astro";
 import { withBase } from "../utils/paths";
 
 type NavItem = {
@@ -10,17 +8,18 @@ type NavItem = {
 };
 
 type Props = {
-  team: Team;
   currentPath?: string;
 };
 
-const { team, currentPath = "/" } = Astro.props;
+const { currentPath = "/" } = Astro.props;
 const navItems: NavItem[] = [
   { label: "首页", href: "/", match: "/" },
   { label: "战队", href: "/#team", match: "/#team" },
   { label: "兵种", href: "/units/", match: "/units/" },
   { label: "分工", href: "/division/", match: "/division/" },
-  { label: "媒体", href: "/media/", match: "/media/" }
+  { label: "媒体", href: "/media/", match: "/media/" },
+  { label: "荣誉", href: "/honors/", match: "/honors/" },
+  { label: "联系", href: "/contact/", match: "/contact/" }
 ];
 
 function isCurrent(item: NavItem) {
@@ -33,12 +32,6 @@ function isCurrent(item: NavItem) {
 ---
 
 <header class="site-header">
-  <a class="brand" href={withBase("/")} aria-label={`${team.name}首页`}>
-    <span class="brand-mark">
-      <OptimizedImage src={team.emblem} alt="" width="42" height="42" loading="eager" />
-    </span>
-    <span class="brand-text">{team.name}</span>
-  </a>
   <nav class="main-nav" aria-label="主导航">
     {
       navItems.map((item) => (

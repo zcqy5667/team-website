@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { withBase } from "../utils/paths";
+
+const contactItems = [
+  {
+    label: "招新咨询",
+    value: "QQ群 / 微信待补充",
+    detail: "面向机械、电控、算法、硬件、运营等方向开放咨询。"
+  },
+  {
+    label: "合作联系",
+    value: "邮箱待补充",
+    detail: "用于校内合作、赛事交流、媒体素材和项目共创沟通。"
+  },
+  {
+    label: "基地地址",
+    value: "桂林理工大学校内",
+    detail: "具体实验室位置和开放时间可在确认后替换。"
+  }
+];
+---
+
+<Layout title="联系我们" description="桂林理工大学机器人基地联系、招新咨询与合作沟通入口。" footerBackHref="/" footerBackLabel="返回首页">
+  <section class="page-hero page-hero-contact" style={`--page-hero-image: url("${withBase("/assets/images/media-stage.svg")}")`}>
+    <div class="page-hero-content">
+      <p class="eyebrow">Contact</p>
+      <h1>联系我们</h1>
+      <p>欢迎对机器人研发、RoboMaster 赛事、团队招新和校内外合作感兴趣的同学与伙伴联系基地。</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="contact-title">
+    <div class="section-heading">
+      <p class="eyebrow">Get In Touch</p>
+      <h2 id="contact-title">联系入口</h2>
+    </div>
+    <div class="contact-grid">
+      {
+        contactItems.map((item) => (
+          <article class="contact-card">
+            <span>{item.label}</span>
+            <strong>{item.value}</strong>
+            <p>{item.detail}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

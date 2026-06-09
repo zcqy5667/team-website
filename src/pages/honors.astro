@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { withBase } from "../utils/paths";
+
+const honors = [
+  {
+    year: "2026",
+    title: "RoboMaster 赛季备战成果",
+    event: "Season Preparation",
+    detail: "用于展示本赛季阶段目标、技术突破、训练成果或校内外竞赛奖项。"
+  },
+  {
+    year: "2025",
+    title: "机器人系统综合实践",
+    event: "Engineering Practice",
+    detail: "用于记录机械、电控、算法、硬件和运营协作产出的代表性项目。"
+  },
+  {
+    year: "2024",
+    title: "团队建设与技术沉淀",
+    event: "Team Development",
+    detail: "用于沉淀招新培养、技术文档、赛季复盘和公开展示成果。"
+  }
+];
+---
+
+<Layout title="荣誉展示" description="桂林理工大学机器人基地荣誉、成果与赛季记录展示。" footerBackHref="/" footerBackLabel="返回首页">
+  <section class="page-hero page-hero-honors" style={`--page-hero-image: url("${withBase("/assets/images/team-placeholder.svg")}")`}>
+    <div class="page-hero-content">
+      <p class="eyebrow">Honors</p>
+      <h1>荣誉与成果</h1>
+      <p>这里集中展示基地在赛事、项目实践、技术沉淀和团队建设中的阶段成果，后续可替换为真实奖项与证书信息。</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="honors-title">
+    <div class="section-heading">
+      <p class="eyebrow">Achievement Log</p>
+      <h2 id="honors-title">荣誉记录</h2>
+    </div>
+    <div class="honor-grid">
+      {
+        honors.map((honor) => (
+          <article class="honor-card">
+            <span>{honor.year}</span>
+            <strong>{honor.title}</strong>
+            <small>{honor.event}</small>
+            <p>{honor.detail}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
