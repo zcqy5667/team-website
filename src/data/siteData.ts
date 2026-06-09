@@ -161,7 +161,7 @@ export const heroSlides: HeroSlide[] = [
     description: "图片、视频与赛季纪录可集中展示，后续替换为真实训练照、机器人特写和比赛混剪即可上线。",
     primaryLabel: "浏览媒体",
     primaryHref: "/media/",
-    image: "/assets/images/media-stage.svg"
+    image: "/assets/images/record-1.jpeg"
   }
 ];
 
@@ -243,7 +243,7 @@ export const media: MediaItem[] = [
     type: "image",
     title: "战队整备区",
     caption: "可替换为真实战队合影、机器人整备或实验室照片。",
-    src: "/assets/images/team-placeholder.svg",
+    src: "/assets/images/record-1.jpeg",
     featured: true
   },
   {

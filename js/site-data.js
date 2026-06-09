@@ -50,7 +50,7 @@ window.RM_SITE = {
       primaryHref: "media.html",
       secondaryLabel: "回到战队",
       secondaryHref: "index.html#team",
-      image: "assets/images/media-stage.svg",
+      image: "assets/images/record-1.jpeg",
       meta: [
         { label: "图片", href: "media.html#images" },
         { label: "视频", href: "media.html#videos" },
@@ -135,7 +135,7 @@ window.RM_SITE = {
       type: "image",
       title: "战队整备区",
       caption: "可替换为真实战队合影、机器人整备或实验室照片。",
-      src: "assets/images/team-placeholder.svg",
+      src: "assets/images/record-1.jpeg",
       featured: true
     },
     {

@@ -187,6 +187,24 @@ button {
   animation: slow-push 7s ease forwards;
 }
 
+.hero-slide:nth-child(2) .hero-slide-image {
+  inset: 50% 5vw auto auto;
+  width: min(56vw, 700px);
+  height: min(76vh, 620px);
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 22px 55px rgba(0, 0, 0, 0.42));
+  transform: translateY(-50%);
+}
+
+.hero-slide:nth-child(2).is-active .hero-slide-image {
+  animation: none;
+}
+
+.hero-slide:nth-child(3) .hero-slide-image {
+  object-position: 62% center;
+}
+
 .hero-slide-shade {
   position: absolute;
   inset: 0;
