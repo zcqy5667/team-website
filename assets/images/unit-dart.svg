@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="飞镖系统示意图">
+  <rect width="960" height="600" fill="#0a0f15"/>
+  <g opacity=".18" stroke="#fff"><path d="M0 120H960M0 240H960M0 360H960M0 480H960"/><path d="M160 0V600M320 0V600M480 0V600M640 0V600M800 0V600"/></g>
+  <path d="M235 420H570L635 500H180Z" fill="#0e151c" stroke="#37d7ff" stroke-width="12"/>
+  <path d="M320 420L470 195H610L460 420" fill="none" stroke="#ffb238" stroke-width="14"/>
+  <path d="M575 190L780 135L700 225Z" fill="none" stroke="#ff526b" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M625 180L850 95" stroke="#ff526b" stroke-width="8" stroke-linecap="round"/>
+  <text x="70" y="100" fill="#eef7f9" font-family="Arial, sans-serif" font-size="58" font-weight="800">DART</text>
+</svg>

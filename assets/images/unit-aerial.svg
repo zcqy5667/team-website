@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="空中机器人示意图">
+  <rect width="960" height="600" fill="#08101a"/>
+  <g opacity=".18" stroke="#fff"><path d="M0 120H960M0 240H960M0 360H960M0 480H960"/><path d="M160 0V600M320 0V600M480 0V600M640 0V600M800 0V600"/></g>
+  <path d="M360 285H600L650 360H310Z" fill="#0d151e" stroke="#37d7ff" stroke-width="12"/>
+  <circle cx="260" cy="250" r="70" fill="none" stroke="#27e0b2" stroke-width="10"/>
+  <circle cx="700" cy="250" r="70" fill="none" stroke="#27e0b2" stroke-width="10"/>
+  <circle cx="260" cy="420" r="70" fill="none" stroke="#ffb238" stroke-width="10"/>
+  <circle cx="700" cy="420" r="70" fill="none" stroke="#ffb238" stroke-width="10"/>
+  <path d="M310 285L260 250M650 285L700 250M330 360L260 420M630 360L700 420" stroke="#37d7ff" stroke-width="8"/>
+  <text x="70" y="100" fill="#eef7f9" font-family="Arial, sans-serif" font-size="58" font-weight="800">AERIAL</text>
+</svg>

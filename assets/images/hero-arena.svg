@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100" role="img" aria-label="RoboMaster 科技竞技场背景">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#091017"/>
+      <stop offset="0.48" stop-color="#101824"/>
+      <stop offset="1" stop-color="#17100d"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#37d7ff" stop-opacity="0"/>
+      <stop offset="0.52" stop-color="#37d7ff"/>
+      <stop offset="1" stop-color="#27e0b2" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1800" height="1100" fill="url(#bg)"/>
+  <g opacity="0.26">
+    <path d="M0 820 C 380 700, 620 710, 910 780 S 1440 900, 1800 760" fill="none" stroke="#37d7ff" stroke-width="2"/>
+    <path d="M0 890 C 390 780, 620 800, 910 860 S 1440 960, 1800 850" fill="none" stroke="#ffb238" stroke-width="2"/>
+  </g>
+  <g opacity="0.18" stroke="#ffffff">
+    <path d="M120 0 V1100"/>
+    <path d="M360 0 V1100"/>
+    <path d="M600 0 V1100"/>
+    <path d="M840 0 V1100"/>
+    <path d="M1080 0 V1100"/>
+    <path d="M1320 0 V1100"/>
+    <path d="M1560 0 V1100"/>
+    <path d="M0 180 H1800"/>
+    <path d="M0 360 H1800"/>
+    <path d="M0 540 H1800"/>
+    <path d="M0 720 H1800"/>
+    <path d="M0 900 H1800"/>
+  </g>
+  <g transform="translate(1120 360)" filter="url(#glow)">
+    <path d="M0 390 L80 160 L260 90 L430 170 L500 390 Z" fill="#0b1118" stroke="#37d7ff" stroke-width="7"/>
+    <path d="M95 305 H395 L350 198 L150 198 Z" fill="#142231" stroke="#27e0b2" stroke-width="5"/>
+    <circle cx="128" cy="410" r="56" fill="#0b1118" stroke="#ffb238" stroke-width="10"/>
+    <circle cx="388" cy="410" r="56" fill="#0b1118" stroke="#ffb238" stroke-width="10"/>
+    <path d="M250 90 V18 H340 V90" fill="none" stroke="#37d7ff" stroke-width="9"/>
+    <path d="M328 42 L468 0" stroke="#ff526b" stroke-width="9" stroke-linecap="round"/>
+    <path d="M158 214 L95 154 M338 214 L408 154" stroke="#37d7ff" stroke-width="6"/>
+  </g>
+  <g filter="url(#glow)">
+    <path d="M1040 880 H1780" stroke="url(#cyan)" stroke-width="4"/>
+    <path d="M1160 930 H1680" stroke="url(#cyan)" stroke-width="3"/>
+    <path d="M1280 980 H1580" stroke="url(#cyan)" stroke-width="2"/>
+  </g>
+</svg>
