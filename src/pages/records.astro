@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MediaCard from "../components/MediaCard.astro";
+import { media } from "../data/siteData";
+
+const items = media.filter((item) => item.type === "record");
+---
+
+<Layout title="RoboMaster 记录区" description="整理 RoboMaster 战队训练、比赛与复盘记录。" footerBackHref="/media/" footerBackLabel="返回媒体中心">
+  <section class="page-hero page-hero-records">
+    <div class="page-hero-content">
+      <p class="eyebrow">Records</p>
+      <h1>记录区</h1>
+      <p>整理赛季目标、训练节点、比赛复盘与阶段成果，让图片和视频之外的关键过程也能沉淀下来。</p>
+    </div>
+  </section>
+
+  <section class="section media-category" aria-labelledby="records-title">
+    <div class="section-heading">
+      <p class="eyebrow">Season Log</p>
+      <h2 id="records-title">赛季记录</h2>
+    </div>
+    <div class="media-grid media-grid-large">
+      {items.map((item) => <MediaCard item={item} />)}
+    </div>
+  </section>
+</Layout>

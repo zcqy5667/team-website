@@ -1,0 +1,32 @@
+---
+import type { MediaItem, MediaType } from "../data/siteData";
+
+type Props = {
+  title: string;
+  kicker: string;
+  href: string;
+  item?: MediaItem;
+  type: MediaType;
+};
+
+const { title, kicker, href, item, type } = Astro.props;
+const fallbackByType: Record<MediaType, string> = {
+  image: "/assets/images/team-placeholder.svg",
+  video: "/assets/images/video-placeholder.svg",
+  record: "/assets/images/media-stage.svg"
+};
+const image = item?.type === "video" ? item.poster || fallbackByType.video : item?.src || fallbackByType[type];
+const caption = item?.caption || "素材待添加，可在 siteData.ts 中维护。";
+---
+
+<a class={`media-entry-card media-entry-card-${type}`} href={href}>
+  <div class="media-frame">
+    <img src={image} alt={`${title}代表图`} loading="lazy" />
+    {type === "video" && <span class="play-chip">PLAY</span>}
+  </div>
+  <div class="media-meta">
+    <span class="media-entry-kicker">{kicker}</span>
+    <strong>{title}</strong>
+    <span>{caption}</span>
+  </div>
+</a>

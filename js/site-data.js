@@ -1,3 +1,4 @@
+/* Legacy static code disabled after Astro migration.
 window.RM_SITE = {
   team: {
     name: "xxxx 战队",
@@ -27,8 +28,7 @@ window.RM_SITE = {
       primaryHref: "index.html#team",
       secondaryLabel: "查看兵种",
       secondaryHref: "units.html",
-      image: "assets/images/hero-arena.svg",
-      meta: ["Mechanical", "Embedded", "Vision"]
+      image: "assets/images/hero-arena.svg"
     },
     {
       kicker: "Robot Classes",
@@ -39,8 +39,7 @@ window.RM_SITE = {
       primaryHref: "units.html",
       secondaryLabel: "查看媒体",
       secondaryHref: "media.html",
-      image: "assets/images/unit-hero.svg",
-      meta: ["Hero", "Engineer", "Infantry"]
+      image: "assets/images/unit-hero.svg"
     },
     {
       kicker: "Media Bay",
@@ -52,7 +51,11 @@ window.RM_SITE = {
       secondaryLabel: "回到战队",
       secondaryHref: "index.html#team",
       image: "assets/images/media-stage.svg",
-      meta: ["Image", "Video", "Season"]
+      meta: [
+        { label: "图片", href: "media.html#images" },
+        { label: "视频", href: "media.html#videos" },
+        { label: "记录", href: "media.html#records" }
+      ]
     }
   ],
   units: [
@@ -156,6 +159,15 @@ window.RM_SITE = {
       caption: "记录调试、对抗训练和赛前联调过程。",
       src: "assets/images/media-stage.svg",
       featured: false
+    },
+    {
+      type: "record",
+      title: "赛季记录",
+      caption: "用于整理赛季目标、训练节点、比赛复盘和阶段性成果。",
+      src: "assets/images/media-stage.svg",
+      featured: false
     }
   ]
 };
+
+*/

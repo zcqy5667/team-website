@@ -1,0 +1,10 @@
+---
+type Props = {
+  items: string[];
+  className: string;
+};
+
+const { items, className } = Astro.props;
+---
+
+{items.length > 0 && <ul class={className}>{items.map((item) => <li>{item}</li>)}</ul>}

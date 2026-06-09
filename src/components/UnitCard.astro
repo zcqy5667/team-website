@@ -1,0 +1,28 @@
+---
+import type { Unit } from "../data/siteData";
+import TagList from "./TagList.astro";
+
+type Props = {
+  unit: Unit;
+  preview?: boolean;
+};
+
+const { unit, preview = false } = Astro.props;
+const functions = preview ? unit.functions.slice(0, 2) : unit.functions;
+---
+
+<article class="unit-card" id={unit.id}>
+  <a class="unit-card-link" href={`/units/#${unit.id}`} aria-label={`查看 ${unit.name}`}>
+    <div class="unit-visual">
+      <img src={unit.image} alt={`${unit.name}示意图`} loading="lazy" />
+      <span class="unit-number">{unit.number}</span>
+    </div>
+    <div class="unit-body">
+      <span class="unit-role">{unit.role}</span>
+      <h3>{unit.name}</h3>
+      <p>{unit.summary}</p>
+      <TagList items={functions} className="function-list" />
+      <TagList items={unit.tags} className="tag-list" />
+    </div>
+  </a>
+</article>

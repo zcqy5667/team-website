@@ -1,3 +1,4 @@
+<!-- Legacy static HTML disabled after Astro migration.
 <!doctype html>
 <html lang="zh-CN">
   <head>
@@ -32,12 +33,28 @@
         </div>
       </section>
 
-      <section class="section" aria-labelledby="media-grid-title">
+      <section id="images" class="section media-category" aria-labelledby="media-images-title">
         <div class="section-heading">
-          <p class="eyebrow">Gallery</p>
-          <h2 id="media-grid-title">媒体中心</h2>
+          <p class="eyebrow">Images</p>
+          <h2 id="media-images-title">图片区</h2>
         </div>
-        <div class="media-grid media-grid-large" data-media-grid></div>
+        <div class="media-grid media-grid-large" data-media-type="image"></div>
+      </section>
+
+      <section id="videos" class="section media-category" aria-labelledby="media-videos-title">
+        <div class="section-heading">
+          <p class="eyebrow">Videos</p>
+          <h2 id="media-videos-title">视频区</h2>
+        </div>
+        <div class="media-grid media-grid-large" data-media-type="video"></div>
+      </section>
+
+      <section id="records" class="section media-category" aria-labelledby="media-records-title">
+        <div class="section-heading">
+          <p class="eyebrow">Records</p>
+          <h2 id="media-records-title">记录区</h2>
+        </div>
+        <div class="media-grid media-grid-large" data-media-type="record"></div>
       </section>
     </main>
 
@@ -50,3 +67,5 @@
     <script src="js/main.js"></script>
   </body>
 </html>
+
+-->

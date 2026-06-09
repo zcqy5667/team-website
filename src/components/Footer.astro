@@ -1,0 +1,13 @@
+---
+type Props = {
+  backHref?: string;
+  backLabel?: string;
+};
+
+const { backHref, backLabel } = Astro.props;
+---
+
+<footer class="site-footer">
+  <span>RoboMaster Team Showcase</span>
+  {backHref && backLabel ? <a href={backHref}>{backLabel}</a> : <span>Static, configurable, media-ready.</span>}
+</footer>

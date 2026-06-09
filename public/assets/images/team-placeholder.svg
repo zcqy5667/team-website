@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="战队图片占位">
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101824"/>
+      <stop offset="1" stop-color="#241713"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#37d7ff"/>
+      <stop offset="1" stop-color="#ffb238"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="600" fill="url(#panel)"/>
+  <g opacity="0.18" stroke="#fff">
+    <path d="M0 100 H960M0 200 H960M0 300 H960M0 400 H960M0 500 H960"/>
+    <path d="M120 0 V600M240 0 V600M360 0 V600M480 0 V600M600 0 V600M720 0 V600M840 0 V600"/>
+  </g>
+  <path d="M230 404 L305 188 H480 L555 404 Z" fill="#0a1118" stroke="#37d7ff" stroke-width="10"/>
+  <path d="M395 188 V120 H500 V188" fill="none" stroke="#ffb238" stroke-width="10"/>
+  <circle cx="310" cy="420" r="48" fill="#090d12" stroke="#ffb238" stroke-width="12"/>
+  <circle cx="508" cy="420" r="48" fill="#090d12" stroke="#ffb238" stroke-width="12"/>
+  <path d="M610 235 H788M610 300 H720M610 365 H820" stroke="url(#line)" stroke-width="16" stroke-linecap="round"/>
+  <text x="610" y="185" fill="#eef7f9" font-family="Arial, sans-serif" font-size="54" font-weight="800">TEAM xxxx</text>
+</svg>

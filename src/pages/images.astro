@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MediaCard from "../components/MediaCard.astro";
+import { media } from "../data/siteData";
+
+const items = media.filter((item) => item.type === "image");
+---
+
+<Layout title="RoboMaster 图片区" description="展示 RoboMaster 战队图片素材。" footerBackHref="/media/" footerBackLabel="返回媒体中心">
+  <section class="page-hero page-hero-images">
+    <div class="page-hero-content">
+      <p class="eyebrow">Images</p>
+      <h1>图片区</h1>
+      <p>展示战队合影、机器人特写、训练现场等图片素材，后续可在数据文件中替换为真实图片。</p>
+    </div>
+  </section>
+
+  <section class="section media-category" aria-labelledby="images-title">
+    <div class="section-heading">
+      <p class="eyebrow">Gallery</p>
+      <h2 id="images-title">图片素材</h2>
+    </div>
+    <div class="media-grid media-grid-large">
+      {items.map((item) => <MediaCard item={item} />)}
+    </div>
+  </section>
+</Layout>

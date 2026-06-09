@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="媒体展示舞台占位">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#081019"/>
+      <stop offset=".6" stop-color="#121923"/>
+      <stop offset="1" stop-color="#271410"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="600" fill="url(#bg)"/>
+  <g opacity=".17" stroke="#fff"><path d="M0 110H960M0 230H960M0 350H960M0 470H960"/><path d="M120 0V600M300 0V600M480 0V600M660 0V600M840 0V600"/></g>
+  <rect x="120" y="120" width="720" height="360" fill="none" stroke="#37d7ff" stroke-width="10"/>
+  <path d="M170 420L315 250L430 355L545 220L790 420Z" fill="none" stroke="#ffb238" stroke-width="12" stroke-linejoin="round"/>
+  <circle cx="695" cy="190" r="42" fill="none" stroke="#ff526b" stroke-width="10"/>
+  <text x="480" y="535" text-anchor="middle" fill="#eef7f9" font-family="Arial, sans-serif" font-size="46" font-weight="800">MEDIA xxxx</text>
+</svg>

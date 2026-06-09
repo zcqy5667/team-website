@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="哨兵机器人示意图">
+  <rect width="960" height="600" fill="#071017"/>
+  <g opacity=".16" stroke="#fff"><path d="M0 100H960M0 220H960M0 340H960M0 460H960"/><path d="M120 0V600M300 0V600M480 0V600M660 0V600M840 0V600"/></g>
+  <path d="M330 455H630L590 315H370Z" fill="#0d151d" stroke="#37d7ff" stroke-width="12"/>
+  <path d="M420 315V165H540V315" fill="none" stroke="#27e0b2" stroke-width="12"/>
+  <circle cx="480" cy="150" r="64" fill="none" stroke="#ff526b" stroke-width="12"/>
+  <path d="M405 150H555M480 75V225" stroke="#ff526b" stroke-width="7"/>
+  <circle cx="395" cy="470" r="42" fill="#090d12" stroke="#ffb238" stroke-width="12"/>
+  <circle cx="565" cy="470" r="42" fill="#090d12" stroke="#ffb238" stroke-width="12"/>
+  <text x="70" y="100" fill="#eef7f9" font-family="Arial, sans-serif" font-size="58" font-weight="800">SENTRY</text>
+</svg>

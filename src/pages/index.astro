@@ -1,0 +1,87 @@
+---
+import HeroSlider from "../components/HeroSlider.astro";
+import Layout from "../layouts/Layout.astro";
+import MediaEntryCard from "../components/MediaEntryCard.astro";
+import TeamShowcase from "../components/TeamShowcase.astro";
+import UnitCard from "../components/UnitCard.astro";
+import { heroSlides, media, team, units } from "../data/siteData";
+
+const mediaEntries = [
+  {
+    type: "image" as const,
+    title: "图片区",
+    kicker: "Images",
+    href: "/media/",
+    item: media.find((item) => item.type === "image")
+  },
+  {
+    type: "video" as const,
+    title: "视频区",
+    kicker: "Videos",
+    href: "/media/",
+    item: media.find((item) => item.type === "video")
+  },
+  {
+    type: "record" as const,
+    title: "记录区",
+    kicker: "Records",
+    href: "/media/",
+    item: media.find((item) => item.type === "record")
+  }
+];
+---
+
+<Layout title="RoboMaster 单战队展示" description="RoboMaster 机甲大师单战队展示站，包含首屏轮播、兵种功能、图片视频媒体展示。">
+  <HeroSlider slides={heroSlides} />
+
+  <section id="overview" class="section overview-section" aria-labelledby="overview-title">
+    <div class="section-heading">
+      <p class="eyebrow">Mission Overview</p>
+      <h2 id="overview-title">从战队到赛场系统</h2>
+    </div>
+    <div class="overview-grid">
+      <article class="metric-panel">
+        <span class="metric-value">1</span>
+        <span class="metric-label">展示战队</span>
+      </article>
+      <article class="metric-panel">
+        <span class="metric-value">{units.length}</span>
+        <span class="metric-label">兵种系统</span>
+      </article>
+      <article class="metric-panel">
+        <span class="metric-value">{media.length}</span>
+        <span class="metric-label">媒体素材</span>
+      </article>
+    </div>
+  </section>
+
+  <section id="team" class="section team-section" aria-labelledby="team-title">
+    <div class="section-heading">
+      <p class="eyebrow">Team Profile</p>
+      <h2 id="team-title">唯一战队展示</h2>
+    </div>
+    <TeamShowcase team={team} />
+  </section>
+
+  <section id="units" class="section units-section" aria-labelledby="units-title">
+    <div class="section-heading">
+      <p class="eyebrow">Robot Classes</p>
+      <h2 id="units-title">兵种功能预览</h2>
+      <a class="text-link" href="/units/">查看完整兵种图鉴</a>
+    </div>
+    <div class="unit-grid unit-grid-preview">
+      {units.slice(0, 4).map((unit) => <UnitCard unit={unit} preview />)}
+    </div>
+  </section>
+
+  <section id="media" class="section media-section" aria-labelledby="media-title">
+    <div class="section-heading">
+      <p class="eyebrow">Image / Video Bay</p>
+      <h2 id="media-title">媒体素材预览</h2>
+      <a class="text-link" href="/media/">进入媒体中心</a>
+    </div>
+    <div class="media-grid media-entry-grid">
+      {mediaEntries.map((entry) => <MediaEntryCard {...entry} />)}
+    </div>
+  </section>
+</Layout>

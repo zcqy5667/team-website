@@ -1,0 +1,47 @@
+---
+import type { MediaItem } from "../data/siteData";
+
+type Props = {
+  item: MediaItem;
+};
+
+const { item } = Astro.props;
+const poster = item.poster || "/assets/images/video-placeholder.svg";
+const recordImage = item.src || "/assets/images/media-stage.svg";
+---
+
+{
+  item.type === "record" ? (
+    <article class="media-card media-card-record">
+      <div class="media-frame">
+        <img src={recordImage} alt={item.title} loading="lazy" />
+      </div>
+      <div class="media-meta">
+        <span class="record-chip">记录</span>
+        <strong>{item.title}</strong>
+        <span>{item.caption}</span>
+      </div>
+    </article>
+  ) : item.type === "video" ? (
+    <article class="media-card">
+      <div class="media-frame media-frame-video">
+        {item.src ? <video src={item.src} poster={poster} controls preload="metadata" /> : <img src={poster} alt={item.title} loading="lazy" />}
+        <span class="play-chip">PLAY</span>
+      </div>
+      <div class="media-meta">
+        <strong>{item.title}</strong>
+        <span>{item.caption || "视频素材待添加"}</span>
+      </div>
+    </article>
+  ) : (
+    <article class="media-card">
+      <div class="media-frame">
+        <img src={item.src} alt={item.title} loading="lazy" />
+      </div>
+      <div class="media-meta">
+        <strong>{item.title}</strong>
+        <span>{item.caption}</span>
+      </div>
+    </article>
+  )
+}

@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MediaCard from "../components/MediaCard.astro";
+import { media } from "../data/siteData";
+
+const items = media.filter((item) => item.type === "video");
+---
+
+<Layout title="RoboMaster 视频区" description="展示 RoboMaster 战队视频素材。" footerBackHref="/media/" footerBackLabel="返回媒体中心">
+  <section class="page-hero page-hero-videos">
+    <div class="page-hero-content">
+      <p class="eyebrow">Videos</p>
+      <h1>视频区</h1>
+      <p>用于放置赛季混剪、训练记录和比赛视频；没有视频文件时会优先显示封面占位图。</p>
+    </div>
+  </section>
+
+  <section class="section media-category" aria-labelledby="videos-title">
+    <div class="section-heading">
+      <p class="eyebrow">Clips</p>
+      <h2 id="videos-title">视频素材</h2>
+    </div>
+    <div class="media-grid media-grid-large">
+      {items.map((item) => <MediaCard item={item} />)}
+    </div>
+  </section>
+</Layout>

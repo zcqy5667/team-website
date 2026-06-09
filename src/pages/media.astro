@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MediaEntryCard from "../components/MediaEntryCard.astro";
+import { media } from "../data/siteData";
+
+const entries = [
+  {
+    type: "image" as const,
+    title: "图片区",
+    kicker: "Images",
+    href: "/images/",
+    item: media.find((item) => item.type === "image")
+  },
+  {
+    type: "video" as const,
+    title: "视频区",
+    kicker: "Videos",
+    href: "/videos/",
+    item: media.find((item) => item.type === "video")
+  },
+  {
+    type: "record" as const,
+    title: "记录区",
+    kicker: "Records",
+    href: "/records/",
+    item: media.find((item) => item.type === "record")
+  }
+];
+---
+
+<Layout title="RoboMaster 媒体中心" description="集中展示 RoboMaster 战队图片、视频、训练与比赛记录。" footerBackHref="/" footerBackLabel="返回首页">
+  <section class="page-hero page-hero-media">
+    <div class="page-hero-content">
+      <p class="eyebrow">Media Bay</p>
+      <h1>图片、视频与赛季记录</h1>
+      <p>这里作为媒体素材入口，图片区、视频区和记录区分别进入独立页面，方便后续替换真实素材与维护内容。</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="media-entry-title">
+    <div class="section-heading">
+      <p class="eyebrow">Media Gateway</p>
+      <h2 id="media-entry-title">选择媒体分区</h2>
+    </div>
+    <div class="media-grid media-entry-grid">
+      {entries.map((entry) => <MediaEntryCard {...entry} />)}
+    </div>
+  </section>
+</Layout>

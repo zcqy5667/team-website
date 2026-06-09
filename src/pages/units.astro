@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import UnitCard from "../components/UnitCard.astro";
+import { units } from "../data/siteData";
+---
+
+<Layout title="RoboMaster 兵种图鉴" description="展示 RoboMaster 机甲大师比赛中的兵种与功能。" footerBackHref="/" footerBackLabel="返回首页">
+  <section class="page-hero page-hero-units">
+    <div class="page-hero-content">
+      <p class="eyebrow">Robot Classes</p>
+      <h1>RoboMaster 兵种与功能图鉴</h1>
+      <p>用七类角色理解赛场：火力、资源、机动、防守、空中支援、远程打击与信息感知共同构成完整战术系统。</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="unit-grid-title">
+    <div class="section-heading">
+      <p class="eyebrow">Full Matrix</p>
+      <h2 id="unit-grid-title">完整兵种矩阵</h2>
+    </div>
+    <div class="unit-grid">
+      {units.map((unit) => <UnitCard unit={unit} />)}
+    </div>
+  </section>
+</Layout>

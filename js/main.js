@@ -1,3 +1,4 @@
+/* Legacy static code disabled after Astro migration.
 (function () {
   const site = window.RM_SITE || {};
   const team = site.team || {};
@@ -49,6 +50,18 @@
     const title = escapeHtml(item.title);
     const caption = escapeHtml(item.caption);
 
+    if (item.type === "record") {
+      return `
+        <article class="media-card media-card-record">
+          <div class="media-meta">
+            <span class="record-chip">记录</span>
+            <strong>${title}</strong>
+            <span>${caption}</span>
+          </div>
+        </article>
+      `;
+    }
+
     if (item.type === "video") {
       const frame = item.src
         ? `<video src="${escapeHtml(item.src)}" poster="${escapeHtml(item.poster || "")}" controls preload="metadata"></video>`
@@ -75,6 +88,24 @@
           <span>${caption}</span>
         </div>
       </article>
+    `;
+  }
+
+  function heroMetaMarkup(items) {
+    if (!Array.isArray(items) || items.length === 0) return "";
+
+    return `
+      <div class="hero-hud">
+        ${items
+          .map((item) => {
+            if (typeof item === "string") return `<span>${escapeHtml(item)}</span>`;
+
+            const label = escapeHtml(item.label || "");
+            const href = item.href ? escapeHtml(item.href) : "";
+            return href ? `<a href="${href}">${label}</a>` : `<span>${label}</span>`;
+          })
+          .join("")}
+      </div>
     `;
   }
 
@@ -146,6 +177,14 @@
     if (mediaGrid) {
       mediaGrid.innerHTML = media.map(mediaMarkup).join("");
     }
+
+    document.querySelectorAll("[data-media-type]").forEach((grid) => {
+      const type = grid.dataset.mediaType;
+      grid.innerHTML = media
+        .filter((item) => item.type === type)
+        .map(mediaMarkup)
+        .join("");
+    });
   }
 
   function renderSlides() {
@@ -176,9 +215,7 @@
                 <a class="button button-secondary" href="${escapeHtml(slide.secondaryHref)}">${escapeHtml(slide.secondaryLabel)}</a>
               </div>
             </div>
-            <div class="hero-hud" aria-hidden="true">
-              ${(slide.meta || []).map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
-            </div>
+            ${heroMetaMarkup(slide.meta)}
           </article>
         `
       )
@@ -255,3 +292,5 @@
   renderSlides();
   markCurrentNav();
 })();
+
+*/

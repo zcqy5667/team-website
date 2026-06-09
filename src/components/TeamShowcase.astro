@@ -1,0 +1,34 @@
+---
+import type { Team } from "../data/siteData";
+import TagList from "./TagList.astro";
+
+type Props = {
+  team: Team;
+};
+
+const { team } = Astro.props;
+---
+
+<div class="team-showcase">
+  <div class="team-showcase-media">
+    <img src={team.cover} alt={`${team.name}封面`} loading="lazy" />
+  </div>
+  <div class="team-showcase-content">
+    <p class="eyebrow">{team.school}</p>
+    <h3>{team.name}</h3>
+    <p class="team-slogan">{team.slogan}</p>
+    <p>{team.summary}</p>
+    <p>{team.detail}</p>
+    <TagList items={team.tags} className="tag-list" />
+    <div class="mini-stat-grid">
+      {
+        team.stats.map((stat) => (
+          <article class="mini-stat">
+            <strong>{stat.value}</strong>
+            <span>{stat.label}</span>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</div>
