@@ -36,6 +36,28 @@ npm run build
 npm run preview
 ```
 
+## Cloudflare Pages 发布设置
+
+本项目不能直接把仓库根目录当作静态目录发布，因为根目录里的旧 `index.html` 已经被注释停用。Cloudflare Pages 必须执行 Astro 构建，并发布 `dist/`。
+
+Cloudflare Pages 推荐设置：
+
+```text
+Framework preset: Astro
+Build command: npm run build
+Build output directory: dist
+Root directory: /
+Node.js version: 22
+```
+
+如果 Cloudflare 没有自动使用 Node 22，可以在环境变量里添加：
+
+```text
+NODE_VERSION=22
+```
+
+发布后实际访问的是构建产物中的页面，而不是根目录旧 HTML。
+
 ## 目录说明
 
 ```text

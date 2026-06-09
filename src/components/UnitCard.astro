@@ -1,6 +1,7 @@
 ---
 import type { Unit } from "../data/siteData";
 import TagList from "./TagList.astro";
+import { withBase } from "../utils/paths";
 
 type Props = {
   unit: Unit;
@@ -12,9 +13,9 @@ const functions = preview ? unit.functions.slice(0, 2) : unit.functions;
 ---
 
 <article class="unit-card" id={unit.id}>
-  <a class="unit-card-link" href={`/units/#${unit.id}`} aria-label={`查看 ${unit.name}`}>
+  <a class="unit-card-link" href={withBase(`/units/#${unit.id}`)} aria-label={`查看 ${unit.name}`}>
     <div class="unit-visual">
-      <img src={unit.image} alt={`${unit.name}示意图`} loading="lazy" />
+      <img src={withBase(unit.image)} alt={`${unit.name}示意图`} loading="lazy" />
       <span class="unit-number">{unit.number}</span>
     </div>
     <div class="unit-body">

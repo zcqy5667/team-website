@@ -2,10 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import UnitCard from "../components/UnitCard.astro";
 import { units } from "../data/siteData";
+import { withBase } from "../utils/paths";
 ---
 
 <Layout title="RoboMaster 兵种图鉴" description="展示 RoboMaster 机甲大师比赛中的兵种与功能。" footerBackHref="/" footerBackLabel="返回首页">
-  <section class="page-hero page-hero-units">
+  <section class="page-hero page-hero-units" style={`--page-hero-image: url("${withBase("/assets/images/unit-hero.svg")}")`}>
     <div class="page-hero-content">
       <p class="eyebrow">Robot Classes</p>
       <h1>RoboMaster 兵种与功能图鉴</h1>

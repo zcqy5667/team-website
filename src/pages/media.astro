@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import MediaEntryCard from "../components/MediaEntryCard.astro";
 import { media } from "../data/siteData";
+import { withBase } from "../utils/paths";
 
 const entries = [
   {
@@ -29,7 +30,7 @@ const entries = [
 ---
 
 <Layout title="RoboMaster 媒体中心" description="集中展示 RoboMaster 战队图片、视频、训练与比赛记录。" footerBackHref="/" footerBackLabel="返回首页">
-  <section class="page-hero page-hero-media">
+  <section class="page-hero page-hero-media" style={`--page-hero-image: url("${withBase("/assets/images/media-stage.svg")}")`}>
     <div class="page-hero-content">
       <p class="eyebrow">Media Bay</p>
       <h1>图片、视频与赛季记录</h1>

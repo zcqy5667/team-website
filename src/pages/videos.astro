@@ -2,12 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import MediaCard from "../components/MediaCard.astro";
 import { media } from "../data/siteData";
+import { withBase } from "../utils/paths";
 
 const items = media.filter((item) => item.type === "video");
 ---
 
 <Layout title="RoboMaster 视频区" description="展示 RoboMaster 战队视频素材。" footerBackHref="/media/" footerBackLabel="返回媒体中心">
-  <section class="page-hero page-hero-videos">
+  <section class="page-hero page-hero-videos" style={`--page-hero-image: url("${withBase("/assets/images/video-placeholder.svg")}")`}>
     <div class="page-hero-content">
       <p class="eyebrow">Videos</p>
       <h1>视频区</h1>

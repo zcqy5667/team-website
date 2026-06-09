@@ -1,5 +1,6 @@
 ---
 import type { MediaItem, MediaType } from "../data/siteData";
+import { withBase } from "../utils/paths";
 
 type Props = {
   title: string;
@@ -19,9 +20,9 @@ const image = item?.type === "video" ? item.poster || fallbackByType.video : ite
 const caption = item?.caption || "素材待添加，可在 siteData.ts 中维护。";
 ---
 
-<a class={`media-entry-card media-entry-card-${type}`} href={href}>
+<a class={`media-entry-card media-entry-card-${type}`} href={withBase(href)}>
   <div class="media-frame">
-    <img src={image} alt={`${title}代表图`} loading="lazy" />
+    <img src={withBase(image)} alt={`${title}代表图`} loading="lazy" />
     {type === "video" && <span class="play-chip">PLAY</span>}
   </div>
   <div class="media-meta">

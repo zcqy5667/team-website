@@ -2,12 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import MediaCard from "../components/MediaCard.astro";
 import { media } from "../data/siteData";
+import { withBase } from "../utils/paths";
 
 const items = media.filter((item) => item.type === "image");
 ---
 
 <Layout title="RoboMaster 图片区" description="展示 RoboMaster 战队图片素材。" footerBackHref="/media/" footerBackLabel="返回媒体中心">
-  <section class="page-hero page-hero-images">
+  <section class="page-hero page-hero-images" style={`--page-hero-image: url("${withBase("/assets/images/team-placeholder.svg")}")`}>
     <div class="page-hero-content">
       <p class="eyebrow">Images</p>
       <h1>图片区</h1>

@@ -5,6 +5,7 @@ import MediaEntryCard from "../components/MediaEntryCard.astro";
 import TeamShowcase from "../components/TeamShowcase.astro";
 import UnitCard from "../components/UnitCard.astro";
 import { heroSlides, media, team, units } from "../data/siteData";
+import { withBase } from "../utils/paths";
 
 const mediaEntries = [
   {
@@ -67,7 +68,7 @@ const mediaEntries = [
     <div class="section-heading">
       <p class="eyebrow">Robot Classes</p>
       <h2 id="units-title">兵种功能预览</h2>
-      <a class="text-link" href="/units/">查看完整兵种图鉴</a>
+      <a class="text-link" href={withBase("/units/")}>查看完整兵种图鉴</a>
     </div>
     <div class="unit-grid unit-grid-preview">
       {units.slice(0, 4).map((unit) => <UnitCard unit={unit} preview />)}
@@ -78,7 +79,7 @@ const mediaEntries = [
     <div class="section-heading">
       <p class="eyebrow">Image / Video Bay</p>
       <h2 id="media-title">媒体素材预览</h2>
-      <a class="text-link" href="/media/">进入媒体中心</a>
+      <a class="text-link" href={withBase("/media/")}>进入媒体中心</a>
     </div>
     <div class="media-grid media-entry-grid">
       {mediaEntries.map((entry) => <MediaEntryCard {...entry} />)}

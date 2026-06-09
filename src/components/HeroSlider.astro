@@ -1,5 +1,6 @@
 ---
 import type { HeroSlide } from "../data/siteData";
+import { withBase } from "../utils/paths";
 
 type Props = {
   slides: HeroSlide[];
@@ -13,14 +14,14 @@ const { slides } = Astro.props;
     {
       slides.map((slide, index) => (
         <article class:list={["hero-slide", { "is-active": index === 0 }]} data-slide={index} aria-hidden={index === 0 ? "false" : "true"}>
-          <img class="hero-slide-image" src={slide.image} alt="" />
+          <img class="hero-slide-image" src={withBase(slide.image)} alt="" />
           <div class="hero-slide-shade"></div>
           <div class="hero-slide-content">
             <p class="eyebrow">{slide.kicker}</p>
             <h1>{slide.title}</h1>
             <p class="hero-copy">{slide.description}</p>
             <div class="hero-actions">
-              <a class="button button-primary" href={slide.primaryHref}>{slide.primaryLabel}</a>
+              <a class="button button-primary" href={withBase(slide.primaryHref)}>{slide.primaryLabel}</a>
             </div>
           </div>
         </article>

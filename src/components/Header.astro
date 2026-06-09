@@ -1,5 +1,6 @@
 ---
 import type { Team } from "../data/siteData";
+import { withBase } from "../utils/paths";
 
 type NavItem = {
   label: string;
@@ -22,19 +23,20 @@ const navItems: NavItem[] = [
 
 function isCurrent(item: NavItem) {
   if (item.match === "/#team") return false;
-  return currentPath === item.match;
+  const normalizedPath = currentPath.replace(import.meta.env.BASE_URL.replace(/\/$/, ""), "") || "/";
+  return normalizedPath === item.match;
 }
 ---
 
 <header class="site-header">
-  <a class="brand" href="/" aria-label="RoboMaster 战队展示首页">
+  <a class="brand" href={withBase("/")} aria-label="RoboMaster 战队展示首页">
     <span class="brand-mark">{team.logo}</span>
     <span class="brand-text">{team.name}</span>
   </a>
   <nav class="main-nav" aria-label="主导航">
     {
       navItems.map((item) => (
-        <a class:list={{ "is-current": isCurrent(item) }} href={item.href}>
+        <a class:list={{ "is-current": isCurrent(item) }} href={withBase(item.href)}>
           {item.label}
         </a>
       ))
