@@ -9,6 +9,7 @@ export type Team = {
   location: string;
   slogan: string;
   logo: string;
+  emblem: string;
   cover: string;
   summary: string;
   detail: string;
@@ -48,11 +49,12 @@ export type MediaItem = {
 };
 
 export const team: Team = {
-  name: "xxxx 战队",
+  name: "桂林理工大学机器人基地",
   school: "xxxx 大学",
   location: "xxxx",
   slogan: "为机甲而生，为热爱而战",
   logo: "RM",
+  emblem: "/assets/images/base-emblem.png",
   cover: "/assets/images/team-placeholder.svg",
   summary:
     "我们是一支面向 RoboMaster 机甲大师赛事的学生工程战队，围绕机械、电控、视觉、算法、运营等方向持续研发与协作。",

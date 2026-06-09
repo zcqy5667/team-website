@@ -104,14 +104,22 @@ button {
 }
 
 .brand-mark {
-  display: grid;
+  display: block;
   width: 42px;
   height: 42px;
-  place-items: center;
-  color: #061015;
-  background: linear-gradient(135deg, var(--cyan), var(--amber));
+  overflow: hidden;
+  background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 0 32px rgba(55, 215, 255, 0.3);
+}
+
+.brand-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 4px;
+  box-sizing: border-box;
+  object-fit: contain;
 }
 
 .brand-text {
