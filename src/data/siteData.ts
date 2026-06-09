@@ -48,6 +48,75 @@ export type MediaItem = {
   featured: boolean;
 };
 
+export type DivisionGroup = {
+  slug: string;
+  name: string;
+  kicker: string;
+  image: string;
+  summary: string;
+  detail: string;
+  responsibilities: string[];
+  tags: string[];
+};
+
+export const divisionGroups: DivisionGroup[] = [
+  {
+    slug: "mechanical",
+    name: "机械组",
+    kicker: "Mechanical",
+    image: "/assets/images/unit-engineer.png",
+    summary: "负责机器人结构设计、传动机构、装配维护与可靠性优化。",
+    detail:
+      "机械组把比赛需求转化为稳定可制造的机器人结构，围绕底盘、云台、发射、取弹和任务机构开展设计、加工、装配与迭代。组内需要兼顾强度、重量、维护效率和赛场可靠性，让机器人在高强度对抗与连续调试中保持稳定表现。",
+    responsibilities: ["结构建模与方案评审", "传动和执行机构设计", "加工装配与维护优化", "可靠性测试和问题复盘"],
+    tags: ["结构设计", "传动机构", "装配维护", "可靠性"]
+  },
+  {
+    slug: "control",
+    name: "电控组",
+    kicker: "Control",
+    image: "/assets/images/unit-sentry.png",
+    summary: "负责嵌入式控制、底盘/云台/发射机构控制、传感器接入与调试。",
+    detail:
+      "电控组连接机器人硬件与上层策略，负责电机控制、运动控制、通信链路、传感器数据接入和整车调试。组内需要让底盘、云台、发射机构等模块稳定协同，并在训练和比赛中快速定位问题、完成参数优化。",
+    responsibilities: ["嵌入式程序开发", "底盘云台和发射控制", "传感器接入与通信", "整车联调和参数优化"],
+    tags: ["嵌入式", "运动控制", "通信链路", "整车调试"]
+  },
+  {
+    slug: "algorithm",
+    name: "算法组",
+    kicker: "Algorithm",
+    image: "/assets/images/unit-radar.png",
+    summary: "负责视觉识别、目标定位、自动瞄准、决策辅助与数据调参。",
+    detail:
+      "算法组负责让机器人更准确地感知赛场并做出辅助决策，重点包括装甲板识别、目标定位、弹道补偿、自动瞄准和数据调参。组内需要在真实光照、运动和干扰条件下持续提升识别稳定性与响应速度。",
+    responsibilities: ["视觉识别和目标跟踪", "位姿估计与弹道补偿", "自动瞄准策略", "数据采集和模型调参"],
+    tags: ["计算机视觉", "目标定位", "自动瞄准", "数据调参"]
+  },
+  {
+    slug: "hardware",
+    name: "硬件组",
+    kicker: "Hardware",
+    image: "/assets/images/unit-hero.png",
+    summary: "负责电路设计、PCB、供电系统、线束规范、硬件测试与故障排查。",
+    detail:
+      "硬件组为机器人提供稳定的电气基础，负责电源分配、控制板设计、PCB 绘制、线束规范和硬件测试。组内需要保障各模块供电与信号连接可靠，降低调试阶段的隐性故障，让整车系统更易维护。",
+    responsibilities: ["电路和 PCB 设计", "供电与保护方案", "线束规范和接口管理", "硬件测试与故障排查"],
+    tags: ["PCB", "供电系统", "线束管理", "硬件测试"]
+  },
+  {
+    slug: "operation",
+    name: "运营组",
+    kicker: "Operation",
+    image: "/assets/images/media-stage.svg",
+    summary: "负责宣传内容、资料整理、赛事对接、招新活动和团队协作支持。",
+    detail:
+      "运营组负责让团队的训练成果、赛事过程和招新信息被清晰记录与传播，同时支撑赛季中的资料管理、活动组织和对外沟通。组内需要把技术团队的工作沉淀成可展示、可传承、可协作的内容体系。",
+    responsibilities: ["宣传视觉和内容制作", "训练赛事资料整理", "招新与活动组织", "团队协作和对外沟通"],
+    tags: ["宣传内容", "资料整理", "赛事对接", "招新活动"]
+  }
+];
+
 export const team: Team = {
   name: "桂林理工大学机器人基地",
   school: "xxxx 大学",

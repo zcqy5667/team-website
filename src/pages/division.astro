@@ -1,0 +1,26 @@
+---
+import DivisionEntryCard from "../components/DivisionEntryCard.astro";
+import Layout from "../layouts/Layout.astro";
+import { divisionGroups } from "../data/siteData";
+import { withBase } from "../utils/paths";
+---
+
+<Layout title="RoboMaster 分工中心" description="展示 RoboMaster 战队机械组、电控组、算法组、硬件组、运营组五大分工方向。" footerBackHref="/" footerBackLabel="返回首页">
+  <section class="page-hero page-hero-division" style={`--page-hero-image: url("${withBase("/assets/images/unit-engineer.png")}")`}>
+    <div class="page-hero-content">
+      <p class="eyebrow">Division Gateway</p>
+      <h1>战队五大分工</h1>
+      <p>机械组、电控组、算法组、硬件组和运营组共同支撑机器人研发、赛季训练、赛事执行与团队传播。选择一个分工方向，查看更完整的职责介绍。</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="division-entry-title">
+    <div class="section-heading">
+      <p class="eyebrow">Team Roles</p>
+      <h2 id="division-entry-title">选择分工方向</h2>
+    </div>
+    <div class="media-grid division-entry-grid">
+      {divisionGroups.map((group) => <DivisionEntryCard group={group} />)}
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,23 @@
+---
+import type { DivisionGroup } from "../data/siteData";
+import TagList from "./TagList.astro";
+import { withBase } from "../utils/paths";
+
+type Props = {
+  group: DivisionGroup;
+};
+
+const { group } = Astro.props;
+---
+
+<a class="division-entry-card media-entry-card" href={withBase(`/division/${group.slug}/`)}>
+  <div class="media-frame division-frame">
+    <img src={withBase(group.image)} alt={`${group.name}代表图`} loading="lazy" />
+  </div>
+  <div class="media-meta division-meta">
+    <span class="media-entry-kicker">{group.kicker}</span>
+    <strong>{group.name}</strong>
+    <span>{group.summary}</span>
+    <TagList items={group.tags.slice(0, 3)} className="tag-list" />
+  </div>
+</a>

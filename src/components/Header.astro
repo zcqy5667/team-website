@@ -18,13 +18,16 @@ const navItems: NavItem[] = [
   { label: "首页", href: "/", match: "/" },
   { label: "战队", href: "/#team", match: "/#team" },
   { label: "兵种", href: "/units/", match: "/units/" },
+  { label: "分工", href: "/division/", match: "/division/" },
   { label: "媒体", href: "/media/", match: "/media/" }
 ];
 
 function isCurrent(item: NavItem) {
   if (item.match === "/#team") return false;
   const normalizedPath = currentPath.replace(import.meta.env.BASE_URL.replace(/\/$/, ""), "") || "/";
-  return normalizedPath === item.match;
+  if (item.match === "/") return normalizedPath === "/";
+
+  return normalizedPath === item.match || normalizedPath.startsWith(item.match);
 }
 ---
 

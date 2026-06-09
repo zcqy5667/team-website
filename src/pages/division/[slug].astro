@@ -1,0 +1,56 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import TagList from "../../components/TagList.astro";
+import { divisionGroups } from "../../data/siteData";
+import { withBase } from "../../utils/paths";
+
+export function getStaticPaths() {
+  return divisionGroups.map((group) => ({
+    params: { slug: group.slug },
+    props: { group }
+  }));
+}
+
+const { group } = Astro.props;
+---
+
+<Layout title={`RoboMaster ${group.name}`} description={group.summary} footerBackHref="/division/" footerBackLabel="返回分工">
+  <section class="page-hero page-hero-division-detail" style={`--page-hero-image: url("${withBase(group.image)}")`}>
+    <div class="page-hero-content">
+      <p class="eyebrow">{group.kicker}</p>
+      <h1>{group.name}</h1>
+      <p>{group.summary}</p>
+    </div>
+  </section>
+
+  <section class="section division-detail-section" aria-labelledby="division-detail-title">
+    <div class="division-detail">
+      <div class="division-detail-media">
+        <img src={withBase(group.image)} alt={`${group.name}展示图`} loading="lazy" />
+      </div>
+      <div class="division-detail-content">
+        <p class="eyebrow">Role Detail</p>
+        <h2 id="division-detail-title">{group.name}用途</h2>
+        <p>{group.detail}</p>
+        <TagList items={group.tags} className="tag-list" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section division-responsibility-section" aria-labelledby="division-responsibility-title">
+    <div class="section-heading">
+      <p class="eyebrow">Responsibilities</p>
+      <h2 id="division-responsibility-title">核心职责</h2>
+    </div>
+    <div class="division-responsibility-grid">
+      {
+        group.responsibilities.map((responsibility, index) => (
+          <article class="division-responsibility-card">
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{responsibility}</strong>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
