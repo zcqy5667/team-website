@@ -1,0 +1,249 @@
+<div class="site-modal" data-site-modal hidden>
+  <div class="site-modal-backdrop" data-modal-backdrop></div>
+  <section class="site-modal-panel" role="dialog" aria-modal="true" aria-labelledby="site-modal-title" tabindex="-1">
+    <button class="site-modal-close" type="button" data-modal-close aria-label="关闭">×</button>
+    <div class="site-modal-media" data-modal-media></div>
+    <div class="site-modal-content">
+      <p class="eyebrow" data-modal-kicker>Detail</p>
+      <h2 id="site-modal-title" data-modal-title>详情</h2>
+      <p data-modal-description></p>
+      <div class="site-modal-tags" data-modal-tags></div>
+      <a class="button button-primary" data-modal-link href="#">查看完整页面</a>
+    </div>
+  </section>
+</div>
+
+<script>
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let lastModalTrigger = null;
+
+  function textFrom(root, selector) {
+    return root.querySelector(selector)?.textContent?.trim() || "";
+  }
+
+  function imageFrom(root) {
+    const image = root.querySelector("img");
+    if (!image) return "";
+    return image.currentSrc || image.src || "";
+  }
+
+  function collectTags(root) {
+    return Array.from(root.querySelectorAll(".tag-list li, .function-list li"))
+      .map((tag) => tag.textContent?.trim())
+      .filter(Boolean);
+  }
+
+  function setModalMedia(modal, source, title, type) {
+    const media = modal.querySelector("[data-modal-media]");
+    if (!media) return;
+    media.innerHTML = "";
+
+    if (!source) {
+      media.hidden = true;
+      return;
+    }
+
+    media.hidden = false;
+    const image = document.createElement("img");
+    image.src = source;
+    image.alt = title || "预览图";
+    image.loading = "lazy";
+    image.decoding = "async";
+    media.append(image);
+
+    if (type === "video") {
+      const chip = document.createElement("span");
+      chip.className = "play-chip";
+      chip.textContent = "PLAY";
+      media.append(chip);
+    }
+  }
+
+  function openModal(card) {
+    const modal = document.querySelector("[data-site-modal]");
+    if (!modal) return;
+
+    const type = card.dataset.cardType || "detail";
+    const link = card.matches("a") ? card : card.querySelector("a[href]");
+    const modalHref = card.dataset.modalHref || link?.href || "";
+    const title =
+      textFrom(card, "h3") ||
+      textFrom(card, ".media-meta strong") ||
+      textFrom(card, ".division-meta strong") ||
+      textFrom(card, "strong") ||
+      "详情";
+    const kicker =
+      textFrom(card, ".unit-role") ||
+      textFrom(card, ".media-entry-kicker") ||
+      textFrom(card, ".record-chip") ||
+      card.dataset.cardType ||
+      "Detail";
+    const description =
+      textFrom(card, ".unit-body p") ||
+      textFrom(card, ".media-meta span:not(.media-entry-kicker)") ||
+      textFrom(card, "p");
+    const tags = collectTags(card);
+
+    modal.querySelector("[data-modal-kicker]").textContent = kicker;
+    modal.querySelector("[data-modal-title]").textContent = title;
+    modal.querySelector("[data-modal-description]").textContent = description;
+
+    const tagBox = modal.querySelector("[data-modal-tags]");
+    tagBox.innerHTML = "";
+    tags.forEach((tag) => {
+      const item = document.createElement("span");
+      item.textContent = tag;
+      tagBox.append(item);
+    });
+
+    const modalLink = modal.querySelector("[data-modal-link]");
+    if (modalHref) {
+      modalLink.href = modalHref;
+      modalLink.hidden = false;
+      modalLink.textContent = type === "media" ? "进入媒体页面" : "查看详情";
+    } else {
+      modalLink.hidden = true;
+    }
+
+    setModalMedia(modal, imageFrom(card), title, type);
+    lastModalTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : card;
+    modal.hidden = false;
+    document.body.classList.add("is-modal-open");
+    modal.querySelector(".site-modal-panel")?.focus();
+  }
+
+  function closeModal() {
+    const modal = document.querySelector("[data-site-modal]");
+    if (!modal || modal.hidden) return;
+    modal.hidden = true;
+    document.body.classList.remove("is-modal-open");
+    if (lastModalTrigger instanceof HTMLElement) lastModalTrigger.focus();
+  }
+
+  function fallbackCopy(value) {
+    const field = document.createElement("textarea");
+    field.value = value;
+    field.setAttribute("readonly", "");
+    field.style.position = "fixed";
+    field.style.top = "-1000px";
+    document.body.append(field);
+    field.select();
+    const ok = document.execCommand("copy");
+    field.remove();
+    return ok;
+  }
+
+  document.addEventListener("click", (event) => {
+    if (event.target instanceof HTMLElement && event.target.matches("[data-modal-backdrop]")) {
+      closeModal();
+      return;
+    }
+
+    const close = event.target.closest("[data-modal-close]");
+    if (close) {
+      closeModal();
+      return;
+    }
+
+    const filterButton = event.target.closest("[data-filter-value]");
+    if (filterButton) {
+      const group = filterButton.closest("[data-filter-group]");
+      const targetId = group?.dataset.filterTarget;
+      const target = targetId ? document.getElementById(targetId) : null;
+      if (!group || !target) return;
+
+      const value = filterButton.dataset.filterValue || "all";
+      group.querySelectorAll("[data-filter-value]").forEach((button) => {
+        const isActive = button === filterButton;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+
+      let visible = 0;
+      target.querySelectorAll("[data-filter-tags]").forEach((card) => {
+        const haystack = (card.dataset.filterTags || "").toLowerCase();
+        const show = value === "all" || haystack.includes(value.toLowerCase());
+        card.hidden = !show;
+        card.setAttribute("aria-hidden", show ? "false" : "true");
+        if (show) visible += 1;
+      });
+
+      const empty = target.parentElement?.querySelector("[data-filter-empty]");
+      if (empty) empty.hidden = visible !== 0;
+      return;
+    }
+
+    const copyButton = event.target.closest("[data-copy-value]");
+    if (copyButton) {
+      const value = copyButton.dataset.copyValue || "";
+      const original = copyButton.dataset.copyLabel || copyButton.textContent || "复制";
+      const done = () => {
+        copyButton.textContent = "已复制";
+        window.setTimeout(() => {
+          copyButton.textContent = original;
+        }, 1500);
+      };
+
+      if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(value).then(done).catch(() => {
+          if (fallbackCopy(value)) done();
+          else copyButton.textContent = "请手动复制";
+        });
+      } else {
+        if (fallbackCopy(value)) done();
+        else copyButton.textContent = "请手动复制";
+      }
+      return;
+    }
+
+    const modalTrigger = event.target.closest("[data-modal-trigger]");
+    if (modalTrigger) {
+      const card = modalTrigger.closest("[data-modal-card]");
+      if (card) openModal(card);
+      return;
+    }
+
+    const modalCard = event.target.closest("[data-modal-card]");
+    if (modalCard) {
+      if (event.target.closest("video, audio, button, [data-modal-link]")) return;
+      const link = event.target.closest("a");
+      const allowNative = event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button === 1;
+      if (!allowNative) {
+        event.preventDefault();
+        openModal(modalCard);
+      } else if (!link) {
+        openModal(modalCard);
+      }
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeModal();
+    if ((event.key === "Enter" || event.key === " ") && event.target instanceof HTMLElement) {
+      const card = event.target.closest("[data-modal-card]");
+      if (card && event.target === card) {
+        event.preventDefault();
+        openModal(card);
+      }
+    }
+  });
+
+  if (!reduceMotion) {
+    const revealItems = document.querySelectorAll(
+      ".section, .metric-panel, .team-showcase, .unit-card, .media-card, .media-entry-card, .honor-card, .contact-card, .division-detail, .division-responsibility-card, .unit-detail, .unit-detail-card"
+    );
+    revealItems.forEach((item) => item.classList.add("reveal-on-scroll"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-revealed");
+          observer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+    );
+    revealItems.forEach((item) => observer.observe(item));
+  }
+</script>

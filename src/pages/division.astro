@@ -22,7 +22,7 @@ const heroImageWebp = heroImage.replace(".png", ".webp");
       <p class="eyebrow">Team Roles</p>
       <h2 id="division-entry-title">选择分工方向</h2>
     </div>
-    <div class="media-grid division-entry-grid">
+    <div class="media-grid division-entry-grid" id="division-entry-grid">
       {divisionGroups.map((group) => <DivisionEntryCard group={group} />)}
     </div>
   </section>

@@ -1,0 +1,80 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import OptimizedImage from "../../components/OptimizedImage.astro";
+import TagList from "../../components/TagList.astro";
+import { units } from "../../data/siteData";
+import { withBase } from "../../utils/paths";
+
+const webpPath = (path: string) => path.replace(/\.png(?=($|[?#]))/i, ".webp");
+
+export function getStaticPaths() {
+  return units.map((unit) => ({
+    params: { id: unit.id },
+    props: { unit }
+  }));
+}
+
+const { unit } = Astro.props;
+const backgroundImage = unit.image.toLowerCase().includes(".png")
+  ? `image-set(url("${withBase(webpPath(unit.image))}") type("image/webp"), url("${withBase(unit.image)}") type("image/png"))`
+  : `url("${withBase(unit.image)}")`;
+---
+
+<Layout title={`RoboMaster ${unit.name}`} description={unit.summary} footerBackHref="/units/" footerBackLabel="返回兵种图鉴">
+  <section class="page-hero page-hero-unit-detail" style={`--page-hero-image: ${backgroundImage}`}>
+    <div class="page-hero-content">
+      <p class="eyebrow">Unit {unit.number} · {unit.role}</p>
+      <h1>{unit.name}</h1>
+      <p>{unit.summary}</p>
+    </div>
+  </section>
+
+  <section class="section unit-detail-section" aria-labelledby="unit-detail-title">
+    <div class="unit-detail">
+      <div class="unit-detail-media">
+        <OptimizedImage src={unit.image} alt={`${unit.name}展示图`} loading="lazy" />
+      </div>
+      <div class="unit-detail-content">
+        <p class="eyebrow">Role Detail</p>
+        <h2 id="unit-detail-title">兵种作用</h2>
+        <p>{unit.detail}</p>
+        <TagList items={unit.tags} className="tag-list" />
+        <a class="button" href={withBase("/units/")}>返回兵种图鉴</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section unit-responsibility-section" aria-labelledby="unit-responsibility-title">
+    <div class="section-heading">
+      <p class="eyebrow">Responsibilities</p>
+      <h2 id="unit-responsibility-title">核心职责</h2>
+    </div>
+    <div class="unit-detail-grid">
+      {
+        unit.responsibilities.map((responsibility, index) => (
+          <article class="unit-detail-card unit-responsibility-card">
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{responsibility}</strong>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section unit-function-section" aria-labelledby="unit-function-title">
+    <div class="section-heading">
+      <p class="eyebrow">Function Modules</p>
+      <h2 id="unit-function-title">功能模块</h2>
+    </div>
+    <div class="unit-detail-grid unit-function-grid">
+      {
+        unit.functions.map((item) => (
+          <article class="unit-detail-card unit-function-card">
+            <strong>{item}</strong>
+            <p>围绕“{item}”进行结构、电控、算法或操作策略协同，服务于 {unit.role} 的赛场定位。</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

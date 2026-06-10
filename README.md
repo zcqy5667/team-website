@@ -1,4 +1,4 @@
-# RoboMaster 单战队展示站维护说明
+# 战队展示网站维护说明
 
 这是一个使用 Astro + TypeScript 重构后的 RoboMaster 单战队展示网站。网站源码在 `src/` 中维护，构建后会输出静态页面到 `dist/`，适合部署到任意静态托管平台。
 

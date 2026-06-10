@@ -11,10 +11,19 @@ type Props = {
 
 const { unit, preview = false } = Astro.props;
 const functions = preview ? unit.functions.slice(0, 2) : unit.functions;
+const unitHref = withBase(`/units/${unit.id}/`);
 ---
 
-<article class="unit-card" id={unit.id}>
-  <a class="unit-card-link" href={withBase(`/units/#${unit.id}`)} aria-label={`查看 ${unit.name}`}>
+<article
+  class="unit-card"
+  id={unit.id}
+  tabindex="0"
+  data-card-type="unit"
+  data-modal-card
+  data-modal-href={unitHref}
+  aria-label={`打开 ${unit.name} 预览`}
+>
+  <div class="unit-card-link">
     <div class="unit-visual">
       <OptimizedImage src={unit.image} alt={`${unit.name}示意图`} loading="lazy" />
       <span class="unit-number">{unit.number}</span>
@@ -25,6 +34,7 @@ const functions = preview ? unit.functions.slice(0, 2) : unit.functions;
       <p>{unit.summary}</p>
       <TagList items={functions} className="function-list" />
       <TagList items={unit.tags} className="tag-list" />
+      <button class="card-detail-button" type="button" data-modal-trigger>查看详情</button>
     </div>
-  </a>
+  </div>
 </article>

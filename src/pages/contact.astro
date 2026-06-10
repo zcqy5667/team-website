@@ -42,6 +42,7 @@ const contactItems = [
             <span>{item.label}</span>
             <strong>{item.value}</strong>
             <p>{item.detail}</p>
+            <button class="copy-button" type="button" data-copy-value={item.value} data-copy-label="复制">复制</button>
           </article>
         ))
       }
