@@ -13,9 +13,9 @@ type Props = {
 
 const { title, kicker, href, item, type } = Astro.props;
 const fallbackByType: Record<MediaType, string> = {
-  image: "/assets/images/team-placeholder.svg",
-  video: "/assets/images/video-placeholder.svg",
-  record: "/assets/images/media-stage.svg"
+  image: "/assets/images/team-cover.png",
+  video: "/assets/images/video-poster.png",
+  record: "/assets/images/media-stage.png"
 };
 const image = item?.type === "video" ? item.poster || fallbackByType.video : item?.src || fallbackByType[type];
 const caption = item?.caption || "素材待添加，可在 siteData.ts 中维护。";

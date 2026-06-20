@@ -8,7 +8,7 @@ const items = media.filter((item) => item.type === "image");
 ---
 
 <Layout title="RoboMaster 图片区" description="展示 RoboMaster 战队图片素材。" footerBackHref="/media/" footerBackLabel="返回媒体中心">
-  <section class="page-hero page-hero-images" style={`--page-hero-image: url("${withBase("/assets/images/team-placeholder.svg")}")`}>
+  <section class="page-hero page-hero-images" style={`--page-hero-image: image-set(url("${withBase("/assets/images/team-cover.webp")}") type("image/webp"), url("${withBase("/assets/images/team-cover.png")}") type("image/png"))`}>
     <div class="page-hero-content">
       <p class="eyebrow">Images</p>
       <h1>图片区</h1>

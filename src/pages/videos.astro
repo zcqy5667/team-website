@@ -8,7 +8,7 @@ const items = media.filter((item) => item.type === "video");
 ---
 
 <Layout title="RoboMaster 视频区" description="展示 RoboMaster 战队视频素材。" footerBackHref="/media/" footerBackLabel="返回媒体中心">
-  <section class="page-hero page-hero-videos" style={`--page-hero-image: url("${withBase("/assets/images/video-placeholder.svg")}")`}>
+  <section class="page-hero page-hero-videos" style={`--page-hero-image: image-set(url("${withBase("/assets/images/video-poster.webp")}") type("image/webp"), url("${withBase("/assets/images/video-poster.png")}") type("image/png"))`}>
     <div class="page-hero-content">
       <p class="eyebrow">Videos</p>
       <h1>视频区</h1>

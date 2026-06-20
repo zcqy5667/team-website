@@ -1259,19 +1259,19 @@ body.is-modal-open {
 }
 
 .page-hero-media {
-  --page-hero-image: url("/assets/images/media-stage.svg");
+  --page-hero-image: image-set(url("/assets/images/media-stage.webp") type("image/webp"), url("/assets/images/media-stage.png") type("image/png"));
 }
 
 .page-hero-images {
-  --page-hero-image: url("/assets/images/team-placeholder.svg");
+  --page-hero-image: image-set(url("/assets/images/team-cover.webp") type("image/webp"), url("/assets/images/team-cover.png") type("image/png"));
 }
 
 .page-hero-videos {
-  --page-hero-image: url("/assets/images/video-placeholder.svg");
+  --page-hero-image: image-set(url("/assets/images/video-poster.webp") type("image/webp"), url("/assets/images/video-poster.png") type("image/png"));
 }
 
 .page-hero-records {
-  --page-hero-image: url("/assets/images/media-stage.svg");
+  --page-hero-image: image-set(url("/assets/images/media-stage.webp") type("image/webp"), url("/assets/images/media-stage.png") type("image/png"));
 }
 
 .media-category {

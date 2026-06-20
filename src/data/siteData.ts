@@ -110,7 +110,7 @@ export const divisionGroups: DivisionGroup[] = [
     slug: "operation",
     name: "运营组",
     kicker: "Operation",
-    image: "/assets/images/media-stage.svg",
+    image: "/assets/images/media-stage.png",
     summary: "负责宣传内容、资料整理、赛事对接、招新活动和团队协作支持。",
     detail:
       "运营组负责让团队的训练成果、赛事过程和招新信息被清晰记录与传播，同时支撑赛季中的资料管理、活动组织和对外沟通。组内需要把技术团队的工作沉淀成可展示、可传承、可协作的内容体系。",
@@ -126,7 +126,7 @@ export const team: Team = {
   slogan: "为机甲而生，为热爱而战",
   logo: "RM",
   emblem: "/assets/images/base-emblem.png",
-  cover: "/assets/images/team-placeholder.svg",
+  cover: "/assets/images/team-cover.png",
   summary:
     "我们是一支面向 RoboMaster 机甲大师赛事的学生工程战队，围绕机械、电控、视觉、算法、运营等方向持续研发与协作。",
   detail:
@@ -147,7 +147,7 @@ export const heroSlides: HeroSlide[] = [
       "从结构设计到算法调参，从赛前测试到赛场对抗，用工程能力把热血变成可执行的战术系统。",
     primaryLabel: "了解战队",
     primaryHref: "/#team",
-    image: "/assets/images/hero-arena.svg"
+    image: "/assets/images/hero-arena.png"
   },
   {
     kicker: "Robot Classes",
@@ -281,21 +281,21 @@ export const media: MediaItem[] = [
     title: "赛季混剪",
     caption: "把 src 替换成本地 mp4 或 webm 后即可播放。",
     src: "",
-    poster: "/assets/images/video-placeholder.svg",
+    poster: "/assets/images/video-poster.png",
     featured: true
   },
   {
     type: "image",
     title: "训练现场",
     caption: "记录调试、对抗训练和赛前联调过程。",
-    src: "/assets/images/media-stage.svg",
+    src: "/assets/images/media-stage.png",
     featured: false
   },
   {
     type: "record",
     title: "赛季记录",
     caption: "用于整理赛季目标、训练节点、比赛复盘和阶段性成果。",
-    src: "/assets/images/media-stage.svg",
+    src: "/assets/images/media-stage.png",
     featured: false
   }
 ];

@@ -8,7 +8,7 @@ const items = media.filter((item) => item.type === "record");
 ---
 
 <Layout title="RoboMaster 记录区" description="整理 RoboMaster 战队训练、比赛与复盘记录。" footerBackHref="/media/" footerBackLabel="返回媒体中心">
-  <section class="page-hero page-hero-records" style={`--page-hero-image: url("${withBase("/assets/images/media-stage.svg")}")`}>
+  <section class="page-hero page-hero-records" style={`--page-hero-image: image-set(url("${withBase("/assets/images/media-stage.webp")}") type("image/webp"), url("${withBase("/assets/images/media-stage.png")}") type("image/png"))`}>
     <div class="page-hero-content">
       <p class="eyebrow">Records</p>
       <h1>记录区</h1>
