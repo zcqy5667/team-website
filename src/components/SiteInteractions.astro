@@ -14,8 +14,10 @@
 </div>
 
 <script>
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  import { animateModalClose, animateModalOpen, initPageAtmosphere, initScrollReveals } from "../scripts/gsapAnimations";
+
   let lastModalTrigger = null;
+  let modalCloseToken = 0;
 
   function textFrom(root, selector) {
     return root.querySelector(selector)?.textContent?.trim() || "";
@@ -106,18 +108,24 @@
     }
 
     setModalMedia(modal, imageFrom(card), title, type);
+    modalCloseToken += 1;
     lastModalTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : card;
     modal.hidden = false;
     document.body.classList.add("is-modal-open");
+    animateModalOpen(modal);
     modal.querySelector(".site-modal-panel")?.focus();
   }
 
   function closeModal() {
     const modal = document.querySelector("[data-site-modal]");
     if (!modal || modal.hidden) return;
-    modal.hidden = true;
-    document.body.classList.remove("is-modal-open");
-    if (lastModalTrigger instanceof HTMLElement) lastModalTrigger.focus();
+    const closeToken = ++modalCloseToken;
+    animateModalClose(modal, () => {
+      if (closeToken !== modalCloseToken) return;
+      modal.hidden = true;
+      document.body.classList.remove("is-modal-open");
+      if (lastModalTrigger instanceof HTMLElement) lastModalTrigger.focus();
+    });
   }
 
   function fallbackCopy(value) {
@@ -228,22 +236,8 @@
     }
   });
 
-  if (!reduceMotion) {
-    const revealItems = document.querySelectorAll(
-      ".section, .metric-panel, .team-showcase, .unit-card, .media-card, .media-entry-card, .honor-card, .contact-card, .division-detail, .division-responsibility-card, .unit-detail, .unit-detail-card"
-    );
-    revealItems.forEach((item) => item.classList.add("reveal-on-scroll"));
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-revealed");
-          observer.unobserve(entry.target);
-        });
-      },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
-    );
-    revealItems.forEach((item) => observer.observe(item));
-  }
+  initPageAtmosphere();
+  initScrollReveals(
+    ".section, .metric-panel, .team-showcase, .unit-card, .media-card, .media-entry-card, .honor-card, .contact-card, .division-detail, .division-responsibility-card, .unit-detail, .unit-detail-card"
+  );
 </script>

@@ -44,6 +44,8 @@ const { slides } = Astro.props;
 </section>
 
 <script>
+  import { animateHeroSlide } from "../scripts/gsapAnimations";
+
   const slider = document.querySelector<HTMLElement>("[data-hero-slider]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -55,11 +57,14 @@ const { slides } = Astro.props;
     const next = slider.querySelector("[data-slide-next]");
     const slides = Array.from(slider.querySelectorAll<HTMLElement>("[data-slide]"));
     let current = 0;
+    let hasActivated = false;
     let timer: number | null = null;
     let startX = 0;
 
     function activate(index: number) {
       if (slides.length === 0) return;
+      const previous = current;
+      const isInitial = !hasActivated;
       current = (index + slides.length) % slides.length;
       slides.forEach((slide, slideIndex) => {
         const isActive = slideIndex === current;
@@ -70,6 +75,10 @@ const { slides } = Astro.props;
         dot.classList.toggle("is-active", dotIndex === current);
       });
       progress?.style.setProperty("--progress-index", String(current + 1));
+      if (isInitial || previous !== current) {
+        animateHeroSlide(slides, isInitial ? null : previous, current);
+      }
+      hasActivated = true;
     }
 
     function stop() {
