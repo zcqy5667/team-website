@@ -29,12 +29,6 @@ const pageTitle = normalizedPath === "/" ? team.name : `${team.name} | ${title}`
     <link rel="icon" type="image/png" href={withBase(team.emblem)} />
   </head>
   <body>
-    <div class="site-atmosphere" aria-hidden="true">
-      <div class="site-atmosphere-field"></div>
-      <div class="site-atmosphere-grid"></div>
-      <div class="site-atmosphere-particles"></div>
-      <div class="site-atmosphere-scan"></div>
-    </div>
     <Header currentPath={currentPath} />
     <main>
       <slot />

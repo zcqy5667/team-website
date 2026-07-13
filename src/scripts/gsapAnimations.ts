@@ -8,8 +8,6 @@ function prefersReducedMotion() {
 }
 
 export function initPageAtmosphere() {
-  const root = document.documentElement;
-  const reducedMotion = prefersReducedMotion();
   let progress = document.querySelector<HTMLElement>(".ui-scroll-progress");
   if (!progress) {
     progress = document.createElement("div");
@@ -23,49 +21,11 @@ export function initPageAtmosphere() {
     const ratio = Math.min(1, Math.max(0, window.scrollY / scrollable));
     const value = ratio * 100;
     progress?.style.setProperty("--scroll-progress", `${value}%`);
-    root.style.setProperty("--scroll-ratio", ratio.toFixed(4));
-    root.style.setProperty("--scroll-blue-x", `${8 + ratio * 18}%`);
-    root.style.setProperty("--scroll-red-x", `${92 - ratio * 16}%`);
-    root.style.setProperty("--scan-x", `${-30 + ratio * 30}%`);
-    root.style.setProperty("--scan-y", `${12 + ratio * 62}%`);
-
-    if (!reducedMotion) {
-      root.style.setProperty("--atmosphere-drift-x", `${(ratio - 0.5) * 28}px`);
-      root.style.setProperty("--atmosphere-drift-y", `${ratio * 24}px`);
-      root.style.setProperty("--atmosphere-energy", `${0.28 + ratio * 0.48}`);
-    }
   };
 
   setProgress();
   window.addEventListener("scroll", setProgress, { passive: true });
   window.addEventListener("resize", setProgress);
-
-  if (reducedMotion) {
-    document.body.classList.add("is-atmosphere-paused");
-    root.style.setProperty("--atmosphere-energy", "0.16");
-  } else {
-    const cursorToX = gsap.quickTo(root, "--cursor-x", { duration: 0.68, ease: "power3.out" });
-    const cursorToY = gsap.quickTo(root, "--cursor-y", { duration: 0.68, ease: "power3.out" });
-    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-    if (canHover) {
-      window.addEventListener(
-        "pointermove",
-        (event) => {
-          cursorToX((event.clientX / window.innerWidth) * 100);
-          cursorToY((event.clientY / window.innerHeight) * 100);
-        },
-        { passive: true }
-      );
-    }
-  }
-
-  const setAtmospherePaused = () => {
-    document.body.classList.toggle("is-atmosphere-paused", document.hidden);
-  };
-
-  setAtmospherePaused();
-  document.addEventListener("visibilitychange", setAtmospherePaused);
 
   const litCards = gsap.utils.toArray<HTMLElement>(
     ".metric-panel, .mini-stat, .unit-card, .media-card, .media-entry-card, .honor-card, .contact-card, .division-responsibility-card, .unit-detail-card"
@@ -101,7 +61,7 @@ export function initScrollReveals(selector: string) {
     return;
   }
 
-  gsap.set(targets, { autoAlpha: 0, y: 22 });
+  gsap.set(targets, { y: 18 });
 
   ScrollTrigger.batch(targets, {
     start: "top 86%",
@@ -110,13 +70,12 @@ export function initScrollReveals(selector: string) {
     batchMax: 6,
     onEnter: (batch) => {
       gsap.to(batch, {
-        autoAlpha: 1,
         y: 0,
         duration: 0.62,
         ease: "power3.out",
         stagger: 0.08,
         overwrite: "auto",
-        clearProps: "opacity,visibility,transform",
+        clearProps: "transform",
       });
     },
   });

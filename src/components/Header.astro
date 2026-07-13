@@ -1,4 +1,5 @@
 ---
+import { team } from "../data/siteData";
 import { withBase } from "../utils/paths";
 
 type NavItem = {
@@ -31,8 +32,23 @@ function isCurrent(item: NavItem) {
 }
 ---
 
-<header class="site-header">
-  <nav class="main-nav" aria-label="主导航">
+<header class="site-header" data-site-header>
+  <a class="site-header-brand" href={withBase("/")}>
+    <span>{team.name}</span>
+  </a>
+  <button
+    class="nav-toggle"
+    type="button"
+    aria-controls="site-menu"
+    aria-expanded="false"
+    aria-label="Open navigation"
+    data-nav-toggle
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav class="main-nav" id="site-menu" aria-label="主导航" data-site-menu>
     {
       navItems.map((item) => (
         <a class:list={{ "is-current": isCurrent(item) }} href={withBase(item.href)}>
@@ -42,3 +58,34 @@ function isCurrent(item: NavItem) {
     }
   </nav>
 </header>
+
+<script>
+  const header = document.querySelector<HTMLElement>("[data-site-header]");
+  const navToggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+  const menu = document.querySelector<HTMLElement>("[data-site-menu]");
+
+  if (header && navToggle && menu) {
+    const setOpen = (open: boolean) => {
+      header.classList.toggle("is-menu-open", open);
+      document.documentElement.classList.toggle("is-nav-open", open);
+      navToggle.setAttribute("aria-expanded", String(open));
+      navToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+    };
+
+    navToggle.addEventListener("click", () => {
+      setOpen(!header.classList.contains("is-menu-open"));
+    });
+
+    menu.addEventListener("click", (event) => {
+      if ((event.target as Element).closest("a")) setOpen(false);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setOpen(false);
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.matchMedia("(min-width: 821px)").matches) setOpen(false);
+    });
+  }
+</script>
