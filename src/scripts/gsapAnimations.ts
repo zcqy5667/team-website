@@ -24,6 +24,10 @@ export function initPageAtmosphere() {
     const value = ratio * 100;
     progress?.style.setProperty("--scroll-progress", `${value}%`);
     root.style.setProperty("--scroll-ratio", ratio.toFixed(4));
+    root.style.setProperty("--scroll-blue-x", `${8 + ratio * 18}%`);
+    root.style.setProperty("--scroll-red-x", `${92 - ratio * 16}%`);
+    root.style.setProperty("--scan-x", `${-30 + ratio * 30}%`);
+    root.style.setProperty("--scan-y", `${12 + ratio * 62}%`);
 
     if (!reducedMotion) {
       root.style.setProperty("--atmosphere-drift-x", `${(ratio - 0.5) * 28}px`);
