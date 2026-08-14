@@ -9,7 +9,9 @@ const honors = [
     year: "2026",
     title: "RoboMaster 赛季备战成果",
     event: "Season Preparation",
-    detail: "用于展示本赛季阶段目标、技术突破、训练成果或校内外竞赛奖项。"
+    detail: "用于展示本赛季阶段目标、技术突破、训练成果或校内外竞赛奖项。",
+    image: "/assets/images/honor-season-prep.jpg",
+    imageAlt: "赛季备战成果展示图"
   },
   {
     year: "2025",
@@ -44,6 +46,11 @@ const honors = [
       {
         honors.map((honor) => (
           <article class="honor-card">
+            {honor.image && (
+              <div class="honor-card-media">
+                <img src={withBase(honor.image)} alt={honor.imageAlt ?? honor.title} loading="lazy" />
+              </div>
+            )}
             <span>{honor.year}</span>
             <strong>{honor.title}</strong>
             <small>{honor.event}</small>
