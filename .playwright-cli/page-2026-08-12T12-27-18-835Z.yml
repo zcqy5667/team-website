@@ -1,0 +1,59 @@
+- generic [active] [ref=f46e1]:
+  - banner [ref=f46e2]:
+    - link "桂林理工大学机器人基地群星战队" [ref=f46e3] [cursor=pointer]:
+      - /url: /
+    - button "Open navigation" [ref=f46e5] [cursor=pointer]
+  - main [ref=f46e9]:
+    - generic [ref=f46e11]:
+      - paragraph [ref=f46e12]: Unit 04 · 自动防守单位
+      - heading "哨兵机器人" [level=1] [ref=f46e13]
+      - paragraph [ref=f46e14]: 以自动化巡逻和防守为主，守护关键区域并提供持续火力威慑。
+    - region [ref=f46e15]:
+      - generic [ref=f46e16]:
+        - img "哨兵机器人展示图" [ref=f46e19]
+        - generic [ref=f46e20]:
+          - paragraph [ref=f46e21]: Role Detail
+          - heading "兵种作用" [level=2] [ref=f46e22]
+          - paragraph [ref=f46e23]: 哨兵机器人主要承担自动防守与区域控制任务，通常需要在无人直接操作的状态下完成巡逻、识别、瞄准和攻击。它的核心价值在于稳定守护基地或关键通道，持续给对方施加压力，并为队伍提供防守容错。
+          - list [ref=f46e24]:
+            - listitem [ref=f46e25]: 自动控制
+            - listitem [ref=f46e26]: 防守火力
+            - listitem [ref=f46e27]: 感知决策
+          - link "返回兵种图鉴 >" [ref=f46e28] [cursor=pointer]:
+            - /url: /units/
+    - region [ref=f46e29]:
+      - generic [ref=f46e30]:
+        - paragraph [ref=f46e31]: Responsibilities
+        - heading "核心职责" [level=2] [ref=f46e32]
+      - generic [ref=f46e33]:
+        - article [ref=f46e34]:
+          - generic [ref=f46e35]: "01"
+          - strong [ref=f46e36]: 自动巡逻和区域防守
+        - article [ref=f46e37]:
+          - generic [ref=f46e38]: "02"
+          - strong [ref=f46e39]: 识别并打击进入防区的目标
+        - article [ref=f46e40]:
+          - generic [ref=f46e41]: "03"
+          - strong [ref=f46e42]: 守护基地或关键通道
+        - article [ref=f46e43]:
+          - generic [ref=f46e44]: "04"
+          - strong [ref=f46e45]: 分担人工操作单位的防守压力
+    - region [ref=f46e46]:
+      - generic [ref=f46e47]:
+        - paragraph [ref=f46e48]: Function Modules
+        - heading "功能模块" [level=2] [ref=f46e49]
+      - generic [ref=f46e50]:
+        - article [ref=f46e51]:
+          - strong [ref=f46e52]: 自动巡逻
+          - paragraph [ref=f46e53]: 围绕“自动巡逻”进行结构、电控、算法或操作策略协同，服务于 自动防守单位 的赛场定位。
+        - article [ref=f46e54]:
+          - strong [ref=f46e55]: 基地防守
+          - paragraph [ref=f46e56]: 围绕“基地防守”进行结构、电控、算法或操作策略协同，服务于 自动防守单位 的赛场定位。
+        - article [ref=f46e57]:
+          - strong [ref=f46e58]: 目标识别
+          - paragraph [ref=f46e59]: 围绕“目标识别”进行结构、电控、算法或操作策略协同，服务于 自动防守单位 的赛场定位。
+  - contentinfo [ref=f46e60]:
+    - generic [ref=f46e61]: RoboMaster Team Showcase
+    - link "返回兵种图鉴" [ref=f46e62] [cursor=pointer]:
+      - /url: /units/
+  - text: ">"

@@ -378,3 +378,21 @@ npm run build
 - 图片和视频文件名建议使用英文、小写、短横线，例如 `season-review.mp4`
 - 兵种文案保持展示型描述，避免写太细的赛季参数
 - 修改数据后优先跑 `npm run build`，TypeScript 会帮忙检查字段是否缺失或类型错误
+# 维护入口地图
+
+日常维护主要集中在 `src/` 目录。
+
+- `src/data/siteData.ts`：战队、首屏、兵种、分工和媒体内容。
+- `src/pages/`：页面路由和页面结构。
+- `src/pages/units/[id].astro`：自动生成的兵种详情页。
+- `src/pages/division/[slug].astro`：自动生成的分工详情页。
+- `src/components/`：可复用卡片、导航、弹窗和图片组件。
+- `src/scripts/gsapAnimations.ts`：通用动画逻辑。
+- `src/utils/paths.ts`：部署环境下的资源路径处理。
+- `src/styles/styles.css`：全局视觉样式和响应式布局。
+- `public/assets/`：`siteData.ts` 中引用的图片和媒体资源。
+
+根目录下的 `index.html`、`media.html`、`units.html`，以及 `css/` 和 `js/`
+属于旧版静态备份，已经停用，不要在这些文件中进行新的维护。
+
+发布前请执行 `npm.cmd run build`。

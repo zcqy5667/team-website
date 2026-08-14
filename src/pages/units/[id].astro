@@ -1,4 +1,6 @@
 ---
+// 动态兵种详情页。路由参数由稳定的兵种 ID 生成，
+// 即使修改显示名称，已有链接仍然有效。
 import Layout from "../../layouts/Layout.astro";
 import OptimizedImage from "../../components/OptimizedImage.astro";
 import TagList from "../../components/TagList.astro";
@@ -8,6 +10,7 @@ import { withBase } from "../../utils/paths";
 const webpPath = (path: string) => path.replace(/\.png(?=($|[?#]))/i, ".webp");
 
 export function getStaticPaths() {
+  // 执行 `astro build` 时，Astro 会为目录中的每项预渲染一个页面。
   return units.map((unit) => ({
     params: { id: unit.id },
     props: { unit }
@@ -15,6 +18,7 @@ export function getStaticPaths() {
 }
 
 const { unit } = Astro.props;
+// 首屏使用 CSS 背景图，详情内容区域使用 OptimizedImage。
 const backgroundImage = unit.image.toLowerCase().includes(".png")
   ? `image-set(url("${withBase(webpPath(unit.image))}") type("image/webp"), url("${withBase(unit.image)}") type("image/png"))`
   : `url("${withBase(unit.image)}")`;

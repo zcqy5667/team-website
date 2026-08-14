@@ -1,4 +1,6 @@
 ---
+// 卡片和详情页统一使用的图片组件。
+// 如果 PNG 旁边存在同名 WebP 文件，就自动优先提供 WebP 资源。
 import { withBase } from "../utils/paths";
 
 type Props = {
@@ -25,6 +27,7 @@ const {
 
 const webpSrc = src.replace(/\.png(?=($|[?#]))/i, ".webp");
 const hasWebp = webpSrc !== src;
+// 保证 picture 分支和普通 img 分支使用相同的回退属性。
 const imageAttrs = {
   src: withBase(src),
   alt,

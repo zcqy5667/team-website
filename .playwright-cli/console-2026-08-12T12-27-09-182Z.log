@@ -1,0 +1,4 @@
+[  978578ms] [LOG] [vite] server connection lost. Polling for restart... @ http://127.0.0.1:4321/@vite/client:1598
+[ 2077627ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://127.0.0.1:4321/src/styles/styles.css:0
+[ 2077627ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ http://127.0.0.1:4321/src/components/Header.astro?astro&type=script&index=0&lang.ts:0
+[ 2214543ms] [LOG] [vite] server connection lost. Polling for restart... @ http://127.0.0.1:4321/@vite/client:1598

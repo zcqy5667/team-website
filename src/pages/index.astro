@@ -1,4 +1,6 @@
 ---
+// 首页结构文件。可编辑内容来自 siteData.ts；
+// 这里主要控制区块顺序以及首页展示哪些预览数据。
 import HeroSlider from "../components/HeroSlider.astro";
 import Layout from "../layouts/Layout.astro";
 import MediaEntryCard from "../components/MediaEntryCard.astro";
@@ -7,6 +9,7 @@ import UnitCard from "../components/UnitCard.astro";
 import { heroSlides, media, team, units } from "../data/siteData";
 import { withBase } from "../utils/paths";
 
+// 首页每个媒体分类只展示一条代表性素材。
 const mediaEntries = [
   {
     type: "image" as const,
@@ -38,27 +41,6 @@ const mediaEntries = [
   </section>
 
   <HeroSlider slides={heroSlides} />
-
-  <section id="overview" class="section overview-section" aria-labelledby="overview-title">
-    <div class="section-heading">
-      <p class="eyebrow">Mission Overview</p>
-      <h2 id="overview-title">从战队到赛场系统</h2>
-    </div>
-    <div class="overview-grid">
-      <article class="metric-panel">
-        <span class="metric-value">1</span>
-        <span class="metric-label">展示战队</span>
-      </article>
-      <article class="metric-panel">
-        <span class="metric-value">{units.length}</span>
-        <span class="metric-label">兵种系统</span>
-      </article>
-      <article class="metric-panel">
-        <span class="metric-value">{media.length}</span>
-        <span class="metric-label">媒体素材</span>
-      </article>
-    </div>
-  </section>
 
   <section id="team" class="section team-section" aria-labelledby="team-title">
     <div class="section-heading">

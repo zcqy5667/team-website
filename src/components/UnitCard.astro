@@ -1,4 +1,6 @@
 ---
+// 可复用的兵种预览卡片和详情触发器。
+// preview 只限制首页显示的功能标签数量，不会改变完整目录和详情页使用的原始数据。
 import type { Unit } from "../data/siteData";
 import OptimizedImage from "./OptimizedImage.astro";
 import TagList from "./TagList.astro";
@@ -11,6 +13,7 @@ type Props = {
 
 const { unit, preview = false } = Astro.props;
 const functions = preview ? unit.functions.slice(0, 2) : unit.functions;
+// 弹窗中的“查看完整页面”链接也使用这个统一的详情页 URL。
 const unitHref = withBase(`/units/${unit.id}/`);
 ---
 

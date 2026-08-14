@@ -1,4 +1,6 @@
 ---
+// 轮播内容由 siteData 在服务端渲染；客户端脚本只负责
+// 切换、自动播放、手势输入，以及已渲染幻灯片之间的动画。
 import type { HeroSlide } from "../data/siteData";
 import OptimizedImage from "./OptimizedImage.astro";
 import { withBase } from "../utils/paths";
@@ -46,6 +48,7 @@ const { slides } = Astro.props;
 <script>
   import { animateHeroSlide } from "../scripts/gsapAnimations";
 
+  // 在组件根节点内查询元素，使轮播可以复用，不依赖具体页面的选择器。
   const slider = document.querySelector<HTMLElement>("[data-hero-slider]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -75,6 +78,7 @@ const { slides } = Astro.props;
         dot.classList.toggle("is-active", dotIndex === current);
       });
       progress?.style.setProperty("--progress-index", String(current + 1));
+      // 第一次激活用于建立初始动画状态；之后只有真正切换幻灯片时才播放动画。
       if (isInitial || previous !== current) {
         animateHeroSlide(slides, isInitial ? null : previous, current);
       }
@@ -87,6 +91,7 @@ const { slides } = Astro.props;
     }
 
     function start() {
+      // 遵守用户的减少动画偏好，并避免焦点或悬停事件重复创建定时器。
       if (reduceMotion || timer || slides.length < 2) return;
       timer = window.setInterval(() => activate(current + 1), 5600);
     }

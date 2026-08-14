@@ -1,0 +1,71 @@
+- generic [active] [ref=f16e1]:
+  - banner [ref=f16e2]:
+    - navigation "主导航" [ref=f16e3]:
+      - link "首页" [ref=f16e4] [cursor=pointer]:
+        - /url: /
+      - link "战队" [ref=f16e5] [cursor=pointer]:
+        - /url: /#team
+      - link "兵种" [ref=f16e6] [cursor=pointer]:
+        - /url: /units/
+      - link "分工" [ref=f16e7] [cursor=pointer]:
+        - /url: /division/
+      - link "媒体" [ref=f16e8] [cursor=pointer]:
+        - /url: /media/
+      - link "荣誉" [ref=f16e9] [cursor=pointer]:
+        - /url: /honors/
+      - link "联系" [ref=f16e10] [cursor=pointer]:
+        - /url: /contact/
+  - main [ref=f16e11]:
+    - generic [ref=f16e13]:
+      - paragraph [ref=f16e14]: Unit 04 · 自动防守单位
+      - heading "哨兵机器人" [level=1] [ref=f16e15]
+      - paragraph [ref=f16e16]: 以自动化巡逻和防守为主，守护关键区域并提供持续火力威慑。
+    - region [ref=f16e17]:
+      - generic [ref=f16e18]:
+        - img "哨兵机器人展示图" [ref=f16e21]
+        - generic [ref=f16e22]:
+          - paragraph [ref=f16e23]: Role Detail
+          - heading "兵种作用" [level=2] [ref=f16e24]
+          - paragraph [ref=f16e25]: 哨兵机器人主要承担自动防守与区域控制任务，通常需要在无人直接操作的状态下完成巡逻、识别、瞄准和攻击。它的核心价值在于稳定守护基地或关键通道，持续给对方施加压力，并为队伍提供防守容错。
+          - list [ref=f16e26]:
+            - listitem [ref=f16e27]: 自动控制
+            - listitem [ref=f16e28]: 防守火力
+            - listitem [ref=f16e29]: 感知决策
+          - link "返回兵种图鉴 >" [ref=f16e30] [cursor=pointer]:
+            - /url: /units/
+    - region [ref=f16e31]:
+      - generic [ref=f16e32]:
+        - paragraph [ref=f16e33]: Responsibilities
+        - heading "核心职责" [level=2] [ref=f16e34]
+      - generic [ref=f16e35]:
+        - article [ref=f16e36]:
+          - generic [ref=f16e37]: "01"
+          - strong [ref=f16e38]: 自动巡逻和区域防守
+        - article [ref=f16e39]:
+          - generic [ref=f16e40]: "02"
+          - strong [ref=f16e41]: 识别并打击进入防区的目标
+        - article [ref=f16e42]:
+          - generic [ref=f16e43]: "03"
+          - strong [ref=f16e44]: 守护基地或关键通道
+        - article [ref=f16e45]:
+          - generic [ref=f16e46]: "04"
+          - strong [ref=f16e47]: 分担人工操作单位的防守压力
+    - region [ref=f16e48]:
+      - generic [ref=f16e49]:
+        - paragraph [ref=f16e50]: Function Modules
+        - heading "功能模块" [level=2] [ref=f16e51]
+      - generic [ref=f16e52]:
+        - article [ref=f16e53]:
+          - strong [ref=f16e54]: 自动巡逻
+          - paragraph [ref=f16e55]: 围绕“自动巡逻”进行结构、电控、算法或操作策略协同，服务于 自动防守单位 的赛场定位。
+        - article [ref=f16e56]:
+          - strong [ref=f16e57]: 基地防守
+          - paragraph [ref=f16e58]: 围绕“基地防守”进行结构、电控、算法或操作策略协同，服务于 自动防守单位 的赛场定位。
+        - article [ref=f16e59]:
+          - strong [ref=f16e60]: 目标识别
+          - paragraph [ref=f16e61]: 围绕“目标识别”进行结构、电控、算法或操作策略协同，服务于 自动防守单位 的赛场定位。
+  - contentinfo [ref=f16e62]:
+    - generic [ref=f16e63]: RoboMaster Team Showcase
+    - link "返回兵种图鉴" [ref=f16e64] [cursor=pointer]:
+      - /url: /units/
+  - text: ">"

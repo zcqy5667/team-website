@@ -1,0 +1,158 @@
+- generic [active] [ref=f21e1]:
+  - banner [ref=f21e2]:
+    - navigation "主导航" [ref=f21e3]:
+      - link "首页" [ref=f21e4] [cursor=pointer]:
+        - /url: /
+      - link "战队" [ref=f21e5] [cursor=pointer]:
+        - /url: /#team
+      - link "兵种" [ref=f21e6] [cursor=pointer]:
+        - /url: /units/
+      - link "分工" [ref=f21e7] [cursor=pointer]:
+        - /url: /division/
+      - link "媒体" [ref=f21e8] [cursor=pointer]:
+        - /url: /media/
+      - link "荣誉" [ref=f21e9] [cursor=pointer]:
+        - /url: /honors/
+      - link "联系" [ref=f21e10] [cursor=pointer]:
+        - /url: /contact/
+  - main [ref=f21e11]:
+    - generic [ref=f21e13]:
+      - paragraph [ref=f21e14]: Robot Classes
+      - heading "RoboMaster 兵种与功能图鉴" [level=1] [ref=f21e15]
+      - paragraph [ref=f21e16]: 用七类角色理解赛场：火力、资源、机动、防守、空中支援、远程打击与信息感知共同构成完整战术系统。
+    - region [ref=f21e17]:
+      - generic [ref=f21e18]:
+        - paragraph [ref=f21e19]: Full Matrix
+        - heading "完整兵种矩阵" [level=2] [ref=f21e20]
+      - generic [ref=f21e21]:
+        - article "打开 英雄机器人 预览" [ref=f21e22]:
+          - generic [ref=f21e23]:
+            - generic [ref=f21e24]:
+              - img "英雄机器人示意图" [ref=f21e26]
+              - generic [ref=f21e27]: "01"
+            - generic [ref=f21e28]:
+              - generic [ref=f21e29]: 重火力核心
+              - heading "英雄机器人" [level=3] [ref=f21e30]
+              - paragraph [ref=f21e31]: 承担关键输出与目标打击任务，是队伍火力上限的重要来源。
+              - list [ref=f21e32]:
+                - listitem [ref=f21e33]: 远距离火力压制
+                - listitem [ref=f21e34]: 关键目标打击
+                - listitem [ref=f21e35]: 牵制对方防线
+              - list [ref=f21e36]:
+                - listitem [ref=f21e37]: 高能弹丸
+                - listitem [ref=f21e38]: 高精度发射
+                - listitem [ref=f21e39]: 核心输出
+              - button "查看详情 >" [ref=f21e40] [cursor=pointer]
+        - article "打开 工程机器人 预览" [ref=f21e41]:
+          - generic [ref=f21e42]:
+            - generic [ref=f21e43]:
+              - img "工程机器人示意图" [ref=f21e45]
+              - generic [ref=f21e46]: "02"
+            - generic [ref=f21e47]:
+              - generic [ref=f21e48]: 资源与任务执行
+              - heading "工程机器人" [level=3] [ref=f21e49]
+              - paragraph [ref=f21e50]: 负责资源获取、补给协助和场地任务，是队伍经济与持续作战能力的保障。
+              - list [ref=f21e51]:
+                - listitem [ref=f21e52]: 矿石搬运
+                - listitem [ref=f21e53]: 补给协助
+                - listitem [ref=f21e54]: 场地机关交互
+              - list [ref=f21e55]:
+                - listitem [ref=f21e56]: 机构设计
+                - listitem [ref=f21e57]: 稳定搬运
+                - listitem [ref=f21e58]: 团队保障
+              - button "查看详情 >" [ref=f21e59] [cursor=pointer]
+        - article "打开 步兵机器人 预览" [ref=f21e60]:
+          - generic [ref=f21e61]:
+            - generic [ref=f21e62]:
+              - img "步兵机器人示意图" [ref=f21e63]
+              - generic [ref=f21e64]: "03"
+            - generic [ref=f21e65]:
+              - generic [ref=f21e66]: 机动作战主力
+              - heading "步兵机器人" [level=3] [ref=f21e67]
+              - paragraph [ref=f21e68]: 数量多、机动性强，承担持续对抗、阵地推进和战术执行任务。
+              - list [ref=f21e69]:
+                - listitem [ref=f21e70]: 正面对抗
+                - listitem [ref=f21e71]: 阵地压制
+                - listitem [ref=f21e72]: 战术穿插
+              - list [ref=f21e73]:
+                - listitem [ref=f21e74]: 机动底盘
+                - listitem [ref=f21e75]: 快速响应
+                - listitem [ref=f21e76]: 持续输出
+              - button "查看详情 >" [ref=f21e77] [cursor=pointer]
+        - article "打开 哨兵机器人 预览" [ref=f21e78]:
+          - generic [ref=f21e79]:
+            - generic [ref=f21e80]:
+              - img "哨兵机器人示意图" [ref=f21e82]
+              - generic [ref=f21e83]: "04"
+            - generic [ref=f21e84]:
+              - generic [ref=f21e85]: 自动防守单位
+              - heading "哨兵机器人" [level=3] [ref=f21e86]
+              - paragraph [ref=f21e87]: 以自动化巡逻和防守为主，守护关键区域并提供持续火力威慑。
+              - list [ref=f21e88]:
+                - listitem [ref=f21e89]: 自动巡逻
+                - listitem [ref=f21e90]: 基地防守
+                - listitem [ref=f21e91]: 目标识别
+              - list [ref=f21e92]:
+                - listitem [ref=f21e93]: 自动控制
+                - listitem [ref=f21e94]: 防守火力
+                - listitem [ref=f21e95]: 感知决策
+              - button "查看详情 >" [ref=f21e96] [cursor=pointer]
+        - article "打开 空中机器人 预览" [ref=f21e97]:
+          - generic [ref=f21e98]:
+            - generic [ref=f21e99]:
+              - img "空中机器人示意图" [ref=f21e101]
+              - generic [ref=f21e102]: "05"
+            - generic [ref=f21e103]:
+              - generic [ref=f21e104]: 空中支援
+              - heading "空中机器人" [level=3] [ref=f21e105]
+              - paragraph [ref=f21e106]: 提供空中视角、战术支援和特殊打击能力，拓展队伍的信息与攻击维度。
+              - list [ref=f21e107]:
+                - listitem [ref=f21e108]: 空中侦察
+                - listitem [ref=f21e109]: 战术支援
+                - listitem [ref=f21e110]: 高点打击
+              - list [ref=f21e111]:
+                - listitem [ref=f21e112]: 飞控
+                - listitem [ref=f21e113]: 轻量化
+                - listitem [ref=f21e114]: 视野优势
+              - button "查看详情 >" [ref=f21e115] [cursor=pointer]
+        - article "打开 飞镖系统 预览" [ref=f21e116]:
+          - generic [ref=f21e117]:
+            - generic [ref=f21e118]:
+              - img "飞镖系统示意图" [ref=f21e120]
+              - generic [ref=f21e121]: "06"
+            - generic [ref=f21e122]:
+              - generic [ref=f21e123]: 远程固定打击
+              - heading "飞镖系统" [level=3] [ref=f21e124]
+              - paragraph [ref=f21e125]: 通过固定发射系统完成远程目标打击，强调定位、发射稳定性与时机判断。
+              - list [ref=f21e126]:
+                - listitem [ref=f21e127]: 远程发射
+                - listitem [ref=f21e128]: 目标命中
+                - listitem [ref=f21e129]: 战术爆发
+              - list [ref=f21e130]:
+                - listitem [ref=f21e131]: 发射机构
+                - listitem [ref=f21e132]: 轨迹控制
+                - listitem [ref=f21e133]: 关键时机
+              - button "查看详情 >" [ref=f21e134] [cursor=pointer]
+        - article "打开 雷达 预览" [ref=f21e135]:
+          - generic [ref=f21e136]:
+            - generic [ref=f21e137]:
+              - img "雷达示意图" [ref=f21e139]
+              - generic [ref=f21e140]: "07"
+            - generic [ref=f21e141]:
+              - generic [ref=f21e142]: 战场信息感知
+              - heading "雷达" [level=3] [ref=f21e143]
+              - paragraph [ref=f21e144]: 为队伍提供感知、定位与信息辅助，让战术决策更及时、更有依据。
+              - list [ref=f21e145]:
+                - listitem [ref=f21e146]: 场上感知
+                - listitem [ref=f21e147]: 目标定位
+                - listitem [ref=f21e148]: 信息辅助
+              - list [ref=f21e149]:
+                - listitem [ref=f21e150]: 视觉识别
+                - listitem [ref=f21e151]: 地图信息
+                - listitem [ref=f21e152]: 战术辅助
+              - button "查看详情 >" [ref=f21e153] [cursor=pointer]
+  - contentinfo [ref=f21e154]:
+    - generic [ref=f21e155]: RoboMaster Team Showcase
+    - link "返回首页" [ref=f21e156] [cursor=pointer]:
+      - /url: /
+  - text: ">"

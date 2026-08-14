@@ -1,0 +1,71 @@
+- generic [active] [ref=f29e1]:
+  - banner [ref=f29e2]:
+    - navigation "主导航" [ref=f29e3]:
+      - link "首页" [ref=f29e4] [cursor=pointer]:
+        - /url: /
+      - link "战队" [ref=f29e5] [cursor=pointer]:
+        - /url: /#team
+      - link "兵种" [ref=f29e6] [cursor=pointer]:
+        - /url: /units/
+      - link "分工" [ref=f29e7] [cursor=pointer]:
+        - /url: /division/
+      - link "媒体" [ref=f29e8] [cursor=pointer]:
+        - /url: /media/
+      - link "荣誉" [ref=f29e9] [cursor=pointer]:
+        - /url: /honors/
+      - link "联系" [ref=f29e10] [cursor=pointer]:
+        - /url: /contact/
+  - main [ref=f29e11]:
+    - generic [ref=f29e13]:
+      - paragraph [ref=f29e14]: Unit 03 · 机动作战主力
+      - heading "步兵机器人" [level=1] [ref=f29e15]
+      - paragraph [ref=f29e16]: 数量多、机动性强，承担持续对抗、阵地推进和战术执行任务。
+    - region [ref=f29e17]:
+      - generic [ref=f29e18]:
+        - img "步兵机器人展示图" [ref=f29e20]
+        - generic [ref=f29e21]:
+          - paragraph [ref=f29e22]: Role Detail
+          - heading "兵种作用" [level=2] [ref=f29e23]
+          - paragraph [ref=f29e24]: 步兵机器人是赛场上最常见也最灵活的作战单位，承担持续对抗、阵地推进、掩护队友和战术穿插等任务。它需要兼顾机动、火力、稳定性和操控响应，是队伍战术执行是否顺畅的基础。
+          - list [ref=f29e25]:
+            - listitem [ref=f29e26]: 机动底盘
+            - listitem [ref=f29e27]: 快速响应
+            - listitem [ref=f29e28]: 持续输出
+          - link "返回兵种图鉴 >" [ref=f29e29] [cursor=pointer]:
+            - /url: /units/
+    - region [ref=f29e30]:
+      - generic [ref=f29e31]:
+        - paragraph [ref=f29e32]: Responsibilities
+        - heading "核心职责" [level=2] [ref=f29e33]
+      - generic [ref=f29e34]:
+        - article [ref=f29e35]:
+          - generic [ref=f29e36]: "01"
+          - strong [ref=f29e37]: 承担正面持续对抗
+        - article [ref=f29e38]:
+          - generic [ref=f29e39]: "02"
+          - strong [ref=f29e40]: 推进和守住关键阵地
+        - article [ref=f29e41]:
+          - generic [ref=f29e42]: "03"
+          - strong [ref=f29e43]: 掩护工程与英雄单位行动
+        - article [ref=f29e44]:
+          - generic [ref=f29e45]: "04"
+          - strong [ref=f29e46]: 执行快速穿插和战术牵制
+    - region [ref=f29e47]:
+      - generic [ref=f29e48]:
+        - paragraph [ref=f29e49]: Function Modules
+        - heading "功能模块" [level=2] [ref=f29e50]
+      - generic [ref=f29e51]:
+        - article [ref=f29e52]:
+          - strong [ref=f29e53]: 正面对抗
+          - paragraph [ref=f29e54]: 围绕“正面对抗”进行结构、电控、算法或操作策略协同，服务于 机动作战主力 的赛场定位。
+        - article [ref=f29e55]:
+          - strong [ref=f29e56]: 阵地压制
+          - paragraph [ref=f29e57]: 围绕“阵地压制”进行结构、电控、算法或操作策略协同，服务于 机动作战主力 的赛场定位。
+        - article [ref=f29e58]:
+          - strong [ref=f29e59]: 战术穿插
+          - paragraph [ref=f29e60]: 围绕“战术穿插”进行结构、电控、算法或操作策略协同，服务于 机动作战主力 的赛场定位。
+  - contentinfo [ref=f29e61]:
+    - generic [ref=f29e62]: RoboMaster Team Showcase
+    - link "返回兵种图鉴" [ref=f29e63] [cursor=pointer]:
+      - /url: /units/
+  - text: ">"

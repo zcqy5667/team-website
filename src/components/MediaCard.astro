@@ -1,4 +1,6 @@
 ---
+// 根据具有明确类型的 `type` 字段渲染一条媒体内容。
+// 视频没有 src 时使用封面图作为回退，不输出损坏的 <video> 元素。
 import type { MediaItem } from "../data/siteData";
 import OptimizedImage from "./OptimizedImage.astro";
 import { withBase } from "../utils/paths";

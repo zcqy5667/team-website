@@ -1,0 +1,71 @@
+- generic [active] [ref=f43e1]:
+  - banner [ref=f43e2]:
+    - navigation "主导航" [ref=f43e3]:
+      - link "首页" [ref=f43e4] [cursor=pointer]:
+        - /url: /
+      - link "战队" [ref=f43e5] [cursor=pointer]:
+        - /url: /#team
+      - link "兵种" [ref=f43e6] [cursor=pointer]:
+        - /url: /units/
+      - link "分工" [ref=f43e7] [cursor=pointer]:
+        - /url: /division/
+      - link "媒体" [ref=f43e8] [cursor=pointer]:
+        - /url: /media/
+      - link "荣誉" [ref=f43e9] [cursor=pointer]:
+        - /url: /honors/
+      - link "联系" [ref=f43e10] [cursor=pointer]:
+        - /url: /contact/
+  - main [ref=f43e11]:
+    - generic [ref=f43e13]:
+      - paragraph [ref=f43e14]: Unit 02 · 资源与任务执行
+      - heading "工程机器人" [level=1] [ref=f43e15]
+      - paragraph [ref=f43e16]: 负责资源获取、补给协助和场地任务，是队伍经济与持续作战能力的保障。
+    - region [ref=f43e17]:
+      - generic [ref=f43e18]:
+        - img "工程机器人展示图" [ref=f43e21]
+        - generic [ref=f43e22]:
+          - paragraph [ref=f43e23]: Role Detail
+          - heading "兵种作用" [level=2] [ref=f43e24]
+          - paragraph [ref=f43e25]: 工程机器人更偏向任务执行与资源运营，负责矿石搬运、补给协助、场地机关交互等非纯火力任务。它的表现直接影响队伍资源节奏和续航能力，需要在稳定搬运、机构可靠性、路径规划和操作效率之间取得平衡。
+          - list [ref=f43e26]:
+            - listitem [ref=f43e27]: 机构设计
+            - listitem [ref=f43e28]: 稳定搬运
+            - listitem [ref=f43e29]: 团队保障
+          - link "返回兵种图鉴 >" [ref=f43e30] [cursor=pointer]:
+            - /url: /units/
+    - region [ref=f43e31]:
+      - generic [ref=f43e32]:
+        - paragraph [ref=f43e33]: Responsibilities
+        - heading "核心职责" [level=2] [ref=f43e34]
+      - generic [ref=f43e35]:
+        - article [ref=f43e36]:
+          - generic [ref=f43e37]: "01"
+          - strong [ref=f43e38]: 完成矿石和资源搬运
+        - article [ref=f43e39]:
+          - generic [ref=f43e40]: "02"
+          - strong [ref=f43e41]: 保障队伍补给与经济循环
+        - article [ref=f43e42]:
+          - generic [ref=f43e43]: "03"
+          - strong [ref=f43e44]: 执行场地机关交互任务
+        - article [ref=f43e45]:
+          - generic [ref=f43e46]: "04"
+          - strong [ref=f43e47]: 为火力单位创造持续作战条件
+    - region [ref=f43e48]:
+      - generic [ref=f43e49]:
+        - paragraph [ref=f43e50]: Function Modules
+        - heading "功能模块" [level=2] [ref=f43e51]
+      - generic [ref=f43e52]:
+        - article [ref=f43e53]:
+          - strong [ref=f43e54]: 矿石搬运
+          - paragraph [ref=f43e55]: 围绕“矿石搬运”进行结构、电控、算法或操作策略协同，服务于 资源与任务执行 的赛场定位。
+        - article [ref=f43e56]:
+          - strong [ref=f43e57]: 补给协助
+          - paragraph [ref=f43e58]: 围绕“补给协助”进行结构、电控、算法或操作策略协同，服务于 资源与任务执行 的赛场定位。
+        - article [ref=f43e59]:
+          - strong [ref=f43e60]: 场地机关交互
+          - paragraph [ref=f43e61]: 围绕“场地机关交互”进行结构、电控、算法或操作策略协同，服务于 资源与任务执行 的赛场定位。
+  - contentinfo [ref=f43e62]:
+    - generic [ref=f43e63]: RoboMaster Team Showcase
+    - link "返回兵种图鉴" [ref=f43e64] [cursor=pointer]:
+      - /url: /units/
+  - text: ">"

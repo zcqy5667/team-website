@@ -1,4 +1,5 @@
 ---
+// 动态分工详情页。getStaticPaths 会在构建时为 divisionGroups 中的每项生成一个静态页面。
 import Layout from "../../layouts/Layout.astro";
 import OptimizedImage from "../../components/OptimizedImage.astro";
 import TagList from "../../components/TagList.astro";
@@ -8,6 +9,7 @@ import { withBase } from "../../utils/paths";
 const webpPath = (path: string) => path.replace(/\.png(?=($|[?#]))/i, ".webp");
 
 export function getStaticPaths() {
+  // 将完整的分工对象作为 props 传入，模板渲染各个路由时无需再次查找数据。
   return divisionGroups.map((group) => ({
     params: { slug: group.slug },
     props: { group }
@@ -15,13 +17,25 @@ export function getStaticPaths() {
 }
 
 const { group } = Astro.props;
+// CSS 背景图需要拼接 image-set 字符串；内容图片使用 OptimizedImage，
+// 以获得相同的 PNG/WebP 回退能力。
 const backgroundImage = group.image.toLowerCase().includes(".png")
   ? `image-set(url("${withBase(webpPath(group.image))}") type("image/webp"), url("${withBase(group.image)}") type("image/png"))`
   : `url("${withBase(group.image)}")`;
 ---
 
 <Layout title={`RoboMaster ${group.name}`} description={group.summary} footerBackHref="/division/" footerBackLabel="返回分工">
-  <section class="page-hero page-hero-division-detail" style={`--page-hero-image: ${backgroundImage}`}>
+  <section
+    class:list={[
+      "page-hero",
+      "page-hero-division-detail",
+      {
+        "page-hero-division-algorithm": group.slug === "algorithm",
+        "page-hero-division-hardware": group.slug === "hardware"
+      }
+    ]}
+    style={`--page-hero-image: ${backgroundImage}`}
+  >
     <div class="page-hero-content">
       <p class="eyebrow">{group.kicker}</p>
       <h1>{group.name}</h1>
@@ -31,12 +45,17 @@ const backgroundImage = group.image.toLowerCase().includes(".png")
 
   <section class="section division-detail-section" aria-labelledby="division-detail-title">
     <div class="division-detail">
-      <div class="division-detail-media">
+      <div
+        class:list={[
+          "division-detail-media",
+          { "division-detail-media-hardware": group.slug === "hardware" }
+        ]}
+      >
         <OptimizedImage src={group.image} alt={`${group.name}展示图`} loading="lazy" />
       </div>
       <div class="division-detail-content">
         <p class="eyebrow">Role Detail</p>
-        <h2 id="division-detail-title">{group.name}用途</h2>
+        <h2 id="division-detail-title">{group.name}职责</h2>
         <p>{group.detail}</p>
         <TagList items={group.tags} className="tag-list" />
       </div>

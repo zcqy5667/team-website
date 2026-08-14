@@ -1,9 +1,11 @@
 ---
+// 完整兵种目录。详情页由同一个 `units` 数组生成。
 import Layout from "../layouts/Layout.astro";
 import UnitCard from "../components/UnitCard.astro";
 import { units } from "../data/siteData";
 import { withBase } from "../utils/paths";
 
+// 单独声明首屏图片路径，方便页面使用同名的优化资源。
 const heroImage = "/assets/images/unit-hero.png";
 const heroImageWebp = heroImage.replace(".png", ".webp");
 ---

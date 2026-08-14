@@ -1,9 +1,11 @@
 ---
+// 媒体中心入口：用于跳转到图片、视频和记录三个分类页。
 import Layout from "../layouts/Layout.astro";
 import MediaEntryCard from "../components/MediaEntryCard.astro";
 import { media } from "../data/siteData";
 import { withBase } from "../utils/paths";
 
+// 这里的三项应与下面三个分类路由保持一致。
 const entries = [
   {
     type: "image" as const,

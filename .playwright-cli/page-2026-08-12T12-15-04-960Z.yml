@@ -1,0 +1,71 @@
+- generic [active] [ref=f32e1]:
+  - banner [ref=f32e2]:
+    - navigation "主导航" [ref=f32e3]:
+      - link "首页" [ref=f32e4] [cursor=pointer]:
+        - /url: /
+      - link "战队" [ref=f32e5] [cursor=pointer]:
+        - /url: /#team
+      - link "兵种" [ref=f32e6] [cursor=pointer]:
+        - /url: /units/
+      - link "分工" [ref=f32e7] [cursor=pointer]:
+        - /url: /division/
+      - link "媒体" [ref=f32e8] [cursor=pointer]:
+        - /url: /media/
+      - link "荣誉" [ref=f32e9] [cursor=pointer]:
+        - /url: /honors/
+      - link "联系" [ref=f32e10] [cursor=pointer]:
+        - /url: /contact/
+  - main [ref=f32e11]:
+    - generic [ref=f32e13]:
+      - paragraph [ref=f32e14]: Unit 05 · 空中支援
+      - heading "空中机器人" [level=1] [ref=f32e15]
+      - paragraph [ref=f32e16]: 提供空中视角、战术支援和特殊打击能力，拓展队伍的信息与攻击维度。
+    - region [ref=f32e17]:
+      - generic [ref=f32e18]:
+        - img "空中机器人展示图" [ref=f32e21]
+        - generic [ref=f32e22]:
+          - paragraph [ref=f32e23]: Role Detail
+          - heading "兵种作用" [level=2] [ref=f32e24]
+          - paragraph [ref=f32e25]: 空中机器人负责从空中维度提供侦察、支援和特殊打击能力。它能观察地面单位难以获得的信息，帮助队伍判断敌方站位与战场态势，也可以在特定时机进行高点打击或支援压制。
+          - list [ref=f32e26]:
+            - listitem [ref=f32e27]: 飞控
+            - listitem [ref=f32e28]: 轻量化
+            - listitem [ref=f32e29]: 视野优势
+          - link "返回兵种图鉴 >" [ref=f32e30] [cursor=pointer]:
+            - /url: /units/
+    - region [ref=f32e31]:
+      - generic [ref=f32e32]:
+        - paragraph [ref=f32e33]: Responsibilities
+        - heading "核心职责" [level=2] [ref=f32e34]
+      - generic [ref=f32e35]:
+        - article [ref=f32e36]:
+          - generic [ref=f32e37]: "01"
+          - strong [ref=f32e38]: 提供空中视角和战场侦察
+        - article [ref=f32e39]:
+          - generic [ref=f32e40]: "02"
+          - strong [ref=f32e41]: 辅助判断敌方站位与动向
+        - article [ref=f32e42]:
+          - generic [ref=f32e43]: "03"
+          - strong [ref=f32e44]: 在关键窗口提供空中支援
+        - article [ref=f32e45]:
+          - generic [ref=f32e46]: "04"
+          - strong [ref=f32e47]: 拓展队伍的信息与打击维度
+    - region [ref=f32e48]:
+      - generic [ref=f32e49]:
+        - paragraph [ref=f32e50]: Function Modules
+        - heading "功能模块" [level=2] [ref=f32e51]
+      - generic [ref=f32e52]:
+        - article [ref=f32e53]:
+          - strong [ref=f32e54]: 空中侦察
+          - paragraph [ref=f32e55]: 围绕“空中侦察”进行结构、电控、算法或操作策略协同，服务于 空中支援 的赛场定位。
+        - article [ref=f32e56]:
+          - strong [ref=f32e57]: 战术支援
+          - paragraph [ref=f32e58]: 围绕“战术支援”进行结构、电控、算法或操作策略协同，服务于 空中支援 的赛场定位。
+        - article [ref=f32e59]:
+          - strong [ref=f32e60]: 高点打击
+          - paragraph [ref=f32e61]: 围绕“高点打击”进行结构、电控、算法或操作策略协同，服务于 空中支援 的赛场定位。
+  - contentinfo [ref=f32e62]:
+    - generic [ref=f32e63]: RoboMaster Team Showcase
+    - link "返回兵种图鉴" [ref=f32e64] [cursor=pointer]:
+      - /url: /units/
+  - text: ">"

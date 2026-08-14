@@ -1,4 +1,6 @@
 ---
+// 首页的战队介绍区块。这里直接接收完整 Team 对象，
+// 文字和统计数据统一在 src/data/siteData.ts 中维护。
 import type { Team } from "../data/siteData";
 import OptimizedImage from "./OptimizedImage.astro";
 import TagList from "./TagList.astro";
@@ -21,15 +23,5 @@ const { team } = Astro.props;
     <p>{team.summary}</p>
     <p>{team.detail}</p>
     <TagList items={team.tags} className="tag-list" />
-    <div class="mini-stat-grid">
-      {
-        team.stats.map((stat) => (
-          <article class="mini-stat">
-            <strong>{stat.value}</strong>
-            <span>{stat.label}</span>
-          </article>
-        ))
-      }
-    </div>
   </div>
 </div>

@@ -31,6 +31,7 @@
   box-sizing: border-box;
 }
 
+/* 让所有页面的锚点滚动行为保持一致。 */
 html {
   scroll-behavior: smooth;
 }
@@ -44,6 +45,7 @@ body {
     linear-gradient(180deg, #030303 0%, var(--bg) 38rem, #050505 100%);
 }
 
+/* 装饰性网格背景层，不承载任何语义内容。 */
 body::before {
   position: fixed;
   inset: 0;
@@ -91,6 +93,7 @@ button {
   font: inherit;
 }
 
+/* 全局工具样式和站点外壳。 */
 .ui-scroll-progress {
   position: fixed;
   top: 0;
@@ -219,6 +222,7 @@ button {
   text-wrap: balance;
 }
 
+/* 首页首屏轮播。 */
 .hero-slider {
   position: relative;
   min-height: clamp(660px, calc(100svh - 64px), 920px);
@@ -543,6 +547,7 @@ button {
   transition: width 0.35s ease;
 }
 
+/* 通用页面区块和标题。 */
 .section {
   position: relative;
   padding: clamp(4.5rem, 7vw, 6rem) max(1.5rem, 4vw);
@@ -618,6 +623,7 @@ button {
   letter-spacing: 0.08em;
 }
 
+/* 通用数据面板和战队介绍区域。 */
 .overview-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -625,7 +631,6 @@ button {
 }
 
 .metric-panel,
-.mini-stat,
 .unit-card,
 .media-card,
 .honor-card,
@@ -648,7 +653,6 @@ button {
 }
 
 .metric-panel::before,
-.mini-stat::before,
 .unit-card::before,
 .media-card::before,
 .honor-card::before,
@@ -667,7 +671,6 @@ button {
 }
 
 .metric-panel:hover::before,
-.mini-stat:hover::before,
 .unit-card:hover::before,
 .media-card:hover::before,
 .honor-card:hover::before,
@@ -722,6 +725,8 @@ button {
 
 .team-showcase-media {
   position: relative;
+  width: 100%;
+  min-width: 0;
   min-height: 520px;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -752,6 +757,8 @@ button {
 }
 
 .team-showcase-content {
+  width: 100%;
+  min-width: 0;
   padding: clamp(1.3rem, 3vw, 2.5rem);
   border-top: 4px solid var(--red);
   background:
@@ -800,31 +807,7 @@ button {
   background: var(--surface);
 }
 
-.mini-stat-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.8rem;
-  margin-top: 1.3rem;
-}
-
-.mini-stat {
-  padding: 0.9rem;
-}
-
-.mini-stat strong {
-  display: block;
-  color: var(--text);
-  font-size: clamp(1.45rem, 3vw, 2rem);
-  line-height: 1;
-}
-
-.mini-stat span {
-  display: block;
-  margin-top: 0.45rem;
-  color: var(--muted);
-  line-height: 1.45;
-}
-
+/* 兵种目录卡片。 */
 .unit-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -922,6 +905,7 @@ button {
   min-height: 5.1rem;
 }
 
+/* 媒体中心入口和媒体卡片。 */
 .media-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1087,6 +1071,7 @@ button {
   line-height: 1.62;
 }
 
+/* 荣誉、联系、筛选器和通用内容卡片。 */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -1276,6 +1261,7 @@ body.is-modal-open {
   overflow: hidden;
 }
 
+/* 分工和兵种详情页布局。 */
 .division-entry-card .division-frame {
   background: #050505;
 }
@@ -1318,12 +1304,21 @@ body.is-modal-open {
   background: #050505;
 }
 
+.division-detail-media picture,
+.unit-detail-media picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
 .division-detail-media img,
 .unit-detail-media img {
+  display: block;
   width: 100%;
   height: 100%;
   padding: clamp(1.1rem, 4vw, 2rem);
   object-fit: contain;
+  object-position: center;
 }
 
 .division-detail-content,
@@ -1346,6 +1341,10 @@ body.is-modal-open {
   color: var(--muted);
   font-size: clamp(0.98rem, 1.4vw, 1.08rem);
   line-height: 1.78;
+}
+
+.division-detail-content p {
+  white-space: pre-line;
 }
 
 .unit-detail-content .button {
@@ -1405,6 +1404,7 @@ body.is-modal-open {
   line-height: 1.68;
 }
 
+/* 内页首屏横幅和页脚。 */
 .page-hero {
   position: relative;
   display: grid;
@@ -1448,6 +1448,12 @@ body.is-modal-open {
   background-repeat: no-repeat;
   background-position: center, right 8% center;
   background-size: cover, min(46vw, 560px) auto;
+}
+
+.page-hero-unit-detail::before {
+  background-position: center, center, right 4% center;
+  background-repeat: no-repeat;
+  background-size: cover, cover, auto min(90%, 560px);
 }
 
 .page-hero-media {
@@ -1496,6 +1502,7 @@ body.is-modal-open {
   color: var(--text);
 }
 
+/* 遵守用户的动画偏好，但不改变页面布局。 */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1507,6 +1514,7 @@ body.is-modal-open {
   }
 }
 
+/* 平板尺寸布局。 */
 @media (max-width: 1180px) {
   .unit-grid-preview,
   .division-responsibility-grid,
@@ -1515,6 +1523,7 @@ body.is-modal-open {
   }
 }
 
+/* 中等屏幕布局。 */
 @media (max-width: 980px) {
   .overview-grid,
   .unit-grid,
@@ -1543,6 +1552,7 @@ body.is-modal-open {
   }
 }
 
+/* 移动端导航和紧凑首屏布局。 */
 @media (max-width: 820px) {
   :root {
     --container: min(100%, calc(100vw - 2rem));
@@ -1613,7 +1623,18 @@ body.is-modal-open {
   }
 
   .hero-slide:nth-child(3) .hero-slide-image {
-    object-position: 38% center;
+    inset: 0;
+    width: 100%;
+    object-position: 68% center;
+  }
+
+  .hero-slide:nth-child(3) .hero-slide-content {
+    width: 100%;
+  }
+
+  .hero-slide:nth-child(3) h1 {
+    max-width: 10ch;
+    font-size: inherit;
   }
 
   .hero-slide h1,
@@ -1711,6 +1732,11 @@ body.is-modal-open {
     background-size: cover;
   }
 
+  .page-hero-unit-detail::before {
+    background-position: center, center, center bottom;
+    background-size: cover, cover, auto min(58%, 360px);
+  }
+
   .site-modal {
     align-items: end;
     padding: 0.75rem;
@@ -1733,9 +1759,10 @@ body.is-modal-open {
   }
 }
 
+/* 窄屏手机布局。 */
 @media (max-width: 560px) {
   .home-brand-title {
-    font-size: clamp(1.22rem, 6vw, 1.75rem);
+    font-size: clamp(1.3rem, 6vw, 1.85rem);
   }
 
   .hero-slider {
@@ -1794,10 +1821,6 @@ body.is-modal-open {
     width: 34px;
   }
 
-  .mini-stat-grid {
-    grid-template-columns: 1fr;
-  }
-
   .overview-grid,
   .unit-grid,
   .unit-grid-preview,
@@ -1843,7 +1866,7 @@ body.is-modal-open {
   }
 }
 
-/* Black-premium redesign layer: restrained chrome, full-bleed photography, sharp engineering UI. */
+/* 当前视觉方向的最终覆盖层。 */
 :root {
   --body-strong: #e6e6e6;
   --hairline: #3c3c3c;
@@ -1889,8 +1912,8 @@ body::after {
 
 .main-nav a {
   min-height: 42px;
-  font-size: 0.84rem;
-  font-weight: 700;
+  font-size: clamp(0.98rem, 1.15vw, 1.1rem);
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1910,11 +1933,16 @@ body::after {
 .home-brand-title {
   font-weight: 900;
   letter-spacing: 0;
+  text-align: center;
 }
 
 .hero-slider {
   min-height: clamp(640px, calc(100svh - 64px), 900px);
   background: #000000;
+}
+
+.hero-slide:first-child .hero-slide-image {
+  object-position: center center;
 }
 
 .hero-slider::before {
@@ -1938,6 +1966,67 @@ body::after {
 .hero-slide-content {
   align-content: end;
   min-height: auto;
+}
+
+@media (max-width: 820px) {
+  .main-nav a {
+    min-height: 40px;
+    padding: 0.58rem 0.78rem;
+    color: #d8d8d8;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+
+  .home-brand-title {
+    font-size: clamp(1.3rem, 6vw, 1.85rem);
+    text-align: center;
+  }
+}
+
+@media (min-width: 821px) {
+  .hero-slide:nth-child(3) .hero-slide-image {
+    inset: 0 auto 0 8%;
+    width: 114%;
+    object-position: center;
+  }
+
+  .hero-slide:nth-child(3) .hero-slide-content {
+    width: min(660px, 52%);
+  }
+
+  .hero-slide:nth-child(3) h1 {
+    max-width: 7ch;
+    font-size: clamp(2.8rem, 6.4vw, 5.8rem);
+  }
+}
+
+@media (max-width: 820px) {
+  .hero-slide:nth-child(3) .hero-slide-image {
+    inset: 0;
+    width: 100%;
+    object-position: 68% center;
+  }
+
+  .hero-slide:nth-child(3) .hero-slide-content {
+    width: 100%;
+  }
+
+  .hero-slide:nth-child(3) h1 {
+    max-width: 10ch;
+    font-size: inherit;
+  }
+}
+
+@media (min-width: 821px) {
+  .hero-slide:nth-child(2) .hero-slide-image {
+    inset: 50% max(3rem, 7vw) auto auto;
+    width: min(42vw, 600px);
+    height: min(64vh, 520px);
+  }
+
+  .hero-slide:nth-child(2) .hero-slide-content {
+    width: min(720px, 62%);
+  }
 }
 
 .hero-slide h1 {
@@ -1996,7 +2085,6 @@ body::after {
 }
 
 .metric-panel,
-.mini-stat,
 .unit-card,
 .media-card,
 .honor-card,
@@ -2071,10 +2159,21 @@ body::after {
 
 @media (max-width: 820px) {
   .site-header {
+    z-index: 90;
     justify-content: space-between;
     min-height: 72px;
     padding: 0 1rem;
     overflow: visible;
+  }
+
+  .site-header.is-menu-open {
+    position: fixed;
+    inset: 0;
+    align-items: flex-start;
+    height: 100svh;
+    overflow: hidden;
+    background: #000000;
+    backdrop-filter: none;
   }
 
   .site-header::before {
@@ -2136,19 +2235,28 @@ body::after {
   }
 
   .main-nav {
-    position: fixed;
-    inset: 0;
+    position: absolute;
+    top: 72px;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 30;
     display: grid;
-    align-content: center;
-    justify-content: stretch;
+    align-content: start;
+    justify-content: center;
+    grid-template-columns: minmax(0, min(420px, 100%));
     width: 100%;
-    padding: 6.5rem 1.25rem 2rem;
-    overflow: hidden;
+    max-height: calc(100svh - 72px);
+    margin: 0 auto;
+    padding: 1.25rem 1rem 2rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
     visibility: hidden;
     background:
-      linear-gradient(115deg, rgba(0, 102, 177, 0.14), transparent 42%, rgba(226, 39, 24, 0.1)),
-      #000000;
+      linear-gradient(180deg, #000000 0%, #050505 100%);
     opacity: 0;
     transform: translateY(-0.75rem);
     transition: opacity 0.24s ease, transform 0.24s ease, visibility 0.24s ease;
@@ -2161,13 +2269,15 @@ body::after {
   }
 
   .main-nav a {
-    justify-content: flex-start;
-    min-height: 58px;
-    padding: 0;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.75rem 0.9rem;
     color: var(--text);
-    font-size: clamp(1.8rem, 9vw, 3.4rem);
-    font-weight: 900;
-    line-height: 1;
+    font-size: clamp(1rem, 4.2vw, 1.25rem);
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+    letter-spacing: 0.12em;
     border-bottom: 1px solid var(--line);
   }
 
@@ -2198,5 +2308,439 @@ body::after {
 
   .page-hero {
     min-height: min(540px, 72svh);
+  }
+}
+
+/* Homepage scale normalization: keep the visual rhythm consistent across viewports. */
+:root {
+  --container: min(1280px, 100%);
+}
+
+.home-brand-strip {
+  padding-top: clamp(1.1rem, 2.2vw, 1.7rem);
+  padding-bottom: clamp(1.1rem, 2.2vw, 1.7rem);
+}
+
+.home-brand-title {
+  font-size: clamp(1.35rem, 2.8vw, 2.8rem);
+}
+
+.hero-slider {
+  min-height: clamp(560px, calc(100svh - 64px), 780px);
+}
+
+.hero-slide {
+  padding-top: clamp(4rem, 6vw, 6rem);
+  padding-bottom: clamp(6rem, 9vw, 7.5rem);
+}
+
+.hero-slide-content {
+  width: min(720px, 62%);
+}
+
+.hero-slide h1 {
+  max-width: 10ch;
+  font-size: clamp(2.8rem, 5.5vw, 5.8rem);
+  line-height: 1;
+}
+
+.hero-slide:nth-child(3) .hero-slide-content {
+  width: min(720px, 62%);
+}
+
+.hero-slide:nth-child(3) h1 {
+  max-width: 10ch;
+  font-size: clamp(2.8rem, 5.5vw, 5.8rem);
+}
+
+.hero-copy,
+.team-showcase-content p {
+  font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+  line-height: 1.6;
+}
+
+.section {
+  padding-top: clamp(4rem, 6vw, 5.5rem);
+  padding-bottom: clamp(4rem, 6vw, 5.5rem);
+}
+
+.section-heading {
+  margin-bottom: clamp(1.25rem, 2.4vw, 2rem);
+}
+
+.section-heading h2 {
+  font-size: clamp(1.9rem, 3.2vw, 3.2rem);
+}
+
+.team-showcase {
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: clamp(1rem, 2vw, 1.6rem);
+}
+
+.team-showcase-media {
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+}
+
+.team-showcase-content {
+  padding: clamp(1.15rem, 2.4vw, 2rem);
+}
+
+.team-showcase-content h3 {
+  font-size: clamp(1.8rem, 3.4vw, 3.2rem);
+}
+
+.unit-grid,
+.media-grid {
+  gap: clamp(0.8rem, 1.5vw, 1rem);
+}
+
+.unit-visual,
+.media-frame {
+  aspect-ratio: 16 / 9;
+}
+
+.unit-body p {
+  min-height: 4.4rem;
+  line-height: 1.58;
+}
+
+@media (max-width: 980px) {
+  .hero-slide-content,
+  .hero-slide:nth-child(3) .hero-slide-content {
+    width: min(680px, 100%);
+  }
+
+  .team-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .team-showcase-media {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 820px) {
+  :root {
+    --container: min(100%, calc(100vw - 2rem));
+  }
+
+  .home-brand-title {
+    font-size: clamp(1.3rem, 6vw, 1.85rem);
+  }
+
+  .hero-slider {
+    min-height: min(640px, calc(100svh - 72px));
+  }
+
+  .hero-slide {
+    padding: 3.8rem 1rem 8rem;
+  }
+
+  .hero-slide-content,
+  .hero-slide:nth-child(3) .hero-slide-content {
+    width: 100%;
+  }
+
+  .hero-slide h1,
+  .hero-slide:nth-child(3) h1 {
+    max-width: 11ch;
+    font-size: clamp(2rem, 7vw, 2.75rem);
+    line-height: 1.06;
+  }
+
+  .hero-copy,
+  .team-showcase-content p {
+    font-size: 0.95rem;
+    line-height: 1.62;
+  }
+
+  .section {
+    padding-top: clamp(3.25rem, 8vw, 4.25rem);
+    padding-bottom: clamp(3.25rem, 8vw, 4.25rem);
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+  }
+
+  .team-showcase-content {
+    padding: 1.1rem;
+  }
+
+  .team-showcase-content h3 {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+  }
+
+  .unit-body p {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-slider {
+    min-height: min(600px, calc(100svh - 72px));
+  }
+
+  .hero-slide {
+    padding-top: 3rem;
+    padding-bottom: 7.5rem;
+  }
+
+  .hero-slide h1,
+  .hero-slide:nth-child(3) h1 {
+    max-width: 12ch;
+    font-size: clamp(1.8rem, 8vw, 2.25rem);
+  }
+
+  .hero-copy {
+    -webkit-line-clamp: 4;
+  }
+
+  .team-showcase-media {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* Keep robot artwork fully visible on unit detail pages. */
+.page-hero-unit-detail::before {
+  background-position: center, center, right 4% center;
+  background-repeat: no-repeat;
+  background-size: cover, cover, auto min(90%, 560px);
+}
+
+.unit-detail-media picture,
+.unit-detail-media picture img {
+  position: absolute;
+  inset: 0;
+}
+
+.unit-detail-media picture img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 820px) {
+  .page-hero-unit-detail::before {
+    background-position: center, center, center bottom;
+    background-size: cover, cover, auto min(58%, 360px);
+  }
+}
+
+/* 首页首屏试色：曜石黑、钛灰和白色线条，不影响后续区块与内页。 */
+body.page-home {
+  --home-canvas: #070707;
+  --home-surface: #141414;
+  --home-text: #f5f5f2;
+  --home-muted: #a7a7a2;
+  --home-line: rgba(255, 255, 255, 0.2);
+  --home-line-active: #ffffff;
+  background: var(--home-canvas);
+}
+
+body.page-home::after {
+  background: repeating-linear-gradient(180deg, transparent 0 5px, rgba(255, 255, 255, 0.012) 6px);
+}
+
+body.page-home .ui-scroll-progress::before {
+  background: var(--home-line-active);
+}
+
+body.page-home .site-header {
+  color: var(--home-text);
+  border-bottom-color: var(--home-line);
+  background: rgba(7, 7, 7, 0.92);
+  box-shadow: none;
+}
+
+body.page-home .site-header::before {
+  content: none;
+}
+
+body.page-home .main-nav a {
+  color: var(--home-muted);
+}
+
+body.page-home .main-nav a::after {
+  background: var(--home-line-active);
+}
+
+body.page-home .main-nav a:hover,
+body.page-home .main-nav a:focus-visible,
+body.page-home .main-nav a.is-current {
+  color: var(--home-text);
+  border-bottom-color: transparent;
+}
+
+body.page-home .home-brand-strip {
+  color: var(--home-text);
+  border-bottom-color: var(--home-line);
+  background: var(--home-canvas);
+}
+
+body.page-home .home-brand-strip::after {
+  display: none;
+  width: 72px;
+  height: 2px;
+  background: var(--home-line-active);
+}
+
+body.page-home .home-brand-title {
+  color: var(--home-text);
+}
+
+body.page-home .hero-slider {
+  color: var(--home-text);
+  border-bottom-color: var(--home-line);
+  background: var(--home-canvas);
+}
+
+body.page-home .hero-slide-shade {
+  background:
+    linear-gradient(90deg, rgba(7, 7, 7, 0.96) 0%, rgba(7, 7, 7, 0.66) 44%, rgba(7, 7, 7, 0.08) 100%),
+    linear-gradient(0deg, rgba(7, 7, 7, 0.96) 0%, rgba(7, 7, 7, 0.18) 62%);
+}
+
+body.page-home .hero-slide .eyebrow {
+  color: var(--home-text);
+}
+
+body.page-home .hero-slide h1 {
+  color: var(--home-text);
+}
+
+body.page-home .hero-copy {
+  color: var(--home-muted);
+}
+
+body.page-home .hero-slider .button-primary {
+  color: var(--home-text);
+  border-color: var(--home-text);
+  background: rgba(7, 7, 7, 0.24);
+}
+
+body.page-home .hero-slider .button-primary:hover,
+body.page-home .hero-slider .button-primary:focus-visible {
+  color: var(--home-canvas);
+  border-color: var(--home-text);
+  background: var(--home-text);
+}
+
+body.page-home .slide-arrow {
+  color: var(--home-text);
+  border-color: var(--home-line);
+  background: rgba(20, 20, 20, 0.72);
+}
+
+body.page-home .slide-arrow:hover,
+body.page-home .slide-arrow:focus-visible {
+  color: var(--home-canvas);
+  border-color: var(--home-text);
+  background: var(--home-text);
+}
+
+body.page-home .slide-dot {
+  background: var(--home-line);
+}
+
+body.page-home .slide-dot.is-active {
+  background: var(--home-line-active);
+}
+
+body.page-home .slide-progress {
+  background: var(--home-line);
+}
+
+body.page-home .slide-progress::before {
+  background: var(--home-line-active);
+}
+
+@media (max-width: 820px) {
+  body.page-home .site-header-brand,
+  body.page-home .main-nav a {
+    color: var(--home-text);
+  }
+
+  body.page-home .nav-toggle {
+    border-color: var(--home-line);
+  }
+
+  body.page-home .nav-toggle span {
+    background: var(--home-text);
+  }
+
+  body.page-home .site-header.is-menu-open,
+  body.page-home .main-nav {
+    background: var(--home-canvas);
+  }
+
+  body.page-home .main-nav a {
+    border-bottom-color: var(--home-line);
+  }
+}
+
+/* Keep the portrait algorithm-group photo fully visible so every face remains in frame. */
+.page-hero-division-algorithm {
+  min-height: clamp(560px, 72svh, 760px);
+}
+
+.page-hero-division-algorithm::before {
+  background-position: center, center, right center;
+  background-repeat: no-repeat;
+  background-size: cover, cover, contain;
+}
+
+@media (max-width: 820px) {
+  .page-hero-division-algorithm {
+    min-height: min(620px, calc(100svh - 72px));
+  }
+
+  .page-hero-division-algorithm::before {
+    background-position: center, center, center center;
+    background-size: cover, cover, contain;
+  }
+}
+
+/* Keep the square hardware-group photo fully visible without covering its safety text. */
+.page-hero-division-hardware {
+  min-height: clamp(560px, 72svh, 760px);
+}
+
+.page-hero-division-hardware::before {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.34) 48%, rgba(0, 0, 0, 0.04)),
+    linear-gradient(115deg, rgba(28, 105, 212, 0.12), transparent 38%, rgba(226, 39, 24, 0.08)),
+    var(--page-hero-image);
+  background-position: center, center, right center;
+  background-repeat: no-repeat;
+  background-size: cover, cover, contain;
+}
+
+.division-detail-media-hardware::after {
+  opacity: 0;
+}
+
+.division-detail-media-hardware {
+  aspect-ratio: 1 / 1;
+  place-items: center;
+}
+
+.division-detail-media-hardware img {
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (max-width: 820px) {
+  .page-hero-division-hardware {
+    min-height: min(620px, calc(100svh - 72px));
+  }
+
+  .page-hero-division-hardware::before {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.2) 46%, rgba(0, 0, 0, 0.56)),
+      var(--page-hero-image);
+    background-position: center, center center;
+    background-repeat: no-repeat;
+    background-size: cover, contain;
   }
 }

@@ -1,0 +1,141 @@
+- generic [active] [ref=f10e1]:
+  - banner [ref=f10e2]:
+    - link "桂林理工大学机器人基地群星战队" [ref=f10e3] [cursor=pointer]:
+      - /url: /
+    - button "Open navigation" [ref=f10e5] [cursor=pointer]
+  - main [ref=f10e9]:
+    - region "首页轮播" [ref=f10e10]:
+      - article [ref=f10e12]
+      - button "上一张" [ref=f10e16] [cursor=pointer]: ‹
+      - button "下一张" [ref=f10e17] [cursor=pointer]: ›
+      - generic "轮播指示器" [ref=f10e19]:
+        - button "切换到第 1 张轮播" [ref=f10e20] [cursor=pointer]
+        - button "切换到第 2 张轮播" [ref=f10e21] [cursor=pointer]
+        - button "切换到第 3 张轮播" [ref=f10e22] [cursor=pointer]
+    - region [ref=f10e24]:
+      - generic [ref=f10e25]:
+        - paragraph [ref=f10e26]: Team Profile
+        - heading "唯一战队展示" [level=2] [ref=f10e27]
+      - generic [ref=f10e28]:
+        - img "桂林理工大学机器人基地群星战队封面" [ref=f10e31]
+        - generic [ref=f10e32]:
+          - paragraph [ref=f10e33]: 桂林理工大学
+          - heading "桂林理工大学机器人基地群星战队" [level=3] [ref=f10e34]
+          - paragraph [ref=f10e35]: 群星璀璨，追梦相伴
+          - paragraph [ref=f10e36]: 我们是一支面向 RoboMaster 机甲大师赛事的学生工程战队，围绕机械、电控、视觉、算法、运营等方向持续研发与协作。
+          - paragraph [ref=f10e37]: 我们从2015年建立至今已有十多年的历史，在历届 RoboMaster 赛事中积累了丰富的经验，取得了良好的成绩。战队成员来自不同专业背景，涵盖机械设计、电子信息、计算机科学等领域。我们注重理论与实践结合，通过不断的训练和比赛，提升团队的综合能力和创新水平。
+          - list [ref=f10e38]:
+            - listitem [ref=f10e39]: 机械结构
+            - listitem [ref=f10e40]: 嵌入式电控
+            - listitem [ref=f10e41]: 视觉算法
+            - listitem [ref=f10e42]: 战术协同
+            - listitem [ref=f10e43]: 赛事运营
+    - region [ref=f10e44]:
+      - generic [ref=f10e45]:
+        - paragraph [ref=f10e46]: Robot Classes
+        - heading "兵种功能预览" [level=2] [ref=f10e47]
+        - link "查看完整兵种图鉴>" [ref=f10e48] [cursor=pointer]:
+          - /url: /units/
+      - generic [ref=f10e49]:
+        - article "打开 英雄机器人 预览" [ref=f10e50]:
+          - generic [ref=f10e51]:
+            - generic [ref=f10e52]:
+              - img "英雄机器人示意图" [ref=f10e54]
+              - generic [ref=f10e55]: "01"
+            - generic [ref=f10e56]:
+              - generic [ref=f10e57]: 重火力核心
+              - heading "英雄机器人" [level=3] [ref=f10e58]
+              - paragraph [ref=f10e59]: 承担关键输出与目标打击任务，是队伍火力上限的重要来源。
+              - list [ref=f10e60]:
+                - listitem [ref=f10e61]: 远距离火力压制
+                - listitem [ref=f10e62]: 关键目标打击
+              - list [ref=f10e63]:
+                - listitem [ref=f10e64]: 高能弹丸
+                - listitem [ref=f10e65]: 高精度发射
+                - listitem [ref=f10e66]: 核心输出
+              - button "查看详情 >" [ref=f10e67] [cursor=pointer]
+        - article "打开 工程机器人 预览" [ref=f10e68]:
+          - generic [ref=f10e69]:
+            - generic [ref=f10e70]:
+              - img "工程机器人示意图" [ref=f10e72]
+              - generic [ref=f10e73]: "02"
+            - generic [ref=f10e74]:
+              - generic [ref=f10e75]: 资源与任务执行
+              - heading "工程机器人" [level=3] [ref=f10e76]
+              - paragraph [ref=f10e77]: 负责资源获取、补给协助和场地任务，是队伍经济与持续作战能力的保障。
+              - list [ref=f10e78]:
+                - listitem [ref=f10e79]: 矿石搬运
+                - listitem [ref=f10e80]: 补给协助
+              - list [ref=f10e81]:
+                - listitem [ref=f10e82]: 机构设计
+                - listitem [ref=f10e83]: 稳定搬运
+                - listitem [ref=f10e84]: 团队保障
+              - button "查看详情 >" [ref=f10e85] [cursor=pointer]
+        - article "打开 步兵机器人 预览" [ref=f10e86]:
+          - generic [ref=f10e87]:
+            - generic [ref=f10e88]:
+              - img "步兵机器人示意图" [ref=f10e89]
+              - generic [ref=f10e90]: "03"
+            - generic [ref=f10e91]:
+              - generic [ref=f10e92]: 机动作战主力
+              - heading "步兵机器人" [level=3] [ref=f10e93]
+              - paragraph [ref=f10e94]: 数量多、机动性强，承担持续对抗、阵地推进和战术执行任务。
+              - list [ref=f10e95]:
+                - listitem [ref=f10e96]: 正面对抗
+                - listitem [ref=f10e97]: 阵地压制
+              - list [ref=f10e98]:
+                - listitem [ref=f10e99]: 机动底盘
+                - listitem [ref=f10e100]: 快速响应
+                - listitem [ref=f10e101]: 持续输出
+              - button "查看详情 >" [ref=f10e102] [cursor=pointer]
+        - article "打开 哨兵机器人 预览" [ref=f10e103]:
+          - generic [ref=f10e104]:
+            - generic [ref=f10e105]:
+              - img "哨兵机器人示意图" [ref=f10e107]
+              - generic [ref=f10e108]: "04"
+            - generic [ref=f10e109]:
+              - generic [ref=f10e110]: 自动防守单位
+              - heading "哨兵机器人" [level=3] [ref=f10e111]
+              - paragraph [ref=f10e112]: 以自动化巡逻和防守为主，守护关键区域并提供持续火力威慑。
+              - list [ref=f10e113]:
+                - listitem [ref=f10e114]: 自动巡逻
+                - listitem [ref=f10e115]: 基地防守
+              - list [ref=f10e116]:
+                - listitem [ref=f10e117]: 自动控制
+                - listitem [ref=f10e118]: 防守火力
+                - listitem [ref=f10e119]: 感知决策
+              - button "查看详情 >" [ref=f10e120] [cursor=pointer]
+    - region [ref=f10e121]:
+      - generic [ref=f10e122]:
+        - paragraph [ref=f10e123]: Image / Video Bay
+        - heading "媒体素材预览" [level=2] [ref=f10e124]
+        - link "进入媒体中心>" [ref=f10e125] [cursor=pointer]:
+          - /url: /media/
+      - generic [ref=f10e126]:
+        - link "图片区代表图 Images 图片区 可替换为真实战队合影、机器人整备或实验室照片。" [ref=f10e127] [cursor=pointer]:
+          - /url: /media/
+          - img "图片区代表图" [ref=f10e129]
+          - generic [ref=f10e130]:
+            - generic [ref=f10e131]: Images
+            - strong [ref=f10e132]: 图片区
+            - text: 可替换为真实战队合影、机器人整备或实验室照片。
+        - link "视频区代表图 PLAY Videos 视频区 把 src 替换成本地 mp4 或 webm 后即可播放。" [ref=f10e133] [cursor=pointer]:
+          - /url: /media/
+          - generic [ref=f10e134]:
+            - img "视频区代表图" [ref=f10e136]
+            - generic [ref=f10e137]: PLAY
+          - generic [ref=f10e138]:
+            - generic [ref=f10e139]: Videos
+            - strong [ref=f10e140]: 视频区
+            - text: 把 src 替换成本地 mp4 或 webm 后即可播放。
+        - link "记录区代表图 Records 记录区 用于整理赛季目标、训练节点、比赛复盘和阶段性成果。" [ref=f10e141] [cursor=pointer]:
+          - /url: /media/
+          - img "记录区代表图" [ref=f10e144]
+          - generic [ref=f10e145]:
+            - generic [ref=f10e146]: Records
+            - strong [ref=f10e147]: 记录区
+            - text: 用于整理赛季目标、训练节点、比赛复盘和阶段性成果。
+  - contentinfo [ref=f10e148]:
+    - generic [ref=f10e149]: RoboMaster Team Showcase
+    - generic [ref=f10e150]: Static, configurable, media-ready.
+  - text: ">"

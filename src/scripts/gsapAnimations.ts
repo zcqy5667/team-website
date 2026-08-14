@@ -1,13 +1,18 @@
+// 统一处理滚动出现、弹窗过渡和首屏轮播的动画辅助函数。
+// 这些函数只负责给已有 DOM 节点添加动画，页面渲染仍由 Astro 完成。
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function prefersReducedMotion() {
+  // 每次调用时读取浏览器偏好，使系统无障碍设置的变化无需重新构建页面即可生效。
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
 export function initPageAtmosphere() {
+  // 顶部进度条和鼠标指针光效属于页面级增强效果。
+  // 找不到对应元素时会直接跳过，不影响页面主要功能。
   let progress = document.querySelector<HTMLElement>(".ui-scroll-progress");
   if (!progress) {
     progress = document.createElement("div");
@@ -17,6 +22,7 @@ export function initPageAtmosphere() {
   }
 
   const setProgress = () => {
+    // 限制进度比例范围，避免短页面没有有效滚动距离时出现异常。
     const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
     const ratio = Math.min(1, Math.max(0, window.scrollY / scrollable));
     const value = ratio * 100;
@@ -28,7 +34,7 @@ export function initPageAtmosphere() {
   window.addEventListener("resize", setProgress);
 
   const litCards = gsap.utils.toArray<HTMLElement>(
-    ".metric-panel, .mini-stat, .unit-card, .media-card, .media-entry-card, .honor-card, .contact-card, .division-responsibility-card, .unit-detail-card"
+    ".metric-panel, .unit-card, .media-card, .media-entry-card, .honor-card, .contact-card, .division-responsibility-card, .unit-detail-card"
   );
 
   litCards.forEach((card) => {
@@ -41,6 +47,7 @@ export function initPageAtmosphere() {
 }
 
 function modalTargets(modal: HTMLElement) {
+  // 将动画目标集中查询，避免弹窗结构变化后打开和关闭动画的目标不一致。
   const backdrop = modal.querySelector<HTMLElement>("[data-modal-backdrop]");
   const panel = modal.querySelector<HTMLElement>(".site-modal-panel");
   const contentItems = Array.from(
@@ -53,10 +60,13 @@ function modalTargets(modal: HTMLElement) {
 }
 
 export function initScrollReveals(selector: string) {
+  // 由调用方传入选择器，因为不同页面的内容区块不同，
+  // 但滚动出现的动画行为保持统一。
   const targets = gsap.utils.toArray<HTMLElement>(selector);
   if (targets.length === 0) return;
 
   if (prefersReducedMotion()) {
+    // 清除初始动画样式，让关闭动画偏好的用户立即看到内容。
     gsap.set(targets, { clearProps: "opacity,visibility,transform" });
     return;
   }
@@ -91,6 +101,7 @@ export function animateModalOpen(modal: HTMLElement) {
   gsap.killTweensOf(animatedTargets);
 
   if (prefersReducedMotion()) {
+    // 即使关闭所有动画，弹窗也必须保持完整可用。
     gsap.set(animatedTargets, { clearProps: "opacity,visibility,transform" });
     return;
   }
@@ -109,6 +120,7 @@ export function animateModalOpen(modal: HTMLElement) {
 export function animateModalClose(modal: HTMLElement, afterClose: () => void) {
   const { backdrop, panel, contentItems } = modalTargets(modal);
   if (!backdrop || !panel || prefersReducedMotion()) {
+    // 清理工作仍由调用方负责；无法或不应播放动画时直接同步执行回调。
     afterClose();
     return;
   }
@@ -127,6 +139,7 @@ export function animateModalClose(modal: HTMLElement, afterClose: () => void) {
 }
 
 export function animateHeroSlide(slides: HTMLElement[], fromIndex: number | null, toIndex: number) {
+  // `fromIndex === null` 表示初始设置，而不是从上一张可见幻灯片切换过来。
   const incoming = slides[toIndex];
   const outgoing = fromIndex === null ? null : slides[fromIndex];
   if (!incoming || outgoing === incoming) return;
@@ -138,6 +151,7 @@ export function animateHeroSlide(slides: HTMLElement[], fromIndex: number | null
   gsap.killTweensOf(allSlideTargets);
 
   if (prefersReducedMotion()) {
+    // 关闭动画时不要残留隐藏、位移或层级样式。
     gsap.set(allSlideTargets, { clearProps: "opacity,visibility,transform,zIndex" });
     return;
   }

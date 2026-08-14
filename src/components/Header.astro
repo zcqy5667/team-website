@@ -1,4 +1,6 @@
 ---
+// 页头负责导航文字、当前路由判断和移动端菜单状态。
+// 新增或删除一级页面时修改 navItems，下面的点击逻辑无需跟着改。
 import { team } from "../data/siteData";
 import { withBase } from "../utils/paths";
 
@@ -24,6 +26,7 @@ const navItems: NavItem[] = [
 ];
 
 function isCurrent(item: NavItem) {
+  // Team 链接指向首页锚点，用户访问其他页面时不应该显示为当前页面。
   if (item.match === "/#team") return false;
   const normalizedPath = currentPath.replace(import.meta.env.BASE_URL.replace(/\/$/, ""), "") || "/";
   if (item.match === "/") return normalizedPath === "/";
@@ -60,32 +63,42 @@ function isCurrent(item: NavItem) {
 </header>
 
 <script>
+  // 此脚本只操作当前渲染出的页头，由共享布局引入一次即可。
   const header = document.querySelector<HTMLElement>("[data-site-header]");
   const navToggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
   const menu = document.querySelector<HTMLElement>("[data-site-menu]");
 
   if (header && navToggle && menu) {
     const setOpen = (open: boolean) => {
-      header.classList.toggle("is-menu-open", open);
-      document.documentElement.classList.toggle("is-nav-open", open);
-      navToggle.setAttribute("aria-expanded", String(open));
-      navToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+      // 通过同一个函数同步 CSS 状态和无障碍属性。
+      const shouldOpen = open && window.matchMedia("(max-width: 820px)").matches;
+
+      header.classList.toggle("is-menu-open", shouldOpen);
+      document.documentElement.classList.toggle("is-nav-open", shouldOpen);
+      navToggle.setAttribute("aria-expanded", String(shouldOpen));
+      navToggle.setAttribute("aria-label", shouldOpen ? "Close navigation" : "Open navigation");
     };
+
+    const closeMenu = () => setOpen(false);
 
     navToggle.addEventListener("click", () => {
       setOpen(!header.classList.contains("is-menu-open"));
     });
 
     menu.addEventListener("click", (event) => {
-      if ((event.target as Element).closest("a")) setOpen(false);
+      if ((event.target as Element).closest("a")) closeMenu();
     });
 
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") closeMenu();
     });
 
     window.addEventListener("resize", () => {
-      if (window.matchMedia("(min-width: 821px)").matches) setOpen(false);
+      if (window.matchMedia("(min-width: 821px)").matches) closeMenu();
     });
+
+    window.addEventListener("pageshow", closeMenu);
+    window.addEventListener("pagehide", closeMenu);
+    window.addEventListener("hashchange", closeMenu);
   }
 </script>
