@@ -39,17 +39,21 @@ export type Unit = {
   tags: string[];
 };
 
-export type MediaType = "image" | "video" | "record";
-
-export type MediaItem = {
-  // `src` 使用 public 目录对应的 /assets/... URL。
-  // 视频素材可以暂时不填写 src，但应提供 poster 封面图。
-  type: MediaType;
+export type ShowcaseItem = {
+  type: "image" | "video" | "record";
   title: string;
   caption: string;
   src: string;
   poster?: string;
-  featured: boolean;
+  imageAlt?: string;
+  result?: string;
+};
+
+export type ShowcaseCategory = {
+  id: string;
+  label: string;
+  description: string;
+  items: ShowcaseItem[];
 };
 
 export type DivisionGroup = {
@@ -192,9 +196,9 @@ export const heroSlides: HeroSlide[] = [
   {
     kicker: "Media Bay",
     title: "训练与赛事纪录",
-    description: "图片、视频与赛季纪录可集中展示，后续替换为真实训练照、机器人特写和比赛混剪即可上线。",
-    primaryLabel: "浏览媒体",
-    primaryHref: "/media/",
+    description: "把训练照片、赛季战绩与项目记录沉淀为可以持续浏览的成果档案。",
+    primaryLabel: "查看成果",
+    primaryHref: "/honors/",
     image: "/assets/images/record-1.jpeg"
   }
 ];
@@ -294,50 +298,51 @@ export const units: Unit[] = [
   }
 ];
 
-// 媒体中心和三个媒体分类页共用的素材目录。
-// `featured` 决定某条素材是否可以作为首页或媒体中心的代表性预览。
-export const media: MediaItem[] = [
+// 荣誉与媒体统一为成果展示数据。
+// 分类只负责提供页面锚点，真正的成果内容都直接渲染在分类区内。
+export const showcaseCategories: ShowcaseCategory[] = [
   {
-    type: "image",
-    title: "战队整备区",
-    caption: "可替换为真实战队合影、机器人整备或实验室照片。",
-    src: "/assets/images/record-1.jpeg",
-    featured: true
-  },
-  {
-    type: "image",
-    title: "机器人特写",
-    caption: "用于展示底盘、云台、发射机构或传感器模块。",
-    src: "/assets/images/unit-hero.png",
-    featured: true
-  },
-  {
-    type: "video",
-    title: "赛季混剪",
-    caption: "把 src 替换成本地 mp4 或 webm 后即可播放。",
-    src: "",
-    poster: "/assets/images/video-poster.png",
-    featured: true
-  },
-  {
-    type: "image",
-    title: "训练现场",
-    caption: "记录调试、对抗训练和赛前联调过程。",
-    src: "/assets/images/media-stage.png",
-    featured: false
-  },
-  {
-    type: "record",
-    title: "赛季记录",
-    caption: "用于整理赛季目标、训练节点、比赛复盘和阶段性成果。",
-    src: "/assets/images/media-stage.png",
-    featured: false
+    id: "robomaster-season",
+    label: "RoboMaster 赛季备战成果",
+    description: "赛季队员、兵种配置、训练现场与阶段战绩展示。",
+    items: [
+      {
+        type: "image",
+        title: "步兵赛季战绩展示",
+        caption: "队员分工与赛场数据记录。",
+        src: "/assets/images/honor-season-prep.jpg",
+        imageAlt: "RoboMaster 步兵赛季战绩展示图",
+        result: "赛季战绩"
+      },
+      {
+        type: "image",
+        title: "战队整备区",
+        caption: "用于记录机器人整备、赛前检查与团队协作现场。",
+        src: "/assets/images/record-1.jpeg",
+        imageAlt: "战队整备区记录图"
+      },
+      {
+        type: "image",
+        title: "机器人特写",
+        caption: "展示底盘、云台、发射机构或传感器模块。",
+        src: "/assets/images/unit-hero.png",
+        imageAlt: "RoboMaster 机器人特写图"
+      },
+      {
+        type: "video",
+        title: "赛季混剪",
+        caption: "后续替换成本地 mp4 或 webm 后即可播放。",
+        src: "",
+        poster: "/assets/images/video-poster.png",
+        imageAlt: "赛季混剪视频封面"
+      },
+      {
+        type: "record",
+        title: "赛季记录",
+        caption: "整理赛季目标、训练节点、比赛复盘和阶段性成果。",
+        src: "/assets/images/media-stage.png",
+        imageAlt: "赛季记录配图"
+      }
+    ]
   }
 ];
-
-// 集中维护媒体类型名称，供后续筛选器或标签使用。
-export const mediaLabels: Record<MediaType, string> = {
-  image: "图片",
-  video: "视频",
-  record: "记录"
-};

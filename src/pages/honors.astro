@@ -1,63 +1,124 @@
 ---
-// 荣誉内容当前只在本页面使用，占位数据直接写在页面内。
-// 如果未来需要复用或统一管理，再移动到 siteData.ts。
 import Layout from "../layouts/Layout.astro";
+import type { ShowcaseItem } from "../data/siteData";
+import { showcaseCategories } from "../data/siteData";
 import { withBase } from "../utils/paths";
 
-const honors = [
-  {
-    year: "2026",
-    title: "RoboMaster 赛季备战成果",
-    event: "Season Preparation",
-    detail: "用于展示本赛季阶段目标、技术突破、训练成果或校内外竞赛奖项。",
-    image: "/assets/images/honor-season-prep.jpg",
-    imageAlt: "赛季备战成果展示图"
-  },
-  {
-    year: "2025",
-    title: "机器人系统综合实践",
-    event: "Engineering Practice",
-    detail: "用于记录机械、电控、算法、硬件和运营协作产出的代表性项目。"
-  },
-  {
-    year: "2024",
-    title: "团队建设与技术沉淀",
-    event: "Team Development",
-    detail: "用于沉淀招新培养、技术文档、赛季复盘和公开展示成果。"
-  }
-];
+const categories = showcaseCategories.filter((category) => category.items.length > 0);
+const itemCount = categories.reduce((total, category) => total + category.items.length, 0);
+const imageCount = categories.reduce((total, category) => total + category.items.filter((item) => item.type === "image").length, 0);
+const videoCount = categories.reduce((total, category) => total + category.items.filter((item) => item.type === "video").length, 0);
+const recordCount = categories.reduce((total, category) => total + category.items.filter((item) => item.type === "record").length, 0);
+
+function typeLabel(type: ShowcaseItem["type"]) {
+  return {
+    image: "图片",
+    video: "视频",
+    record: "记录"
+  }[type];
+}
 ---
 
-<Layout title="荣誉展示" description="桂林理工大学机器人基地荣誉、成果与赛季记录展示。" footerBackHref="/" footerBackLabel="返回首页">
+<Layout
+  title="荣誉与成果"
+  description="桂林理工大学机器人基地的 RoboMaster 赛季战绩、图片、视频与阶段记录。"
+  footerBackHref="/"
+  footerBackLabel="返回首页"
+  enableInteractions={false}
+>
   <section class="page-hero page-hero-honors" style={`--page-hero-image: image-set(url("${withBase("/assets/images/team-cover.webp")}") type("image/webp"), url("${withBase("/assets/images/team-cover.png")}") type("image/png"))`}>
     <div class="page-hero-content">
-      <p class="eyebrow">Honors</p>
+      <p class="eyebrow">HONORS / RESULTS</p>
       <h1>荣誉与成果</h1>
-      <p>这里集中展示基地在赛事、项目实践、技术沉淀和团队建设中的阶段成果，后续可替换为真实奖项与证书信息。</p>
+      <p>把赛季战绩、训练影像和阶段记录集中沉淀为一份持续更新的 RoboMaster 成果档案。</p>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="honors-title">
-    <div class="section-heading">
-      <p class="eyebrow">Achievement Log</p>
-      <h2 id="honors-title">荣誉记录</h2>
-    </div>
-    <div class="honor-grid">
-      {
-        honors.map((honor) => (
-          <article class="honor-card">
-            {honor.image && (
-              <div class="honor-card-media">
-                <img src={withBase(honor.image)} alt={honor.imageAlt ?? honor.title} loading="lazy" />
-              </div>
-            )}
-            <span>{honor.year}</span>
-            <strong>{honor.title}</strong>
-            <small>{honor.event}</small>
-            <p>{honor.detail}</p>
-          </article>
-        ))
-      }
+  <section class="honors-overview" aria-label="成果统计">
+    <div class="honors-stat-grid">
+      <div class="honor-stat">
+        <span class="honor-stat-value">{itemCount}</span>
+        <span class="honor-stat-label">成果条目</span>
+      </div>
+      <div class="honor-stat">
+        <span class="honor-stat-value">{categories.length}</span>
+        <span class="honor-stat-label">成果分类</span>
+      </div>
+      <div class="honor-stat">
+        <span class="honor-stat-value">{imageCount + videoCount + recordCount}</span>
+        <span class="honor-stat-label">图像 / 视频 / 记录</span>
+      </div>
     </div>
   </section>
+
+  <section class="section honors-index-section" id="honors-index" aria-labelledby="honors-index-title">
+    <div class="section-heading">
+      <p class="eyebrow">Archive Index</p>
+      <h2 id="honors-index-title">成果索引</h2>
+    </div>
+    <nav class="honors-index-nav" aria-label="成果分类导航">
+      {
+        categories.map((category, index) => (
+          <a href={`#${category.id}`}>
+            <span class="honors-index-number">{String(index + 1).padStart(2, "0")}</span>
+            <span class="honors-index-label">{category.label}</span>
+            <small>{category.items.length.toString().padStart(2, "0")} ITEMS</small>
+            <span class="honors-index-arrow" aria-hidden="true">→</span>
+          </a>
+        ))
+      }
+    </nav>
+  </section>
+
+  <div class="honors-content">
+    {
+      categories.map((category, categoryIndex) => (
+        <section class="honors-category-section" id={category.id} aria-labelledby={`${category.id}-title`}>
+          <div class="honors-category-heading">
+            <span class="honors-category-number">{String(categoryIndex + 1).padStart(2, "0")}</span>
+            <div>
+              <p class="eyebrow">Collection {String(categoryIndex + 1).padStart(2, "0")}</p>
+              <h2 id={`${category.id}-title`}>{category.label}</h2>
+              <p>{category.description}</p>
+            </div>
+          </div>
+
+          <div class="honors-items-grid">
+            {
+              category.items.map((item, itemIndex) => (
+                <article class:list={["honors-item", `honors-item-${item.type}`, { "is-featured": itemIndex === 0 }]}>
+                  <div class="honors-item-media">
+                    {item.type === "video" && item.src ? (
+                      <video controls preload="metadata" poster={item.poster ? withBase(item.poster) : undefined}>
+                        <source src={withBase(item.src)} />
+                      </video>
+                    ) : item.src || item.poster ? (
+                      <img
+                        src={withBase(item.src || item.poster || "")}
+                        alt={item.imageAlt ?? item.title}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <div class="honors-item-placeholder" aria-label="待补充视频素材">VIDEO / PENDING</div>
+                    )}
+                    <span class="honors-item-type">{typeLabel(item.type)}</span>
+                  </div>
+                  <div class="honors-item-body">
+                    <div class="honors-item-heading">
+                      <span>{typeLabel(item.type)}</span>
+                      <small>{String(itemIndex + 1).padStart(2, "0")}</small>
+                    </div>
+                    <h3>{item.title}</h3>
+                    <p>{item.caption}</p>
+                    {item.result && <span class="honors-item-result">{item.result}</span>}
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+      ))
+    }
+  </div>
 </Layout>

@@ -6,6 +6,7 @@
     <div class="site-modal-content">
       <p class="eyebrow" data-modal-kicker>Detail</p>
       <h2 id="site-modal-title" data-modal-title>详情</h2>
+      <div class="site-modal-facts" data-modal-facts hidden></div>
       <p data-modal-description></p>
       <div class="site-modal-tags" data-modal-tags></div>
       <a class="button button-primary" data-modal-link href="#">查看完整页面</a>
@@ -75,18 +76,21 @@
     const link = card.matches("a") ? card : card.querySelector("a[href]");
     const modalHref = card.dataset.modalHref || link?.href || "";
     const title =
+      card.dataset.modalTitle ||
       textFrom(card, "h3") ||
       textFrom(card, ".media-meta strong") ||
       textFrom(card, ".division-meta strong") ||
       textFrom(card, "strong") ||
       "详情";
     const kicker =
+      card.dataset.modalKicker ||
       textFrom(card, ".unit-role") ||
       textFrom(card, ".media-entry-kicker") ||
       textFrom(card, ".record-chip") ||
       card.dataset.cardType ||
       "Detail";
     const description =
+      card.dataset.modalDescription ||
       textFrom(card, ".unit-body p") ||
       textFrom(card, ".media-meta span:not(.media-entry-kicker)") ||
       textFrom(card, "p");
@@ -95,6 +99,22 @@
     modal.querySelector("[data-modal-kicker]").textContent = kicker;
     modal.querySelector("[data-modal-title]").textContent = title;
     modal.querySelector("[data-modal-description]").textContent = description;
+
+    const facts = modal.querySelector("[data-modal-facts]");
+    const factItems = [
+      ["赛事 / 项目", card.dataset.modalEvent],
+      ["结果", card.dataset.modalResult]
+    ].filter(([, value]) => value);
+    if (facts) {
+      facts.innerHTML = "";
+      facts.hidden = factItems.length === 0;
+      factItems.forEach(([label, value]) => {
+        const item = document.createElement("div");
+        item.className = "site-modal-fact";
+        item.innerHTML = `<span>${label}</span><strong>${value}</strong>`;
+        facts.append(item);
+      });
+    }
 
     const tagBox = modal.querySelector("[data-modal-tags]");
     tagBox.innerHTML = "";
@@ -171,17 +191,28 @@
       const target = targetId ? document.getElementById(targetId) : null;
       if (!group || !target) return;
 
-      const value = filterButton.dataset.filterValue || "all";
       group.querySelectorAll("[data-filter-value]").forEach((button) => {
         const isActive = button === filterButton;
         button.classList.toggle("is-active", isActive);
         button.setAttribute("aria-pressed", isActive ? "true" : "false");
       });
 
+      const groups = Array.from(document.querySelectorAll(`[data-filter-target="${targetId}"]`));
       let visible = 0;
       target.querySelectorAll("[data-filter-tags]").forEach((card) => {
-        const haystack = (card.dataset.filterTags || "").toLowerCase();
-        const show = value === "all" || haystack.includes(value.toLowerCase());
+        const show = groups.every((filterGroup) => {
+          const active = filterGroup.querySelector("[data-filter-value].is-active");
+          const value = active?.dataset.filterValue || "all";
+          if (value === "all") return true;
+
+          const key = filterGroup.dataset.filterKey;
+          if (key) {
+            const datasetKey = `filter${key.charAt(0).toUpperCase()}${key.slice(1)}`;
+            return (card.dataset[datasetKey] || "").toLowerCase() === value.toLowerCase();
+          }
+
+          return (card.dataset.filterTags || "").toLowerCase().includes(value.toLowerCase());
+        });
         card.hidden = !show;
         card.setAttribute("aria-hidden", show ? "false" : "true");
         if (show) visible += 1;

@@ -2,7 +2,6 @@
 // 首页的战队介绍区块。这里直接接收完整 Team 对象，
 // 文字和统计数据统一在 src/data/siteData.ts 中维护。
 import type { Team } from "../data/siteData";
-import OptimizedImage from "./OptimizedImage.astro";
 import TagList from "./TagList.astro";
 
 type Props = {
@@ -10,11 +9,30 @@ type Props = {
 };
 
 const { team } = Astro.props;
+const amapKey = import.meta.env.PUBLIC_AMAP_KEY || "";
+const amapSecurityCode = import.meta.env.PUBLIC_AMAP_SECURITY_CODE || "";
 ---
 
 <div class="team-showcase">
-  <div class="team-showcase-media">
-    <OptimizedImage src={team.cover} alt={`${team.name}封面`} loading="lazy" />
+  <div class="team-showcase-media team-showcase-map">
+    <div class="team-amap" data-amap-map aria-label="桂林理工大学雁山校区地图"></div>
+    <div class="team-map-fallback" data-amap-fallback hidden>
+      <strong>地图暂不可用</strong>
+      <span>请配置高德地图 Web JS API Key 后刷新页面。</span>
+    </div>
+    <div class="team-map-overlay" aria-hidden="true">
+      <span class="team-map-kicker">Base Location</span>
+      <strong>桂林理工大学</strong>
+      <span>广西桂林 · 雁山校区</span>
+    </div>
+    <a
+      class="team-map-link"
+      href="https://uri.amap.com/marker?position=110.299896%2C25.061361&name=%E6%A1%82%E6%9E%97%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9F%BA%E5%9C%B0"
+      target="_blank"
+      rel="noreferrer"
+    >
+      在地图中打开 <span aria-hidden="true">↗</span>
+    </a>
   </div>
   <div class="team-showcase-content">
     <p class="eyebrow">{team.school}</p>
@@ -25,3 +43,59 @@ const { team } = Astro.props;
     <TagList items={team.tags} className="tag-list" />
   </div>
 </div>
+
+<script define:vars={{ amapKey, amapSecurityCode }}>
+  const mapRoot = document.querySelector("[data-amap-map]");
+  const fallback = document.querySelector("[data-amap-fallback]");
+  const targetPosition = [110.299896, 25.061361];
+  const targetName = "桂林理工大学机器人基地";
+
+  function showFallback() {
+    if (fallback) fallback.hidden = false;
+    if (mapRoot) mapRoot.hidden = true;
+  }
+
+  function loadAmap() {
+    if (!amapKey) return Promise.reject(new Error("Missing AMap key"));
+    if (window.AMap) return Promise.resolve(window.AMap);
+
+    if (amapSecurityCode) {
+      window._AMapSecurityConfig = {
+        securityJsCode: amapSecurityCode
+      };
+    }
+
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = `https://webapi.amap.com/maps?v=2.0&key=${encodeURIComponent(amapKey)}`;
+      script.async = true;
+      script.onload = () => resolve(window.AMap);
+      script.onerror = () => reject(new Error("Failed to load AMap"));
+      document.head.append(script);
+    });
+  }
+
+  loadAmap()
+    .then((AMap) => {
+      if (!mapRoot) return;
+
+      const map = new AMap.Map(mapRoot, {
+        center: targetPosition,
+        zoom: 16,
+        viewMode: "2D"
+      });
+      const marker = new AMap.Marker({
+        position: targetPosition,
+        title: targetName
+      });
+      const infoWindow = new AMap.InfoWindow({
+        content: `<div style="padding: 4px 8px;"><strong>${targetName}</strong><br />广西桂林 · 雁山校区</div>`,
+        offset: new AMap.Pixel(0, -30)
+      });
+
+      marker.setMap(map);
+      marker.on("click", () => infoWindow.open(map, targetPosition));
+      window.addEventListener("resize", () => map.resize(), { passive: true });
+    })
+    .catch(showFallback);
+</script>
