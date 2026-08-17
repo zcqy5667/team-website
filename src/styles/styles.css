@@ -618,6 +618,7 @@ button {
 .text-link {
   justify-self: end;
   color: var(--text);
+  font-size: 1.08rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.08em;
