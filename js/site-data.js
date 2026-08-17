@@ -76,7 +76,7 @@ window.RM_SITE = {
       role: "资源与任务执行",
       image: "assets/images/unit-engineer.svg",
       summary: "负责资源获取、补给协助和场地任务，是队伍经济与持续作战能力的保障。",
-      functions: ["矿石搬运", "补给协助", "场地机关交互"],
+      functions: ["能量单元装配", "补给协助", "场地机关交互"],
       tags: ["机构设计", "稳定搬运", "团队保障"]
     },
     {
