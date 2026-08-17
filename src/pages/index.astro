@@ -5,21 +5,17 @@ import HeroSlider from "../components/HeroSlider.astro";
 import Layout from "../layouts/Layout.astro";
 import TeamShowcase from "../components/TeamShowcase.astro";
 import UnitCard from "../components/UnitCard.astro";
-import { heroSlides, team, units } from "../data/siteData";
+import { heroSlides, homeMoreLinks, team, units } from "../data/siteData";
 import { withBase } from "../utils/paths";
 ---
 
 <Layout title="RoboMaster 单战队展示" description="RoboMaster 机甲大师单战队展示站，包含首屏轮播、兵种功能、图片视频媒体展示。">
-  <section class="home-brand-strip" aria-label="基地名称">
-    <a href={withBase("/")} class="home-brand-title">{team.name}</a>
-  </section>
-
   <HeroSlider slides={heroSlides} />
 
   <section id="team" class="section team-section" aria-labelledby="team-title">
     <div class="section-heading">
       <p class="eyebrow">Team Profile</p>
-      <h2 id="team-title">战队展示</h2>
+      <h2 id="team-title">战队介绍</h2>
     </div>
     <TeamShowcase team={team} />
   </section>
@@ -27,11 +23,37 @@ import { withBase } from "../utils/paths";
   <section id="units" class="section units-section" aria-labelledby="units-title">
     <div class="section-heading">
       <p class="eyebrow">Robot Classes</p>
-      <h2 id="units-title">兵种功能预览</h2>
+      <h2 id="units-title">兵种介绍</h2>
       <a class="text-link" href={withBase("/units/")}>查看完整兵种图鉴</a>
     </div>
     <div class="unit-grid unit-grid-preview">
       {units.slice(0, 4).map((unit) => <UnitCard unit={unit} preview />)}
+    </div>
+  </section>
+
+  <section id="recruit" class="section home-more-section" aria-labelledby="home-more-title">
+    <div class="section-heading">
+      <p class="eyebrow">Join The Team</p>
+      <h2 id="home-more-title">了解更多</h2>
+    </div>
+    <div class="home-more-grid">
+      {
+        homeMoreLinks.map((link) => (
+          <a
+            class="home-more-link"
+            href={withBase(link.href)}
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noopener noreferrer" : undefined}
+          >
+            <span class="home-more-link-topline">
+              <span class="home-more-link-icon" aria-hidden="true">{link.external ? "↗" : "→"}</span>
+              <strong>{link.label}</strong>
+              <span class="home-more-link-arrow" aria-hidden="true">→</span>
+            </span>
+            <span>{link.description}</span>
+          </a>
+        ))
+      }
     </div>
   </section>
 </Layout>

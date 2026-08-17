@@ -1,0 +1,91 @@
+- generic [active] [ref=f13e1]:
+  - banner [ref=f13e2]:
+    - link [ref=f13e3] [cursor=pointer]:
+      - /url: /
+      - img "桂林理工大学群星战队" [ref=f13e4]
+    - navigation "主导航" [ref=f13e5]:
+      - link "首页" [ref=f13e6] [cursor=pointer]:
+        - /url: /
+      - link "战队" [ref=f13e7] [cursor=pointer]:
+        - /url: /#team
+      - link "兵种" [ref=f13e8] [cursor=pointer]:
+        - /url: /units/
+      - link "分工" [ref=f13e9] [cursor=pointer]:
+        - /url: /division/
+      - link "成果" [ref=f13e10] [cursor=pointer]:
+        - /url: /honors/
+      - link "联系" [ref=f13e11] [cursor=pointer]:
+        - /url: /contact/
+    - button "切换为深色模式" [pressed] [ref=f13e12] [cursor=pointer]:
+      - generic [ref=f13e13]: ☼
+      - generic [ref=f13e14]: ☾
+  - main [ref=f13e15]:
+    - generic [ref=f13e17]:
+      - paragraph [ref=f13e18]: Division Gateway
+      - heading "战队五大分工" [level=1] [ref=f13e19]
+      - paragraph [ref=f13e20]: 机械组、电控组、算法组、硬件组和运营组共同支撑机器人研发、赛季训练、赛事执行与团队传播。选择一个分工方向，查看更完整的职责介绍。
+    - region [ref=f13e21]:
+      - generic [ref=f13e22]:
+        - paragraph [ref=f13e23]: Team Roles
+        - heading "选择分工方向" [level=2] [ref=f13e24]
+      - generic [ref=f13e25]:
+        - link "机械组代表图 Mechanical 机械组 负责机器人结构设计、传动机构、加工装配、机构调试与可靠性优化。 结构建模 执行机构 加工装配" [ref=f13e26] [cursor=pointer]:
+          - /url: /division/mechanical/
+          - img "机械组代表图" [ref=f13e29]
+          - generic [ref=f13e30]:
+            - generic [ref=f13e31]: Mechanical
+            - strong [ref=f13e32]: 机械组
+            - generic [ref=f13e33]: 负责机器人结构设计、传动机构、加工装配、机构调试与可靠性优化。
+            - list [ref=f13e34]:
+              - listitem [ref=f13e35]: 结构建模
+              - listitem [ref=f13e36]: 执行机构
+              - listitem [ref=f13e37]: 加工装配
+        - link "电控组代表图 Control 电控组 负责嵌入式程序、电机控制、传感器接入、通信协同与整车联调。 嵌入式 运动控制 通信链路" [ref=f13e38] [cursor=pointer]:
+          - /url: /division/control/
+          - img "电控组代表图" [ref=f13e41]
+          - generic [ref=f13e42]:
+            - generic [ref=f13e43]: Control
+            - strong [ref=f13e44]: 电控组
+            - generic [ref=f13e45]: 负责嵌入式程序、电机控制、传感器接入、通信协同与整车联调。
+            - list [ref=f13e46]:
+              - listitem [ref=f13e47]: 嵌入式
+              - listitem [ref=f13e48]: 运动控制
+              - listitem [ref=f13e49]: 通信链路
+        - link "算法组代表图 Algorithm 算法组 负责视觉感知、导航定位、路径规划、状态估计与自动控制。 计算机视觉 导航规划 状态估计" [ref=f13e50] [cursor=pointer]:
+          - /url: /division/algorithm/
+          - img "算法组代表图" [ref=f13e53]
+          - generic [ref=f13e54]:
+            - generic [ref=f13e55]: Algorithm
+            - strong [ref=f13e56]: 算法组
+            - generic [ref=f13e57]: 负责视觉感知、导航定位、路径规划、状态估计与自动控制。
+            - list [ref=f13e58]:
+              - listitem [ref=f13e59]: 计算机视觉
+              - listitem [ref=f13e60]: 导航规划
+              - listitem [ref=f13e61]: 状态估计
+        - link "硬件组代表图 Hardware 硬件组 负责电路设计、PCB、供电系统、线束规范、硬件测试与故障排查。 PCB 供电系统 线束管理" [ref=f13e62] [cursor=pointer]:
+          - /url: /division/hardware/
+          - img "硬件组代表图" [ref=f13e64]
+          - generic [ref=f13e65]:
+            - generic [ref=f13e66]: Hardware
+            - strong [ref=f13e67]: 硬件组
+            - generic [ref=f13e68]: 负责电路设计、PCB、供电系统、线束规范、硬件测试与故障排查。
+            - list [ref=f13e69]:
+              - listitem [ref=f13e70]: PCB
+              - listitem [ref=f13e71]: 供电系统
+              - listitem [ref=f13e72]: 线束管理
+        - link "运营组代表图 Operation 运营组 负责内容策划、视觉传播、赛事资料、招新活动与团队协作。 内容策划 视觉传播 活动运营" [ref=f13e73] [cursor=pointer]:
+          - /url: /division/operation/
+          - img "运营组代表图" [ref=f13e76]
+          - generic [ref=f13e77]:
+            - generic [ref=f13e78]: Operation
+            - strong [ref=f13e79]: 运营组
+            - generic [ref=f13e80]: 负责内容策划、视觉传播、赛事资料、招新活动与团队协作。
+            - list [ref=f13e81]:
+              - listitem [ref=f13e82]: 内容策划
+              - listitem [ref=f13e83]: 视觉传播
+              - listitem [ref=f13e84]: 活动运营
+  - contentinfo [ref=f13e85]:
+    - generic [ref=f13e86]: RoboMaster Team Showcase
+    - link "返回首页" [ref=f13e87] [cursor=pointer]:
+      - /url: /
+  - text: ">"

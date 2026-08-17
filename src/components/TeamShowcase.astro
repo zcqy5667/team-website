@@ -1,6 +1,7 @@
 ---
 // 首页的战队介绍区块。这里直接接收完整 Team 对象，
 // 文字和统计数据统一在 src/data/siteData.ts 中维护。
+import { teamMapHref } from "../data/siteData";
 import type { Team } from "../data/siteData";
 import TagList from "./TagList.astro";
 
@@ -27,7 +28,7 @@ const amapSecurityCode = import.meta.env.PUBLIC_AMAP_SECURITY_CODE || "";
     </div>
     <a
       class="team-map-link"
-      href="https://uri.amap.com/marker?position=110.299896%2C25.061361&name=%E6%A1%82%E6%9E%97%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9F%BA%E5%9C%B0"
+      href={teamMapHref}
       target="_blank"
       rel="noreferrer"
     >

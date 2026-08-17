@@ -1,0 +1,1 @@
+[    2988ms] [WARNING] Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently @ https://webapi.amap.com/maps?v=2.0&key=e4679e4b31b433c2cfcb966174bf5ce0:0

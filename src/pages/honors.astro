@@ -110,7 +110,7 @@ function typeLabel(type: ShowcaseItem["type"]) {
                       <small>{String(itemIndex + 1).padStart(2, "0")}</small>
                     </div>
                     <h3>{item.title}</h3>
-                    <p>{item.caption}</p>
+                    {item.caption && <p>{item.caption}</p>}
                     {item.result && <span class="honors-item-result">{item.result}</span>}
                   </div>
                 </article>

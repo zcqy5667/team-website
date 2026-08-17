@@ -17,11 +17,16 @@ export function getStaticPaths() {
 }
 
 const { group } = Astro.props;
+// 硬件组首屏使用单独的展示图；职责正文继续沿用 group.image。
+const heroImage = group.slug === "hardware" ? "/assets/images/yingjian1.png" : group.image;
 // CSS 背景图需要拼接 image-set 字符串；内容图片使用 OptimizedImage，
 // 以获得相同的 PNG/WebP 回退能力。
-const backgroundImage = group.image.toLowerCase().includes(".png")
-  ? `image-set(url("${withBase(webpPath(group.image))}") type("image/webp"), url("${withBase(group.image)}") type("image/png"))`
-  : `url("${withBase(group.image)}")`;
+const backgroundImage =
+  heroImage === "/assets/images/yingjian1.png"
+    ? `url("${withBase(heroImage)}")`
+    : heroImage.toLowerCase().includes(".png")
+      ? `image-set(url("${withBase(webpPath(heroImage))}") type("image/webp"), url("${withBase(heroImage)}") type("image/png"))`
+      : `url("${withBase(heroImage)}")`;
 ---
 
 <Layout title={`RoboMaster ${group.name}`} description={group.summary} footerBackHref="/division/" footerBackLabel="返回分工">

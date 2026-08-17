@@ -1,0 +1,60 @@
+- generic [active] [ref=f22e1]:
+  - banner [ref=f22e2]:
+    - link [ref=f22e3] [cursor=pointer]:
+      - /url: /
+      - img "桂林理工大学群星战队" [ref=f22e4]
+    - navigation "主导航" [ref=f22e5]:
+      - link "首页" [ref=f22e6] [cursor=pointer]:
+        - /url: /
+      - link "战队" [ref=f22e7] [cursor=pointer]:
+        - /url: /#team
+      - link "兵种" [ref=f22e8] [cursor=pointer]:
+        - /url: /units/
+      - link "分工" [ref=f22e9] [cursor=pointer]:
+        - /url: /division/
+      - link "成果" [ref=f22e10] [cursor=pointer]:
+        - /url: /honors/
+      - link "联系" [ref=f22e11] [cursor=pointer]:
+        - /url: /contact/
+    - button "切换为深色模式" [pressed] [ref=f22e12] [cursor=pointer]:
+      - generic [ref=f22e13]: ☀
+      - generic [ref=f22e14]: ☾
+  - main [ref=f22e15]:
+    - generic [ref=f22e17]:
+      - paragraph [ref=f22e18]: Algorithm
+      - heading "算法组" [level=1] [ref=f22e19]
+      - paragraph [ref=f22e20]: 负责视觉感知、导航定位、路径规划、状态估计与自动控制。
+    - region [ref=f22e21]:
+      - generic [ref=f22e22]:
+        - img "算法组展示图" [ref=f22e25]
+        - generic [ref=f22e26]:
+          - paragraph [ref=f22e27]: Role Detail
+          - heading "算法组职责" [level=2] [ref=f22e28]
+          - paragraph [ref=f22e29]: 算法组承载着机器人“感知”与“决策”的核心使命，致力于让机器人在复杂多变的赛场环境中精准理解自身状态与外部环境，并据此做出高效、可靠的辅助决策。工作内容横跨视觉感知与导航决策两大技术方向：在视觉侧，重点攻坚装甲板识别、目标定位、弹道补偿、自动瞄准及数据调参，赋予机器人“看见并锁定目标”的能力；在导航侧，负责建图定位与路径规划，让机器人明确“自身在哪儿、该往哪儿去”。 真实赛场充斥着光照突变、高速运动、震动颠簸以及各类电磁与信号干扰，这对算法的稳定性和实时性提出了远高于实验室环境的苛刻要求。组内需要持续迭代图像处理、状态估计、运动预测与决策规划等核心模块，在识别精度与响应速度之间寻求最优化平衡，确保机器人无论在对抗的哪个阶段，都能保持稳定、敏锐、果断的赛场表现。 算法并非纸上谈兵的理论推演，而是直面物理世界真实不确定性的工程实践——模型过拟合、数据丢帧、传输延迟、算力瓶颈，每一个环节都可能成为系统链条上的薄弱点。如果说传感器是机器人的“感官”，执行器是机器人的“四肢”，那么算法则承担着“大脑与小脑”的双重职责：既要在宏观层面做出合理的战术决策，又要在毫秒级的时间内完成精确的运动控制与目标跟踪。 在这里，成员将系统性地接触并深入计算机视觉、深度学习、状态估计、多传感器融合、导航规划与自动控制等前沿技术领域，在一次次调试、回滚、优化与重构中，积累完整的机器人算法工程经验，锻炼在不确定环境中快速定位问题、设计解决方案并落地验证的综合能力——这是任何教科书都无法给予的真实成长。
+          - list [ref=f22e30]:
+            - listitem [ref=f22e31]: 计算机视觉
+            - listitem [ref=f22e32]: 导航规划
+            - listitem [ref=f22e33]: 状态估计
+            - listitem [ref=f22e34]: 自动控制
+    - region [ref=f22e35]:
+      - generic [ref=f22e36]:
+        - paragraph [ref=f22e37]: Responsibilities
+        - heading "核心职责" [level=2] [ref=f22e38]
+      - generic [ref=f22e39]:
+        - article [ref=f22e40]:
+          - generic [ref=f22e41]: "01"
+          - strong [ref=f22e42]: 视觉感知与目标跟踪
+        - article [ref=f22e43]:
+          - generic [ref=f22e44]: "02"
+          - strong [ref=f22e45]: 导航定位与路径规划
+        - article [ref=f22e46]:
+          - generic [ref=f22e47]: "03"
+          - strong [ref=f22e48]: 状态估计与多传感器融合
+        - article [ref=f22e49]:
+          - generic [ref=f22e50]: "04"
+          - strong [ref=f22e51]: 决策控制与数据调参
+  - contentinfo [ref=f22e52]:
+    - generic [ref=f22e53]: RoboMaster Team Showcase
+    - link "返回分工" [ref=f22e54] [cursor=pointer]:
+      - /url: /division/
+  - text: ">"

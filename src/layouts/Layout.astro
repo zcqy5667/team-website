@@ -32,6 +32,12 @@ const pageTitle = normalizedPath === "/" ? team.name : `${team.name} | ${title}`
     <meta name="description" content={description} />
     <!-- 所有 public 资源 URL 都通过 withBase 处理，以兼容部署在子路径下的情况。 -->
     <link rel="icon" type="image/png" href={withBase(team.emblem)} />
+    <script is:inline>
+      (() => {
+        const savedTheme = window.localStorage.getItem("site-theme");
+        document.documentElement.dataset.theme = savedTheme === "light" ? "light" : "dark";
+      })();
+    </script>
   </head>
   <body class:list={{ "page-home": normalizedPath === "/" }}>
     <Header currentPath={currentPath} />

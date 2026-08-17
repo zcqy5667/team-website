@@ -68,6 +68,32 @@ export type DivisionGroup = {
   tags: string[];
 };
 
+export type HomeMoreLink = {
+  label: string;
+  description: string;
+  href: string;
+  external?: boolean;
+};
+
+export const recruitGroupHref = "https://qm.qq.com/q/oRHMOhxhwQ";
+export const teamMapHref =
+  "https://uri.amap.com/marker?position=110.299896%2C25.061361&name=%E6%A1%82%E6%9E%97%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9F%BA%E5%9C%B0";
+
+// 首页“了解更多”入口。外部 QQ 群链接沿用招新页的公开入口。
+export const homeMoreLinks: HomeMoreLink[] = [
+  {
+    label: "加入招新群",
+    description: "加入 QQ 群，和我们一起聊聊机器人、比赛与赛季生活。",
+    href: recruitGroupHref,
+    external: true
+  },
+  {
+    label: "加入我们",
+    description: "查看各个组的分工与职责，找到适合你的技术方向。",
+    href: "/division/"
+  }
+];
+
 // 可编辑的分工目录，也是动态分工详情页的生成来源。
 export const divisionGroups: DivisionGroup[] = [
   {
@@ -125,7 +151,7 @@ export const divisionGroups: DivisionGroup[] = [
     slug: "hardware",
     name: "硬件组",
     kicker: "Hardware",
-    image: "/assets/images/yingjian.jpg",
+    image: "/assets/images/yingjian1.png",
     summary: "负责电路设计、PCB、供电系统、线束规范、硬件测试与故障排查。",
     detail:
       `硬件组承担机器人电路板的设计、实现与调试工作，将机器人的构想从理论概念转化为实体设备。所有软件算法与控制代码，都需要依托硬件平台，才能在物理环境中完成实际运行。
@@ -159,8 +185,7 @@ export const divisionGroups: DivisionGroup[] = [
 
 // 真实战队资料准备好后，在这里替换占位文案和资源。
 export const team: Team = {
-  name: "桂林理工大学机器人基地群星战队",
-  school: "桂林理工大学",
+  name: "桂林理工大学群星战队",
   location: "广西桂林",
   slogan: "群星璀璨，追梦相伴",
   logo: "RM",
@@ -331,7 +356,7 @@ export const showcaseCategories: ShowcaseCategory[] = [
       {
         type: "video",
         title: "赛季混剪",
-        caption: "后续替换成本地 mp4 或 webm 后即可播放。",
+        caption: "",
         src: "",
         poster: "/assets/images/video-poster.png",
         imageAlt: "赛季混剪视频封面"

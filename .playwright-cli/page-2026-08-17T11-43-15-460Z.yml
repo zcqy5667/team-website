@@ -1,0 +1,60 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - link [ref=e3] [cursor=pointer]:
+      - /url: /
+      - img "桂林理工大学群星战队" [ref=e4]
+    - navigation "主导航" [ref=e5]:
+      - link "首页" [ref=e6] [cursor=pointer]:
+        - /url: /
+      - link "战队" [ref=e7] [cursor=pointer]:
+        - /url: /#team
+      - link "兵种" [ref=e8] [cursor=pointer]:
+        - /url: /units/
+      - link "分工" [ref=e9] [cursor=pointer]:
+        - /url: /division/
+      - link "成果" [ref=e10] [cursor=pointer]:
+        - /url: /honors/
+      - link "联系" [ref=e11] [cursor=pointer]:
+        - /url: /contact/
+    - button "切换为深色模式" [active] [pressed] [ref=e54] [cursor=pointer]:
+      - generic [ref=e13]: ☼
+      - generic [ref=e14]: ☾
+  - main [ref=e15]:
+    - generic [ref=e17]:
+      - paragraph [ref=e18]: Hardware
+      - heading "硬件组" [level=1] [ref=e19]
+      - paragraph [ref=e20]: 负责电路设计、PCB、供电系统、线束规范、硬件测试与故障排查。
+    - region [ref=e21]:
+      - generic [ref=e22]:
+        - img "硬件组展示图" [ref=e24]
+        - generic [ref=e25]:
+          - paragraph [ref=e26]: Role Detail
+          - heading "硬件组职责" [level=2] [ref=e27]
+          - paragraph [ref=e28]: 硬件组承担机器人电路板的设计、实现与调试工作，将机器人的构想从理论概念转化为实体设备。所有软件算法与控制代码，都需要依托硬件平台，才能在物理环境中完成实际运行。 组内工作覆盖完整的硬件开发链路：包含需求拆解、器件选型、电路方案设计、电路与电磁场仿真、PCB 版图绘制，同时兼顾生产工艺约束、成本与性能之间的权衡，结合实际工况完成参数核算，输出可落地的硬件方案。此外硬件组不仅需要设计PCB，还需具备相应的编程能力。 硬件开发充满工程层面的现实考验，开发调试过程中会遇到器件烧毁、功率器件异常、布线缺陷、结构尺寸不匹配等各类实际问题。如果说代码定义了机器人性能能够抵达的上限，硬件则构筑起整机可靠工作的现实根基。 在这里围绕机器人项目开展完整工程实践，将理论知识落地为真实电路，在不断排错、迭代、优化的过程中积累电路设计、调试排障的实操能力，理解实际项目中的取舍与权衡。
+          - list [ref=e29]:
+            - listitem [ref=e30]: PCB
+            - listitem [ref=e31]: 供电系统
+            - listitem [ref=e32]: 线束管理
+            - listitem [ref=e33]: 硬件测试
+    - region [ref=e34]:
+      - generic [ref=e35]:
+        - paragraph [ref=e36]: Responsibilities
+        - heading "核心职责" [level=2] [ref=e37]
+      - generic [ref=e38]:
+        - article [ref=e39]:
+          - generic [ref=e40]: "01"
+          - strong [ref=e41]: 电路和 PCB 设计
+        - article [ref=e42]:
+          - generic [ref=e43]: "02"
+          - strong [ref=e44]: 供电与保护方案
+        - article [ref=e45]:
+          - generic [ref=e46]: "03"
+          - strong [ref=e47]: 线束规范和接口管理
+        - article [ref=e48]:
+          - generic [ref=e49]: "04"
+          - strong [ref=e50]: 硬件测试与故障排查
+  - contentinfo [ref=e51]:
+    - generic [ref=e52]: RoboMaster Team Showcase
+    - link "返回分工" [ref=e53] [cursor=pointer]:
+      - /url: /division/
+  - text: ">"

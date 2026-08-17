@@ -1,0 +1,63 @@
+- generic [active] [ref=f21e1]:
+  - banner [ref=f21e2]:
+    - link [ref=f21e3] [cursor=pointer]:
+      - /url: /
+      - img "桂林理工大学群星战队" [ref=f21e4]
+    - button "Open navigation" [ref=f21e5] [cursor=pointer]
+    - button "切换为深色模式" [pressed] [ref=f21e9] [cursor=pointer]:
+      - generic [ref=f21e10]: ☀
+      - generic [ref=f21e11]: ☾
+  - main [ref=f21e12]:
+    - generic [ref=f21e14]:
+      - paragraph [ref=f21e15]: Unit 01 · 重火力核心
+      - heading "英雄机器人" [level=1] [ref=f21e16]
+      - paragraph [ref=f21e17]: 承担关键输出与目标打击任务，是队伍火力上限的重要来源。
+    - region [ref=f21e18]:
+      - generic [ref=f21e19]:
+        - img "英雄机器人展示图" [ref=f21e22]
+        - generic [ref=f21e23]:
+          - paragraph [ref=f21e24]: Role Detail
+          - heading "兵种作用" [level=2] [ref=f21e25]
+          - paragraph [ref=f21e26]: 英雄机器人通常承担高伤害输出和关键目标压制任务，是队伍打开局面、突破防线和争夺优势资源的重要力量。它需要在有限弹药、复杂掩体和敌方火力压力下寻找射击窗口，通过稳定的底盘、精准的发射机构和可靠的瞄准策略完成高价值打击。
+          - list [ref=f21e27]:
+            - listitem [ref=f21e28]: 高能弹丸
+            - listitem [ref=f21e29]: 高精度发射
+            - listitem [ref=f21e30]: 核心输出
+          - link "返回兵种图鉴 >" [ref=f21e31] [cursor=pointer]:
+            - /url: /units/
+    - region [ref=f21e32]:
+      - generic [ref=f21e33]:
+        - paragraph [ref=f21e34]: Responsibilities
+        - heading "核心职责" [level=2] [ref=f21e35]
+      - generic [ref=f21e36]:
+        - article [ref=f21e37]:
+          - generic [ref=f21e38]: "01"
+          - strong [ref=f21e39]: 压制敌方核心单位
+        - article [ref=f21e40]:
+          - generic [ref=f21e41]: "02"
+          - strong [ref=f21e42]: 争夺关键区域火力主动权
+        - article [ref=f21e43]:
+          - generic [ref=f21e44]: "03"
+          - strong [ref=f21e45]: 配合步兵推进突破防线
+        - article [ref=f21e46]:
+          - generic [ref=f21e47]: "04"
+          - strong [ref=f21e48]: 在关键时刻完成高价值目标打击
+    - region [ref=f21e49]:
+      - generic [ref=f21e50]:
+        - paragraph [ref=f21e51]: Function Modules
+        - heading "功能模块" [level=2] [ref=f21e52]
+      - generic [ref=f21e53]:
+        - article [ref=f21e54]:
+          - strong [ref=f21e55]: 远距离火力压制
+          - paragraph [ref=f21e56]: 围绕“远距离火力压制”进行结构、电控、算法或操作策略协同，服务于 重火力核心 的赛场定位。
+        - article [ref=f21e57]:
+          - strong [ref=f21e58]: 关键目标打击
+          - paragraph [ref=f21e59]: 围绕“关键目标打击”进行结构、电控、算法或操作策略协同，服务于 重火力核心 的赛场定位。
+        - article [ref=f21e60]:
+          - strong [ref=f21e61]: 牵制对方防线
+          - paragraph [ref=f21e62]: 围绕“牵制对方防线”进行结构、电控、算法或操作策略协同，服务于 重火力核心 的赛场定位。
+  - contentinfo [ref=f21e63]:
+    - generic [ref=f21e64]: RoboMaster Team Showcase
+    - link "返回兵种图鉴" [ref=f21e65] [cursor=pointer]:
+      - /url: /units/
+  - text: ">"

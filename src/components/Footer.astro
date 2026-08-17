@@ -10,7 +10,11 @@ type Props = {
 const { backHref, backLabel } = Astro.props;
 ---
 
-<footer class="site-footer">
-  <span>RoboMaster Team Showcase</span>
-  {backHref && backLabel ? <a href={withBase(backHref)}>{backLabel}</a> : <span>Static, configurable, media-ready.</span>}
-</footer>
+{
+  backHref && backLabel ? (
+    <footer class="site-footer">
+      <span>RoboMaster Team Showcase</span>
+      <a href={withBase(backHref)}>{backLabel}</a>
+    </footer>
+  ) : null
+}

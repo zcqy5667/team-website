@@ -1,0 +1,60 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - link [ref=f3e3] [cursor=pointer]:
+      - /url: /
+      - img "桂林理工大学群星战队" [ref=f3e4]
+    - navigation "主导航" [ref=f3e5]:
+      - link "首页" [ref=f3e6] [cursor=pointer]:
+        - /url: /
+      - link "战队" [ref=f3e7] [cursor=pointer]:
+        - /url: /#team
+      - link "兵种" [ref=f3e8] [cursor=pointer]:
+        - /url: /units/
+      - link "分工" [ref=f3e9] [cursor=pointer]:
+        - /url: /division/
+      - link "成果" [ref=f3e10] [cursor=pointer]:
+        - /url: /honors/
+      - link "联系" [ref=f3e11] [cursor=pointer]:
+        - /url: /contact/
+    - button "切换为深色模式" [pressed] [ref=f3e12] [cursor=pointer]:
+      - generic [ref=f3e13]: ☼
+      - generic [ref=f3e14]: ☾
+  - main [ref=f3e15]:
+    - generic [ref=f3e17]:
+      - paragraph [ref=f3e18]: Hardware
+      - heading "硬件组" [level=1] [ref=f3e19]
+      - paragraph [ref=f3e20]: 负责电路设计、PCB、供电系统、线束规范、硬件测试与故障排查。
+    - region [ref=f3e21]:
+      - generic [ref=f3e22]:
+        - img "硬件组展示图" [ref=f3e24]
+        - generic [ref=f3e25]:
+          - paragraph [ref=f3e26]: Role Detail
+          - heading "硬件组职责" [level=2] [ref=f3e27]
+          - paragraph [ref=f3e28]: 硬件组承担机器人电路板的设计、实现与调试工作，将机器人的构想从理论概念转化为实体设备。所有软件算法与控制代码，都需要依托硬件平台，才能在物理环境中完成实际运行。 组内工作覆盖完整的硬件开发链路：包含需求拆解、器件选型、电路方案设计、电路与电磁场仿真、PCB 版图绘制，同时兼顾生产工艺约束、成本与性能之间的权衡，结合实际工况完成参数核算，输出可落地的硬件方案。此外硬件组不仅需要设计PCB，还需具备相应的编程能力。 硬件开发充满工程层面的现实考验，开发调试过程中会遇到器件烧毁、功率器件异常、布线缺陷、结构尺寸不匹配等各类实际问题。如果说代码定义了机器人性能能够抵达的上限，硬件则构筑起整机可靠工作的现实根基。 在这里围绕机器人项目开展完整工程实践，将理论知识落地为真实电路，在不断排错、迭代、优化的过程中积累电路设计、调试排障的实操能力，理解实际项目中的取舍与权衡。
+          - list [ref=f3e29]:
+            - listitem [ref=f3e30]: PCB
+            - listitem [ref=f3e31]: 供电系统
+            - listitem [ref=f3e32]: 线束管理
+            - listitem [ref=f3e33]: 硬件测试
+    - region [ref=f3e34]:
+      - generic [ref=f3e35]:
+        - paragraph [ref=f3e36]: Responsibilities
+        - heading "核心职责" [level=2] [ref=f3e37]
+      - generic [ref=f3e38]:
+        - article [ref=f3e39]:
+          - generic [ref=f3e40]: "01"
+          - strong [ref=f3e41]: 电路和 PCB 设计
+        - article [ref=f3e42]:
+          - generic [ref=f3e43]: "02"
+          - strong [ref=f3e44]: 供电与保护方案
+        - article [ref=f3e45]:
+          - generic [ref=f3e46]: "03"
+          - strong [ref=f3e47]: 线束规范和接口管理
+        - article [ref=f3e48]:
+          - generic [ref=f3e49]: "04"
+          - strong [ref=f3e50]: 硬件测试与故障排查
+  - contentinfo [ref=f3e51]:
+    - generic [ref=f3e52]: RoboMaster Team Showcase
+    - link "返回分工" [ref=f3e53] [cursor=pointer]:
+      - /url: /division/
+  - text: ">"
