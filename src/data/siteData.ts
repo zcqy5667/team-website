@@ -100,7 +100,7 @@ export const divisionGroups: DivisionGroup[] = [
     slug: "mechanical",
     name: "机械组",
     kicker: "Mechanical",
-    image: "/assets/images/unit-engineer.png",
+    image: "/assets/images/division-mechanical.jpg",
     summary: "负责机器人结构设计、传动机构、加工装配、机构调试与可靠性优化。",
     detail:
       `机械组承载机器人“结构”与“执行”的核心使命，致力于将抽象的战术需求转化为稳定、可靠、可制造的实体机构。工作内容横跨结构设计与机构实现两大技术方向：围绕底盘、云台、发射、取弹及任务机构开展方案设计、三维建模、传动设计与装配调试，赋予机器人“站得稳、动得起来、完成任务”的能力。
@@ -117,7 +117,7 @@ export const divisionGroups: DivisionGroup[] = [
     slug: "control",
     name: "电控组",
     kicker: "Control",
-    image: "/assets/images/unit-sentry.png",
+    image: "/assets/images/division-control.jpg",
     summary: "负责嵌入式程序、电机控制、传感器接入、通信协同与整车联调。",
     detail:
       `电控组承载机器人“控制”与“协同”的核心使命，致力于让各个硬件模块按照既定目标稳定、准确、实时地运行。工作内容横跨嵌入式控制与系统通信两大技术方向：围绕底盘、云台、发射机构及各类传感器开展程序开发、电机控制、通信设计与整车联调，赋予机器人“听得懂指令、做得出动作、协同得起来”的能力。
@@ -168,7 +168,7 @@ export const divisionGroups: DivisionGroup[] = [
     slug: "operation",
     name: "运营组",
     kicker: "Operation",
-    image: "/assets/images/media-stage.png",
+    image: "/assets/images/division-operation.jpg",
     summary: "负责内容策划、视觉传播、赛事资料、招新活动与团队协作。",
     detail:
       `运营组承载机器人团队“连接”与“表达”的核心使命，致力于让技术成果被看见、让团队文化被理解、让不同成员能够围绕共同目标高效协作。工作内容横跨内容策划与团队运营两大方向：围绕训练记录、赛事传播、招新活动、对外沟通及资料管理开展内容生产与项目支持，搭建连接技术团队、学校、赛事与公众的沟通桥梁。
@@ -335,31 +335,31 @@ export const showcaseCategories: ShowcaseCategory[] = [
         type: "image",
         title: "步兵赛季战绩展示",
         caption: "队员分工与赛场数据记录。",
-        src: "/assets/images/honor-season-prep.jpg",
-        imageAlt: "RoboMaster 步兵赛季战绩展示图",
+        src: "/assets/images/unit-sentry.png",
+        imageAlt: "RoboMaster 哨兵机器人展示图",
         result: "赛季战绩"
       },
       {
         type: "image",
         title: "战队整备区",
         caption: "用于记录机器人整备、赛前检查与团队协作现场。",
-        src: "/assets/images/record-1.jpeg",
-        imageAlt: "战队整备区记录图"
+        src: "/assets/images/unit-hero.png",
+        imageAlt: "RoboMaster 英雄机器人展示图"
       },
       {
         type: "image",
         title: "机器人特写",
         caption: "展示底盘、云台、发射机构或传感器模块。",
-        src: "/assets/images/unit-hero.png",
-        imageAlt: "RoboMaster 机器人特写图"
+        src: "/assets/images/unit-engineer.png",
+        imageAlt: "RoboMaster 工程机器人展示图"
       },
       {
         type: "video",
         title: "赛季混剪",
         caption: "",
         src: "",
-        poster: "/assets/images/video-poster.png",
-        imageAlt: "赛季混剪视频封面"
+        poster: "/assets/images/unit-aerial.png",
+        imageAlt: "RoboMaster 无人机展示图"
       },
       {
         type: "record",
