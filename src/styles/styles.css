@@ -3200,7 +3200,9 @@ body.page-home .slide-progress::before {
 
 @media (max-width: 820px) {
   .page-hero-division-hardware {
-    min-height: min(620px, calc(100svh - 72px));
+    align-items: start;
+    min-height: min(680px, calc(100svh - 72px));
+    padding-bottom: min(42svh, 330px);
   }
 
   .page-hero-division-hardware::before {
@@ -3208,12 +3210,16 @@ body.page-home .slide-progress::before {
   }
 
   .page-hero-division-hardware::after {
-    inset: auto 0 1px;
-    height: 54%;
+    inset: auto 1rem 1px;
+    height: min(34svh, 280px);
     background: var(--page-hero-image);
     background-position: center bottom;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: min(92vw, 560px) auto;
+  }
+
+  .page-hero-division-hardware .page-hero-content {
+    align-self: start;
   }
 }
 
@@ -5181,11 +5187,11 @@ html[data-theme="light"] .page-hero-division-hardware::after {
 
 @media (max-width: 820px) {
   html[data-theme="light"] .page-hero-division-hardware::after {
-    inset: auto 0 1px;
-    height: 54%;
+    inset: auto 1rem 1px;
+    height: min(34svh, 280px);
     background-position: center bottom;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: min(92vw, 560px) auto;
   }
 }
 
