@@ -208,7 +208,7 @@ export const heroSlides: HeroSlide[] = [
       "从结构设计到算法调参，从赛前测试到赛场对抗，用工程能力把热血变成可执行的战术系统。",
     primaryLabel: "了解战队",
     primaryHref: "/#team",
-    image: "/assets/images/hero-arena.png"
+    image: "/assets/images/hero-arena-replacement.jpg"
   },
   {
     kicker: "Robot Classes",
