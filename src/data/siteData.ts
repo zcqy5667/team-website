@@ -235,7 +235,7 @@ export const units: Unit[] = [
     number: "01",
     name: "英雄机器人",
     role: "重火力核心",
-    image: "/assets/images/unit-hero.png",
+    image: "/assets/images/unit-hero-photo.jpg",
     summary: "承担关键输出与目标打击任务，是队伍火力上限的重要来源。",
     detail:
       "英雄机器人通常承担高伤害输出和关键目标压制任务，是队伍打开局面、突破防线和争夺优势资源的重要力量。它需要在有限弹药、复杂掩体和敌方火力压力下寻找射击窗口，通过稳定的底盘、精准的发射机构和可靠的瞄准策略完成高价值打击。",
@@ -248,7 +248,7 @@ export const units: Unit[] = [
     number: "02",
     name: "工程机器人",
     role: "资源与任务执行",
-    image: "/assets/images/unit-engineer.png",
+    image: "/assets/images/unit-engineer-photo.jpg",
     summary: "负责资源获取、补给协助和场地任务，是队伍经济与持续作战能力的保障。",
     detail:
       "工程机器人更偏向任务执行与资源运营，负责能量单元装配、补给协助、场地机关交互等非纯火力任务。它的表现直接影响队伍资源节奏和续航能力，需要在稳定搬运、机构可靠性、路径规划和操作效率之间取得平衡。",
@@ -274,7 +274,7 @@ export const units: Unit[] = [
     number: "04",
     name: "哨兵机器人",
     role: "自动防守单位",
-    image: "/assets/images/unit-sentry.png",
+    image: "/assets/images/unit-sentry-photo.jpg",
     summary: "以自动化巡逻和防守为主，守护关键区域并提供持续火力威慑。",
     detail:
       "哨兵机器人主要承担自动防守与区域控制任务，通常需要在无人直接操作的状态下完成巡逻、识别、瞄准和攻击。它的核心价值在于稳定守护基地或关键阵地，持续给对方施加压力，并为队伍提供防守容错。",
@@ -287,7 +287,7 @@ export const units: Unit[] = [
     number: "05",
     name: "空中机器人",
     role: "空中支援",
-    image: "/assets/images/unit-aerial.png",
+    image: "/assets/images/unit-aerial-photo.jpg",
     summary: "提供空中视角、战术支援和特殊打击能力，拓展队伍的信息与攻击维度。",
     detail:
       "空中机器人负责从空中维度提供侦察、支援和特殊打击能力。它能观察地面单位难以获得的信息，帮助队伍判断敌方站位与战场态势，也可以在特定时机进行高点打击或支援压制。",
@@ -335,31 +335,31 @@ export const showcaseCategories: ShowcaseCategory[] = [
         type: "image",
         title: "步兵赛季战绩展示",
         caption: "队员分工与赛场数据记录。",
-        src: "/assets/images/unit-sentry.png",
-        imageAlt: "RoboMaster 哨兵机器人展示图",
+        src: "/assets/images/honor-season-prep.jpg",
+        imageAlt: "RoboMaster 步兵赛季战绩展示图",
         result: "赛季战绩"
       },
       {
         type: "image",
         title: "战队整备区",
         caption: "用于记录机器人整备、赛前检查与团队协作现场。",
-        src: "/assets/images/unit-hero.png",
-        imageAlt: "RoboMaster 英雄机器人展示图"
+        src: "/assets/images/record-1.jpeg",
+        imageAlt: "战队整备区记录图"
       },
       {
         type: "image",
         title: "机器人特写",
         caption: "展示底盘、云台、发射机构或传感器模块。",
-        src: "/assets/images/unit-engineer.png",
-        imageAlt: "RoboMaster 工程机器人展示图"
+        src: "/assets/images/unit-hero.png",
+        imageAlt: "RoboMaster 机器人特写图"
       },
       {
         type: "video",
         title: "赛季混剪",
         caption: "",
         src: "",
-        poster: "/assets/images/unit-aerial.png",
-        imageAlt: "RoboMaster 无人机展示图"
+        poster: "/assets/images/video-poster.png",
+        imageAlt: "赛季混剪视频封面"
       },
       {
         type: "record",
