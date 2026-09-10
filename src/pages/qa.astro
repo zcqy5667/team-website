@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import { qaItems } from "../data/siteData";
 import { withBase } from "../utils/paths";
 
-const categories = [...new Set(qaItems.map((item) => item.category))];
 ---
 
 <Layout
@@ -28,12 +27,6 @@ const categories = [...new Set(qaItems.map((item) => item.category))];
       <div>
         <p class="eyebrow">Quick Answers</p>
         <h2 id="qa-title">Q&A</h2>
-        <p>这里会持续补充新问题。需要新增内容时，只需在 <code>src/data/siteData.ts</code> 的 <code>qaItems</code> 数组中追加一项。</p>
-      </div>
-      <div class="qa-summary" aria-label="问答统计">
-        <strong>{String(qaItems.length).padStart(2, "0")}</strong>
-        <span>个常见问题</span>
-        <small>{categories.length} 个主题分类</small>
       </div>
     </div>
 
