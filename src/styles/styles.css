@@ -6388,6 +6388,14 @@ html[data-theme="light"] .album-awards-section {
   line-height: 1.8;
 }
 
+ .qa-answer-placeholder {
+  color: var(--muted-2) !important;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+ }
+
 html[data-theme="light"] .qa-section {
   background: #ffffff;
 }

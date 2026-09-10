@@ -49,7 +49,7 @@ const categories = [...new Set(qaItems.map((item) => item.category))];
             <span class="qa-toggle" aria-hidden="true"></span>
           </summary>
           <div class="qa-answer">
-            {item.answer.map((paragraph) => <p>{paragraph}</p>)}
+            {item.answer.length > 0 ? item.answer.map((paragraph) => <p>{paragraph}</p>) : <p class="qa-answer-placeholder">回答待补充。</p>}
           </div>
         </details>
       ))}
