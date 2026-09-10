@@ -1,0 +1,77 @@
+- generic [active] [ref=f4e1]:
+  - banner [ref=f4e2]:
+    - link [ref=f4e3] [cursor=pointer]:
+      - /url: /
+      - img "桂林理工大学群星战队" [ref=f4e4]
+    - navigation "主导航" [ref=f4e5]:
+      - link "首页" [ref=f4e6] [cursor=pointer]:
+        - /url: /
+      - link "战队" [ref=f4e7] [cursor=pointer]:
+        - /url: /#team
+      - link "兵种" [ref=f4e8] [cursor=pointer]:
+        - /url: /units/
+      - link "分工" [ref=f4e9] [cursor=pointer]:
+        - /url: /division/
+      - link "成果" [ref=f4e10] [cursor=pointer]:
+        - /url: /honors/
+      - link "联系" [ref=f4e11] [cursor=pointer]:
+        - /url: /contact/
+    - button "切换为浅色模式" [ref=f4e12] [cursor=pointer]:
+      - generic [aria-hidden] [ref=f4e13]: ☀
+      - generic [aria-hidden] [ref=f4e14]: ☾
+  - main [ref=f4e15]:
+    - generic [ref=f4e17]:
+      - paragraph [ref=f4e18]: HONORS / RESULTS
+      - heading "荣誉与成果" [level=1] [ref=f4e19]
+      - paragraph [ref=f4e20]: 机器人影像、赛季混剪与历年奖项，集中记录群星战队的赛场历程。
+    - region "成果统计" [ref=f4e21]:
+      - generic [ref=f4e22]:
+        - generic [ref=f4e23]:
+          - paragraph [ref=f4e24]: Archive
+          - heading "成果目录" [level=2] [ref=f4e25]
+        - generic [ref=f4e26]:
+          - generic [ref=f4e27]:
+            - generic [ref=f4e28]: "03"
+            - generic [ref=f4e29]: 目录
+          - generic [ref=f4e30]:
+            - generic [ref=f4e31]: "06"
+            - generic [ref=f4e32]: 照片
+          - generic [ref=f4e33]:
+            - generic [ref=f4e34]: "01"
+            - generic [ref=f4e35]: 影像
+          - generic [ref=f4e36]:
+            - generic [ref=f4e37]: "01"
+            - generic [ref=f4e38]: 奖项档案
+    - region [ref=f4e39]:
+      - generic [ref=f4e41]:
+        - paragraph [ref=f4e42]: Contents
+        - heading "查看成果" [level=2] [ref=f4e43]
+      - navigation "成果目录" [ref=f4e44]:
+        - link "01 机器人特写 记录战队机器人整机、核心机构与赛场状态。 6 张照片" [ref=f4e45] [cursor=pointer]:
+          - /url: /honors/robot-closeups/
+          - generic [ref=f4e46]: "01"
+          - generic [ref=f4e47]:
+            - strong [ref=f4e48]: 机器人特写
+            - text: 记录战队机器人整机、核心机构与赛场状态。
+          - generic [ref=f4e49]: 6 张照片
+          - generic [aria-hidden] [ref=f4e50]: →
+        - link "02 赛季混剪 收录训练、整备与比赛现场的赛季影像。 赛季影像" [ref=f4e51] [cursor=pointer]:
+          - /url: /honors/season-montage/
+          - generic [ref=f4e52]: "02"
+          - generic [ref=f4e53]:
+            - strong [ref=f4e54]: 赛季混剪
+            - text: 收录训练、整备与比赛现场的赛季影像。
+          - generic [ref=f4e55]: 赛季影像
+          - generic [aria-hidden] [ref=f4e56]: →
+        - link "03 历年奖项 记录战队历年赛事获奖与荣誉。 连续档案" [ref=f4e57] [cursor=pointer]:
+          - /url: /honors/award-archive/
+          - generic [ref=f4e58]: "03"
+          - generic [ref=f4e59]:
+            - strong [ref=f4e60]: 历年奖项
+            - text: 记录战队历年赛事获奖与荣誉。
+          - generic [ref=f4e61]: 连续档案
+          - generic [aria-hidden] [ref=f4e62]: →
+  - contentinfo [ref=f4e63]:
+    - generic [ref=f4e64]: RoboMaster Team Showcase
+    - link "返回首页" [ref=f4e65] [cursor=pointer]:
+      - /url: /

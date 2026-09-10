@@ -1,0 +1,38 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - link [ref=f3e3] [cursor=pointer]:
+      - /url: /
+      - img "桂林理工大学群星战队" [ref=f3e4]
+    - navigation "主导航" [ref=f3e5]:
+      - link "首页" [ref=f3e6] [cursor=pointer]:
+        - /url: /
+      - link "战队" [ref=f3e7] [cursor=pointer]:
+        - /url: /#team
+      - link "兵种" [ref=f3e8] [cursor=pointer]:
+        - /url: /units/
+      - link "分工" [ref=f3e9] [cursor=pointer]:
+        - /url: /division/
+      - link "成果" [ref=f3e10] [cursor=pointer]:
+        - /url: /honors/
+      - link "联系" [ref=f3e11] [cursor=pointer]:
+        - /url: /contact/
+    - button "切换为浅色模式" [ref=f3e12] [cursor=pointer]:
+      - generic [aria-hidden] [ref=f3e13]: ☀
+      - generic [aria-hidden] [ref=f3e14]: ☾
+  - main [ref=f3e15]:
+    - generic [ref=f3e17]:
+      - link "← 返回目录" [ref=f3e18] [cursor=pointer]:
+        - /url: /honors/
+      - paragraph [ref=f3e19]: AWARD ARCHIVE / 03
+      - heading "历年奖项" [level=1] [ref=f3e20]
+      - paragraph [ref=f3e21]: 记录战队历年赛事获奖与荣誉。
+      - generic [ref=f3e22]: 连续档案
+    - region [ref=f3e24]:
+      - generic [ref=f3e26]:
+        - paragraph [ref=f3e27]: AWARD ARCHIVE
+        - heading "历年奖项档案" [level=2] [ref=f3e28]
+      - strong [ref=f3e30]: 暂无记录
+  - contentinfo [ref=f3e31]:
+    - generic [ref=f3e32]: RoboMaster Team Showcase
+    - link "返回成果目录" [ref=f3e33] [cursor=pointer]:
+      - /url: /honors/

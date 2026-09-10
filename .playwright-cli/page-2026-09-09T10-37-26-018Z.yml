@@ -1,0 +1,124 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link [ref=e3] [cursor=pointer]:
+      - /url: /
+      - img "桂林理工大学群星战队" [ref=e4]
+    - navigation "主导航" [ref=e5]:
+      - link "首页" [ref=e6] [cursor=pointer]:
+        - /url: /
+      - link "战队" [ref=e7] [cursor=pointer]:
+        - /url: /#team
+      - link "兵种" [ref=e8] [cursor=pointer]:
+        - /url: /units/
+      - link "分工" [ref=e9] [cursor=pointer]:
+        - /url: /division/
+      - link "成果" [ref=e10] [cursor=pointer]:
+        - /url: /honors/
+      - link "联系" [ref=e11] [cursor=pointer]:
+        - /url: /contact/
+    - button "切换为浅色模式" [ref=e12] [cursor=pointer]:
+      - generic [aria-hidden] [ref=e13]: ☀
+      - generic [aria-hidden] [ref=e14]: ☾
+  - main [ref=e15]:
+    - generic [ref=e17]:
+      - paragraph [ref=e18]: HONORS / RESULTS
+      - heading "荣誉与成果" [level=1] [ref=e19]
+      - paragraph [ref=e20]: 把赛季战绩、训练影像和阶段记录集中沉淀为一份持续更新的 RoboMaster 成果档案。
+    - region "成果统计" [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - paragraph [ref=e24]: SEASON ARCHIVE / 01
+          - heading "每一项成果，都是一次向前推进。" [level=2] [ref=e25]
+          - paragraph [ref=e26]: 从赛场结果到训练现场，把团队走过的每一个关键节点整理成可回看的成果档案。
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - generic [ref=e29]: "5"
+            - generic [ref=e30]: 成果条目
+          - generic [ref=e31]:
+            - generic [ref=e32]: "1"
+            - generic [ref=e33]: 赛季档案
+          - generic [ref=e34]:
+            - generic [ref=e35]: "4"
+            - generic [ref=e36]: 影像资料
+          - generic [ref=e37]:
+            - generic [ref=e38]: "1"
+            - generic [ref=e39]: 阶段记录
+    - region [ref=e40]:
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - paragraph [ref=e43]: ARCHIVE INDEX
+          - heading "荣誉墙目录" [level=2] [ref=e44]
+        - paragraph [ref=e45]: 按赛季归档，查看训练、比赛与复盘留下的完整轨迹。
+      - navigation "成果分类导航" [ref=e46]:
+        - link "01 RoboMaster 赛季备战成果 05 ITEMS" [ref=e47] [cursor=pointer]:
+          - /url: "#robomaster-season"
+          - generic [ref=e48]: "01"
+          - generic [ref=e49]: RoboMaster 赛季备战成果
+          - generic [ref=e50]: 05 ITEMS
+          - generic [aria-hidden] [ref=e51]: ↗
+    - region [ref=e53]:
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - generic [ref=e56]: "01"
+          - generic [ref=e57]: COLLECTION 01
+        - generic [ref=e58]:
+          - heading "RoboMaster 赛季备战成果" [level=2] [ref=e59]
+          - paragraph [ref=e60]: 赛季队员、兵种配置、训练现场与阶段战绩展示。
+        - generic [ref=e61]:
+          - generic [ref=e62]: ARCHIVE
+          - strong [ref=e63]: 05 ITEMS
+      - generic [ref=e64]:
+        - article [ref=e65]:
+          - generic [ref=e66]:
+            - img "RoboMaster 步兵赛季战绩展示图" [ref=e67]
+            - generic [ref=e68]: 图片
+          - generic [ref=e69]:
+            - generic [ref=e70]:
+              - generic [ref=e71]: NO. 01
+              - generic [ref=e72]: 图片
+            - heading "步兵赛季战绩展示" [level=3] [ref=e73]
+            - paragraph [ref=e74]: 队员分工与赛场数据记录。
+            - generic [ref=e75]: 赛季战绩
+        - article [ref=e77]:
+          - generic [ref=e78]:
+            - img "战队整备区记录图" [ref=e79]
+            - generic [ref=e80]: 图片
+          - generic [ref=e81]:
+            - generic [ref=e82]:
+              - generic [ref=e83]: NO. 02
+              - generic [ref=e84]: 图片
+            - heading "战队整备区" [level=3] [ref=e85]
+            - paragraph [ref=e86]: 用于记录机器人整备、赛前检查与团队协作现场。
+        - article [ref=e87]:
+          - generic [ref=e88]:
+            - img "RoboMaster 机器人特写图" [ref=e89]
+            - generic [ref=e90]: 图片
+          - generic [ref=e91]:
+            - generic [ref=e92]:
+              - generic [ref=e93]: NO. 03
+              - generic [ref=e94]: 图片
+            - heading "机器人特写" [level=3] [ref=e95]
+            - paragraph [ref=e96]: 展示底盘、云台、发射机构或传感器模块。
+        - article [ref=e97]:
+          - generic [ref=e98]:
+            - img "赛季混剪视频封面" [ref=e99]
+            - generic [ref=e100]: 视频
+          - generic [ref=e101]:
+            - generic [ref=e102]:
+              - generic [ref=e103]: NO. 04
+              - generic [ref=e104]: 视频
+            - heading "赛季混剪" [level=3] [ref=e105]
+        - article [ref=e106]:
+          - generic [ref=e107]:
+            - img "赛季记录配图" [ref=e108]
+            - generic [ref=e109]: 记录
+          - generic [ref=e110]:
+            - generic [ref=e111]:
+              - generic [ref=e112]: NO. 05
+              - generic [ref=e113]: 记录
+            - heading "赛季记录" [level=3] [ref=e114]
+            - paragraph [ref=e115]: 整理赛季目标、训练节点、比赛复盘和阶段性成果。
+  - contentinfo [ref=e116]:
+    - generic [ref=e117]: RoboMaster Team Showcase
+    - link "返回首页" [ref=e118] [cursor=pointer]:
+      - /url: /

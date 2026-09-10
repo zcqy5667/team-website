@@ -1,0 +1,276 @@
+- generic [active] [ref=e1]:
+  - list [ref=e4]:
+    - listitem [ref=e5]:
+      - link "Masonry" [ref=e6] [cursor=pointer]:
+        - /url: .
+    - listitem [ref=e7]:
+      - link "Layout" [ref=e8] [cursor=pointer]:
+        - /url: /layout
+    - listitem [ref=e9]:
+      - link "Options" [ref=e10] [cursor=pointer]:
+        - /url: /options
+    - listitem [ref=e11]:
+      - link "Methods" [ref=e12] [cursor=pointer]:
+        - /url: /methods
+    - listitem [ref=e13]:
+      - link "Events" [ref=e14] [cursor=pointer]:
+        - /url: /events
+    - listitem [ref=e15]:
+      - link "Extras" [ref=e16] [cursor=pointer]:
+        - /url: /extras
+    - listitem [ref=e17]:
+      - link "FAQ" [ref=e18] [cursor=pointer]:
+        - /url: /faq
+  - generic [ref=e21]:
+    - generic [ref=e22]:
+      - heading "Masonry" [level=1] [ref=e23]
+      - paragraph [ref=e24]: Cascading grid layout library
+    - link "Download masonry.pkgd.min.js" [ref=e26] [cursor=pointer]:
+      - /url: https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js
+    - link "Download these docs" [ref=e30] [cursor=pointer]:
+      - /url: masonry-docs.zip
+    - link "Masonry on GitHub" [ref=e34] [cursor=pointer]:
+      - /url: https://github.com/desandro/masonry
+    - generic [ref=e37]:
+      - heading "What is Masonry?" [level=2] [ref=e38]
+      - paragraph [ref=e39]: Masonry is a JavaScript grid layout library. It works by placing elements in optimal position based on available vertical space, sort of like a mason fitting stones in a wall. You’ve probably seen it in use all over the Internet.
+  - generic [ref=e40]:
+    - list [ref=e41]:
+      - listitem [ref=e42]:
+        - link "Install" [ref=e43] [cursor=pointer]:
+          - /url: "#install"
+        - text: •
+      - listitem [ref=e44]:
+        - link "Download" [ref=e45] [cursor=pointer]:
+          - /url: "#download"
+        - text: •
+      - listitem [ref=e46]:
+        - link "CDN" [ref=e47] [cursor=pointer]:
+          - /url: "#cdn"
+        - text: •
+      - listitem [ref=e48]:
+        - link "Package managers" [ref=e49] [cursor=pointer]:
+          - /url: "#package-managers"
+        - text: •
+      - listitem [ref=e50]:
+        - link "Getting started" [ref=e51] [cursor=pointer]:
+          - /url: "#getting-started"
+        - text: •
+      - listitem [ref=e52]:
+        - link "HTML" [ref=e53] [cursor=pointer]:
+          - /url: "#html"
+        - text: •
+      - listitem [ref=e54]:
+        - link "CSS" [ref=e55] [cursor=pointer]:
+          - /url: "#css"
+        - text: •
+      - listitem [ref=e56]:
+        - link "Initialize with jQuery" [ref=e57] [cursor=pointer]:
+          - /url: "#initialize-with-jquery"
+        - text: •
+      - listitem [ref=e58]:
+        - link "Initialize with Vanilla JavaScript" [ref=e59] [cursor=pointer]:
+          - /url: "#initialize-with-vanilla-javascript"
+        - text: •
+      - listitem [ref=e60]:
+        - link "Initialize in HTML" [ref=e61] [cursor=pointer]:
+          - /url: "#initialize-in-html"
+        - text: •
+      - listitem [ref=e62]:
+        - link "Next" [ref=e63] [cursor=pointer]:
+          - /url: "#next"
+        - text: •
+      - listitem [ref=e64]:
+        - link "MIT License" [ref=e65] [cursor=pointer]:
+          - /url: "#mit-license"
+    - heading "Install" [level=2] [ref=e66]
+    - heading "Download" [level=3] [ref=e67]
+    - list [ref=e68]:
+      - listitem [ref=e69]:
+        - link "masonry.pkgd.min.js" [ref=e70] [cursor=pointer]:
+          - /url: https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js
+        - text: minified, or
+      - listitem [ref=e71]:
+        - link "masonry.pkgd.js" [ref=e72] [cursor=pointer]:
+          - /url: https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js
+        - text: un-minified
+    - heading "CDN" [level=3] [ref=e73]
+    - paragraph [ref=e74]:
+      - text: Link directly to Masonry files on
+      - link "unpkg" [ref=e75] [cursor=pointer]:
+        - /url: https://unpkg.com
+      - text: .
+    - code [ref=e77]:
+      - generic [ref=e78]: <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js">
+      - generic [ref=e79]: </script>
+      - text: <!-- or -->
+      - generic [ref=e80]: <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js">
+      - generic [ref=e81]: </script>
+    - heading "Package managers" [level=3] [ref=e82]
+    - paragraph [ref=e83]:
+      - text: Install with
+      - link "Bower" [ref=e84] [cursor=pointer]:
+        - /url: https://bower.io
+      - text: ":"
+      - code [ref=e85]: bower install masonry --save
+    - paragraph [ref=e86]:
+      - link "Install with npm" [ref=e87] [cursor=pointer]:
+        - /url: https://www.npmjs.com/package/masonry-layout
+      - text: ":"
+      - code [ref=e88]: npm install masonry-layout
+    - heading "Getting started" [level=2] [ref=e89]
+    - heading "HTML" [level=3] [ref=e90]
+    - paragraph [ref=e91]:
+      - text: Include the Masonry
+      - code [ref=e92]: .js
+      - text: file in your site.
+    - code [ref=e94]:
+      - generic [ref=e95]: <script src="/path/to/masonry.pkgd.min.js">
+      - generic [ref=e96]: </script>
+    - paragraph [ref=e97]: Masonry works on a container grid element with a group of child items.
+    - code [ref=e99]:
+      - generic [ref=e100]: <div class="grid">
+      - generic [ref=e101]: <div class="grid-item">
+      - text: ...
+      - generic [ref=e102]: </div>
+      - generic [ref=e103]: <div class="grid-item grid-item--width2">
+      - text: ...
+      - generic [ref=e104]: </div>
+      - generic [ref=e105]: <div class="grid-item">
+      - text: ...
+      - generic [ref=e106]: </div>
+      - text: ...
+      - generic [ref=e107]: </div>
+    - heading "CSS" [level=3] [ref=e108]
+    - paragraph [ref=e109]: All sizing of items is handled by your CSS.
+    - code [ref=e111]: ".grid-item { width: 200px; } .grid-item--width2 { width: 400px; }"
+    - heading "Initialize with jQuery" [level=3] [ref=e112]
+    - paragraph [ref=e113]:
+      - text: "You can use Masonry as a jQuery plugin:"
+      - code [ref=e114]: $('selector').masonry()
+      - text: .
+    - code [ref=e116]: "$('.grid').masonry({ // options itemSelector: '.grid-item', columnWidth: 200 });"
+    - heading "Initialize with Vanilla JavaScript" [level=3] [ref=e117]
+    - paragraph [ref=e118]:
+      - text: "You can use Masonry with vanilla JS:"
+      - code [ref=e119]: new Masonry( elem, options )
+      - text: . The
+      - code [ref=e120]: Masonry()
+      - text: "constructor accepts two arguments: the container element and an options object."
+    - code [ref=e122]: "var elem = document.querySelector('.grid'); var msnry = new Masonry( elem, { // options itemSelector: '.grid-item', columnWidth: 200 }); // element argument can be a selector string // for an individual element var msnry = new Masonry( '.grid', { // options });"
+    - heading "Initialize in HTML" [level=3] [ref=e123]
+    - paragraph [ref=e124]:
+      - text: You can initialize Masonry in HTML, without writing any JavaScript. Add
+      - code [ref=e125]: data-masonry
+      - text: attribute to the container element.
+      - link "Options" [ref=e126] [cursor=pointer]:
+        - /url: /options
+      - text: can be set in its value.
+    - code [ref=e128]:
+      - generic [ref=e129]: "<div class=\"grid\" data-masonry='{ \"itemSelector\": \".grid-item\", \"columnWidth\": 200 }'>"
+    - paragraph [ref=e130]:
+      - link "Edit this demo on CodePen" [ref=e131] [cursor=pointer]:
+        - /url: https://codepen.io/desandro/pen/vLeBLV
+    - generic [ref=e132]:
+      - text: i
+      - paragraph [ref=e133]:
+        - text: Options set in HTML must be valid JSON. Keys need to be quoted, for example
+        - code [ref=e134]: "\"itemSelector\":"
+        - text: . Note the value of
+        - code [ref=e135]: data-masonry
+        - text: is set with single quotes
+        - code [ref=e136]: "'"
+        - text: ", but JSON entities use double-quotes"
+        - code [ref=e137]: "\""
+        - text: .
+    - paragraph [ref=e138]:
+      - text: HTML initialization was previously done with a class of
+      - code [ref=e139]: js-masonry
+      - text: and setting options in
+      - code [ref=e140]: data-masonry-options
+      - text: in Masonry v3. Masonry v4 is backwards compatible with this code.
+    - code [ref=e142]:
+      - generic [ref=e143]: "<div class=\"grid js-masonry\" data-masonry-options='{ \"itemSelector\": \".grid-item\", \"columnWidth\": 200 }'>"
+    - heading "Next" [level=2] [ref=e144]
+    - paragraph [ref=e145]: "Learn more about how to use Masonry:"
+    - list [ref=e146]:
+      - listitem [ref=e147]:
+        - link "Layout" [ref=e148] [cursor=pointer]:
+          - /url: /layout
+      - listitem [ref=e149]:
+        - link "Options" [ref=e150] [cursor=pointer]:
+          - /url: /options
+      - listitem [ref=e151]:
+        - link "Methods" [ref=e152] [cursor=pointer]:
+          - /url: /methods
+    - heading "MIT License" [level=2] [ref=e153]
+    - paragraph [ref=e154]:
+      - text: Masonry is released under the
+      - link "MIT License" [ref=e155] [cursor=pointer]:
+        - /url: https://desandro.mit-license.org/
+      - text: . Have at it.
+  - list [ref=e158]:
+    - listitem [ref=e159]:
+      - link "Masonry" [ref=e160] [cursor=pointer]:
+        - /url: .
+    - listitem [ref=e161]:
+      - link "Layout" [ref=e162] [cursor=pointer]:
+        - /url: /layout
+    - listitem [ref=e163]:
+      - link "Options" [ref=e164] [cursor=pointer]:
+        - /url: /options
+    - listitem [ref=e165]:
+      - link "Methods" [ref=e166] [cursor=pointer]:
+        - /url: /methods
+    - listitem [ref=e167]:
+      - link "Events" [ref=e168] [cursor=pointer]:
+        - /url: /events
+    - listitem [ref=e169]:
+      - link "Extras" [ref=e170] [cursor=pointer]:
+        - /url: /extras
+    - listitem [ref=e171]:
+      - link "FAQ" [ref=e172] [cursor=pointer]:
+        - /url: /faq
+  - generic [ref=e174]:
+    - paragraph [ref=e175]:
+      - text: Masonry is made by
+      - link "David DeSandro" [ref=e176] [cursor=pointer]:
+        - /url: https://desandro.com
+      - text: ". Make something rad with it. Dave also makes:"
+    - list [ref=e178]:
+      - listitem [ref=e179]:
+        - link [ref=e180] [cursor=pointer]:
+          - /url: https://isotope.metafizzy.co
+          - generic [ref=e199]:
+            - heading "Isotope" [level=3] [ref=e200]
+            - paragraph [ref=e201]: Filter & sort magical layouts
+      - listitem [ref=e202]:
+        - link [ref=e203] [cursor=pointer]:
+          - /url: https://infinite-scroll.com
+          - generic [ref=e213]:
+            - heading "Infinite Scroll" [level=3] [ref=e214]
+            - paragraph [ref=e215]: Automatically add next page
+      - listitem [ref=e216]:
+        - link [ref=e217] [cursor=pointer]:
+          - /url: https://flickity.metafizzy.co
+          - generic [ref=e234]:
+            - heading "Flickity" [level=3] [ref=e235]
+            - paragraph [ref=e236]: Touch, responsive, flickable carousels
+      - listitem [ref=e237]:
+        - link [ref=e238] [cursor=pointer]:
+          - /url: https://packery.metafizzy.co
+          - generic [ref=e251]:
+            - heading "Packery" [level=3] [ref=e252]
+            - paragraph [ref=e253]: Gapless, draggable grid layouts
+      - listitem [ref=e254]:
+        - link [ref=e255] [cursor=pointer]:
+          - /url: http://logo.pizza
+          - generic [ref=e263]:
+            - heading "Logo Pizza" [level=3] [ref=e264]
+            - paragraph [ref=e265]: Hot & ready logos for sale
+      - listitem [ref=e266]:
+        - link [ref=e267] [cursor=pointer]:
+          - /url: http://fizzy.school
+          - generic [ref=e273]:
+            - heading "Fizzy School" [level=3] [ref=e274]
+            - paragraph [ref=e275]: Lessons in JavaScript for jQuery newbies

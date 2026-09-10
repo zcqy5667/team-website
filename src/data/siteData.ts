@@ -49,11 +49,32 @@ export type ShowcaseItem = {
   result?: string;
 };
 
+export type GalleryPhoto = {
+  thumb: string;
+  full: string;
+  width: number;
+  height: number;
+  alt: string;
+  caption?: string;
+};
+
 export type ShowcaseCategory = {
   id: string;
   label: string;
   description: string;
   items: ShowcaseItem[];
+};
+
+export type ShowcaseAlbum = {
+  slug: string;
+  title: string;
+  kicker: string;
+  description: string;
+  cover: string;
+  type: "gallery" | "video" | "awards";
+  photos: GalleryPhoto[];
+  poster?: string;
+  video?: string;
 };
 
 export type DivisionGroup = {
@@ -75,6 +96,12 @@ export type HomeMoreLink = {
   external?: boolean;
 };
 
+export type QAItem = {
+  category: string;
+  question: string;
+  answer: string[];
+};
+
 export const recruitGroupHref = "https://qm.qq.com/q/oRHMOhxhwQ";
 export const teamMapHref =
   "https://uri.amap.com/marker?position=110.299896%2C25.061361&name=%E6%A1%82%E6%9E%97%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9F%BA%E5%9C%B0";
@@ -91,6 +118,162 @@ export const homeMoreLinks: HomeMoreLink[] = [
     label: "加入我们",
     description: "查看各个组的分工与职责，找到适合你的技术方向。",
     href: "/division/"
+  }
+];
+
+// Q&A 页面唯一的数据源。新增问题时复制一个对象，填写分类、问题和回答即可。
+// answer 使用字符串数组，较长回答可以自然拆成多个段落。
+export const qaItems: QAItem[] = [
+  {
+    category: "考核与队伍",
+    question: "考核完后分多个队伍还是一个大队伍，如果是多队伍如何安排队友？",
+    answer: ["考核结束后是直接加入一个大队伍。"]
+  },
+  {
+    category: "考核与队伍",
+    question: "根据我了解到的情况说明，一个大学只能安排一个队伍参加比赛，如何确定最终队伍成员？",
+    answer: ["只要通过考核，加入我们队伍，那就是可以参加比赛的比赛成员。"]
+  },
+  {
+    category: "活动安排",
+    question: "线下小活动是什么时候？",
+    answer: ["军训期间。"]
+  },
+  {
+    category: "算法培训",
+    question: "算法组有上机环节吗？",
+    answer: ["算法的培训内容都要进行上机操作。"]
+  },
+  {
+    category: "培训安排",
+    question: "培训是组织课程还是自学？",
+    answer: ["各个组别会组织一些比较难的内容的培训课程，但大部分还是自学为主。"]
+  },
+  {
+    category: "设备要求",
+    question: "学习需要电脑吗？目前没有电脑，能学习吗？",
+    answer: ["前期 C 语言培训可以先不用，但是大部分考核的操作和提交都离不开电脑，而且培训过程中没有电脑上手操作也不容易学会。"]
+  },
+  {
+    category: "设备要求",
+    question: "算法组的电脑最晚要求什么时候要有，目前还没买。",
+    answer: ["算法代码这些还是离不开电脑的，至少 11 月一轮考核过后就必须要有了。"]
+  },
+  {
+    category: "活动安排",
+    question: "怎么参加活动？活动中我们做什么？如何确定自己的定位？怎么联系相关人员？",
+    answer: ["在活动时间内到 7 栋 1 楼机器人创新实验基地即可参与活动；活动内容正在制定；可以结合自己的兴趣和专业确定自己的定位，同时基地招新和考核也不限专业；可以在基地招新群中 @学长 联系。"]
+  },
+  {
+    category: "招新与成果",
+    question: "培训前的面试一般一组招录多少人？目前团队有什么成果？",
+    answer: ["开始培训后考核期间会有笔试和面试，第一轮培训与考核招录不限人数；团队获得过多项省级、国家级奖项，同时也申请了多项专利。"]
+  },
+  {
+    category: "团队与时间",
+    question: "战队目前有多少人？想问下，新人阶段每周大概需要投入多少时间？",
+    answer: ["基地目前有大几十名成员；要看自己的能力，我们会规定时间范围和学习的内容，但这段时间内你怎么安排你的时间去掌握内容是自己规划。"]
+  },
+  {
+    category: "团队与时间",
+    question: "新人阶段每周大概需要投入多少时间？",
+    answer: ["对于不同的新生来说所需的时间是不同的，可以在周末的时间去学习，但是还是建议在空闲时间多去学习自己组别的知识，对以后的备战很有帮助。"]
+  },
+  {
+    category: "培训安排",
+    question: "后面是不是要花很多时间甚至和课程冲撞进行培训什么的？",
+    answer: ["培训一般只会周末进行，大多数时间是给大家在网上自学。"]
+  },
+  {
+    category: "设备要求",
+    question: "电脑需要什么配置才能在算法组四年下来不用换机，游戏本吗？",
+    answer: ["游戏本 40 系就够用了（不要什么荣耀华为神秘笔记本）。"]
+  },
+  {
+    category: "团队与时间",
+    question: "参加了这个基地要不要经常熬夜，再参加一个社团是不是有点吃不消了？",
+    answer: ["那要看你的个人能力，做得完肯定不用，肯定不能拖进度，大部分是不需要熬夜的。学长学姐有参加多个社团的不会吃不消的。"]
+  },
+  {
+    category: "设备要求",
+    question: "电控组目前没有电脑可以吗？最晚可以什么时候要有？",
+    answer: ["目前没有是可以的，但是 11 月份一轮考核后尽量还是需要自己的笔记本电脑的。"]
+  },
+  {
+    category: "分组介绍",
+    question: "我是网络工程专业的，学习电控如何（针对专业来说）？",
+    answer: ["对硬件的理解非常友好，能了解各个部分的接线与通信。"]
+  },
+  {
+    category: "培训安排",
+    question: "培训是什么时候？被选入后需要占用很多课后时间？进去是直接上手搞科技的？这个基地水吗？是真材实料？",
+    answer: ["培训时间上面有说，主要是看能力，能力强自然花时间少，要经过大一的培训之后才有实力直接上手，我们基地是真材实料，每一个兵种都是自己手搓的，可以去 B 站了解一下这个比赛。"]
+  }
+];
+
+// 成果目录详情。图片使用 thumb/full 双资源字段。
+// width/height 用于按行排版时避免布局跳动。
+export const showcaseAlbums: ShowcaseAlbum[] = [
+  {
+    slug: "robot-closeups",
+    title: "机器人特写",
+    kicker: "ROBOT CLOSE-UPS / 01",
+    description: "记录战队机器人整机、核心机构与赛场状态。",
+    cover: "/assets/images/unit-hero-photo.jpg",
+    type: "gallery",
+    photos: [
+      { thumb: "/assets/images/unit-hero-photo.jpg", full: "/assets/images/unit-hero-photo.jpg", width: 1280, height: 853, alt: "英雄机器人特写", caption: "英雄机器人 / 赛场装备记录" },
+      { thumb: "/assets/images/unit-engineer-photo.jpg", full: "/assets/images/unit-engineer-photo.jpg", width: 1280, height: 853, alt: "工程机器人特写", caption: "工程机器人 / 机构与任务执行" },
+      { thumb: "/assets/images/unit-sentry-photo.jpg", full: "/assets/images/unit-sentry-photo.jpg", width: 1280, height: 853, alt: "哨兵机器人特写", caption: "哨兵机器人 / 自动防守单元" },
+      { thumb: "/assets/images/unit-aerial-photo.jpg", full: "/assets/images/unit-aerial-photo.jpg", width: 1280, height: 853, alt: "空中机器人特写", caption: "空中机器人 / 空中支援单元" },
+      { thumb: "/assets/images/bubing1.jpg", full: "/assets/images/bubing1.jpg", width: 1280, height: 854, alt: "步兵机器人记录", caption: "步兵机器人 / 机动作战主力" },
+      { thumb: "/assets/images/yingjian.jpg", full: "/assets/images/yingjian.jpg", width: 1280, height: 971, alt: "机器人硬件记录", caption: "硬件组 / 电路与装配记录" }
+    ]
+  },
+  {
+    slug: "season-montage",
+    title: "赛季混剪",
+    kicker: "SEASON MONTAGE / 02",
+    description: "收录训练、整备与比赛现场的赛季影像。",
+    cover: "/assets/images/video-poster.png",
+    type: "video",
+    photos: [],
+    poster: "/assets/images/video-poster.png",
+    video: "",
+  },
+  {
+    slug: "award-archive",
+    title: "历年奖项",
+    kicker: "AWARD ARCHIVE / 03",
+    description: "记录战队历年赛事获奖与荣誉。",
+    cover: "/assets/images/award-3v3-first.png",
+    type: "awards",
+    photos: [
+      {
+        thumb: "/assets/images/award-3v3-first.png",
+        full: "/assets/images/award-3v3-first.png",
+        width: 906,
+        height: 1291,
+        alt: "2026 机甲大师高校联盟赛四川站 3V3 对抗赛一等奖证书",
+        caption: "2026 机甲大师高校联盟赛（四川站） / 3V3 对抗赛 / 甲级队伍 一等奖"
+      },
+      {
+        thumb: "/assets/images/award-national-third.jpg",
+        full: "/assets/images/award-national-third.jpg",
+        width: 1204,
+        height: 1700,
+        alt: "2026 机甲大师超级对抗赛全国赛三等奖证书",
+        caption: "2026 机甲大师超级对抗赛·全国赛 / 三等奖"
+      },
+      {
+        thumb: "/assets/images/award-regional-second.jpg",
+        full: "/assets/images/award-regional-second.jpg",
+        width: 1328,
+        height: 1908,
+        alt: "2026 机甲大师超级对抗赛南部赛区二等奖证书",
+        caption: "2026 机甲大师超级对抗赛·区域赛（南部赛区） / 二等奖"
+      }
+    ]
   }
 ];
 
@@ -183,7 +366,7 @@ export const divisionGroups: DivisionGroup[] = [
   }
 ];
 
-// 真实战队资料准备好后，在这里替换占位文案和资源。
+// 战队基础资料。
 export const team: Team = {
   name: "桂林理工大学群星战队",
   location: "广西桂林",

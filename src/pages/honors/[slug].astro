@@ -1,0 +1,182 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { showcaseAlbums } from "../../data/siteData";
+import { withBase } from "../../utils/paths";
+export function getStaticPaths() {
+  return showcaseAlbums.map((album) => ({
+    params: { slug: album.slug },
+    props: { album }
+  }));
+}
+const { album } = Astro.props;
+const isGallery = album.type === "gallery";
+const isVideo = album.type === "video";
+const hasPhotoWall = isGallery || album.type === "awards";
+const galleryTitle = album.type === "awards" ? "奖项证书" : "机器人照片墙";
+const galleryEyebrow = album.type === "awards" ? "AWARD CERTIFICATES" : "ROBOT CLOSE-UPS";
+const galleryDescription = album.type === "awards" ? "群星战队已获得的赛事奖项证书。" : "整机、机构与赛场状态的影像记录。";
+---
+<Layout
+  title={album.title}
+  description={album.description}
+  footerBackHref="/honors/"
+  footerBackLabel="返回成果目录"
+  enableInteractions={false}
+>
+  <section class="album-hero" style={`--album-cover: url("${withBase(album.cover)}")`}>
+    <div class="album-hero-inner">
+      <a class="album-back-link" href={withBase("/honors/")}>← 返回目录</a>
+      <p class="eyebrow">{album.kicker}</p>
+      <h1>{album.title}</h1>
+      <p>{album.description}</p>
+      <div class="album-hero-meta">
+        <span>{isGallery ? `${album.photos.length} 张照片` : album.type === "awards" ? `${album.photos.length} 张证书` : isVideo ? "1 个视频入口" : "连续档案"}</span>
+      </div>
+    </div>
+  </section>
+  {hasPhotoWall && (
+    <section class="album-section" aria-labelledby="album-gallery-title">
+      <div class="album-section-heading">
+        <div>
+          <p class="eyebrow">{galleryEyebrow}</p>
+          <h2 id="album-gallery-title">{galleryTitle}</h2>
+        </div>
+        <p>{galleryDescription}</p>
+      </div>
+      <div class="album-gallery" data-justified-gallery data-gallery-type={album.type} aria-label={`${album.title}照片墙`}>
+        {album.photos.map((photo, index) => (
+          <a
+            class="album-photo"
+            href={withBase(photo.full)}
+            data-gallery-photo
+            data-photo-width={photo.width}
+            data-photo-height={photo.height}
+            data-photo-caption={photo.caption ?? photo.alt}
+            aria-label={`查看${photo.alt}大图`}
+          >
+            <img
+              src={withBase(photo.thumb)}
+              alt={photo.alt}
+              width={photo.width}
+              height={photo.height}
+              loading={index < 6 ? "eager" : "lazy"}
+              decoding="async"
+            />
+            <span class="album-photo-index">{String(index + 1).padStart(2, "0")}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+  {isVideo && (
+    <section class="album-section album-video-section" aria-labelledby="album-video-title">
+      <div class="album-section-heading">
+        <div>
+          <p class="eyebrow">SEASON MONTAGE</p>
+          <h2 id="album-video-title">赛季混剪</h2>
+        </div>
+      </div>
+      <div class="album-video-frame">
+        {album.video ? (
+          <video controls preload="metadata" poster={withBase(album.poster ?? album.cover)}>
+            <source src={withBase(album.video)} />
+          </video>
+        ) : (
+          <img src={withBase(album.poster ?? album.cover)} alt="赛季混剪视频封面" width="1672" height="941" loading="eager" decoding="async" />
+        )}
+      </div>
+    </section>
+  )}
+  {hasPhotoWall && (
+    <dialog class="album-lightbox" data-gallery-lightbox aria-labelledby="lightbox-caption">
+      <div class="album-lightbox-panel">
+        <button class="album-lightbox-close" type="button" data-lightbox-close aria-label="关闭大图">×</button>
+        <button class="album-lightbox-control album-lightbox-prev" type="button" data-lightbox-prev aria-label="上一张">←</button>
+        <img data-lightbox-image alt="" />
+        <button class="album-lightbox-control album-lightbox-next" type="button" data-lightbox-next aria-label="下一张">→</button>
+        <p id="lightbox-caption" data-lightbox-caption></p>
+      </div>
+    </dialog>
+  )}
+</Layout>
+{hasPhotoWall && (
+  <script>
+    type PhotoNode = HTMLElement & {
+      dataset: DOMStringMap;
+    };
+    const gallery = document.querySelector<HTMLElement>("[data-justified-gallery]");
+    const photos = gallery ? Array.from(gallery.querySelectorAll<PhotoNode>("[data-gallery-photo]")) : [];
+    const lightbox = document.querySelector<HTMLDialogElement>("[data-gallery-lightbox]");
+    function layoutGallery() {
+      if (!gallery || photos.length === 0) return;
+      const gap = 12;
+      const isAwards = gallery?.dataset.galleryType === "awards";
+      const targetHeight = isAwards
+        ? (window.innerWidth < 640 ? 290 : window.innerWidth < 980 ? 360 : 440)
+        : (window.innerWidth < 640 ? 170 : window.innerWidth < 980 ? 210 : 250);
+      const availableWidth = gallery.clientWidth;
+      if (!availableWidth) return;
+      let row: PhotoNode[] = [];
+      let aspectTotal = 0;
+      const rows: PhotoNode[][] = [];
+      photos.forEach((photo) => {
+        const width = Number(photo.dataset.photoWidth);
+        const height = Number(photo.dataset.photoHeight);
+        row.push(photo);
+        aspectTotal += width / height;
+        const expectedWidth = aspectTotal * targetHeight + gap * (row.length - 1);
+        if (expectedWidth >= availableWidth || photo === photos[photos.length - 1]) {
+          rows.push(row);
+          row = [];
+          aspectTotal = 0;
+        }
+      });
+      gallery.innerHTML = "";
+      rows.forEach((items, rowIndex) => {
+        const rowAspect = items.reduce((total, photo) => total + Number(photo.dataset.photoWidth) / Number(photo.dataset.photoHeight), 0);
+        const isLastRow = rowIndex === rows.length - 1;
+        const rowHeight = isLastRow && items.length > 1
+          ? Math.min(targetHeight, (availableWidth - gap * (items.length - 1)) / rowAspect)
+          : (availableWidth - gap * (items.length - 1)) / rowAspect;
+        const rowElement = document.createElement("div");
+        rowElement.className = "album-photo-row";
+        rowElement.style.setProperty("--row-height", `${Math.max(120, rowHeight)}px`);
+        items.forEach((photo) => rowElement.append(photo));
+        gallery.append(rowElement);
+      });
+    }
+    function updateLightbox(photo: PhotoNode) {
+      const image = lightbox?.querySelector<HTMLImageElement>("[data-lightbox-image]");
+      const caption = lightbox?.querySelector<HTMLElement>("[data-lightbox-caption]");
+      if (!image || !caption || !lightbox) return;
+      image.src = photo.href;
+      image.alt = photo.querySelector("img")?.alt ?? "照片大图";
+      caption.textContent = photo.dataset.photoCaption ?? image.alt;
+      lightbox.showModal();
+    }
+    let currentIndex = 0;
+    function openAt(index: number) {
+      if (photos.length === 0) return;
+      currentIndex = (index + photos.length) % photos.length;
+      updateLightbox(photos[currentIndex]);
+    }
+    gallery?.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement)) return;
+      const photo = target.closest<PhotoNode>("[data-gallery-photo]");
+      if (!photo) return;
+      if (!(event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button === 1)) {
+        event.preventDefault();
+        openAt(photos.indexOf(photo));
+      }
+    });
+    lightbox?.querySelector("[data-lightbox-close]")?.addEventListener("click", () => lightbox.close());
+    lightbox?.querySelector("[data-lightbox-prev]")?.addEventListener("click", () => openAt(currentIndex - 1));
+    lightbox?.querySelector("[data-lightbox-next]")?.addEventListener("click", () => openAt(currentIndex + 1));
+    lightbox?.addEventListener("click", (event) => {
+      if (event.target === lightbox) lightbox.close();
+    });
+    window.addEventListener("resize", layoutGallery);
+    layoutGallery();
+  </script>
+)}

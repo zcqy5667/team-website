@@ -1,124 +1,84 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import type { ShowcaseItem } from "../data/siteData";
-import { showcaseCategories } from "../data/siteData";
+import { showcaseAlbums } from "../data/siteData";
 import { withBase } from "../utils/paths";
 
-const categories = showcaseCategories.filter((category) => category.items.length > 0);
-const itemCount = categories.reduce((total, category) => total + category.items.length, 0);
-const imageCount = categories.reduce((total, category) => total + category.items.filter((item) => item.type === "image").length, 0);
-const videoCount = categories.reduce((total, category) => total + category.items.filter((item) => item.type === "video").length, 0);
-const recordCount = categories.reduce((total, category) => total + category.items.filter((item) => item.type === "record").length, 0);
+const albumCount = showcaseAlbums.length;
+const photoCount = showcaseAlbums.reduce((total, album) => total + album.photos.length, 0);
+const videoCount = showcaseAlbums.filter((album) => album.type === "video").length;
+const awardAlbumCount = showcaseAlbums.filter((album) => album.type === "awards").length;
 
-function typeLabel(type: ShowcaseItem["type"]) {
-  return {
-    image: "图片",
-    video: "视频",
-    record: "记录"
-  }[type];
+function albumMeta(album: (typeof showcaseAlbums)[number]) {
+  if (album.type === "gallery") return `${album.photos.length} 张照片`;
+  if (album.type === "video") return "赛季影像";
+  return `${album.photos.length} 张证书`;
 }
 ---
 
 <Layout
   title="荣誉与成果"
-  description="桂林理工大学机器人基地的 RoboMaster 赛季战绩、图片、视频与阶段记录。"
+  description="桂林理工大学群星战队的机器人影像、赛季混剪与历年奖项档案。"
   footerBackHref="/"
   footerBackLabel="返回首页"
   enableInteractions={false}
 >
-  <section class="page-hero page-hero-honors" style={`--page-hero-image: image-set(url("${withBase("/assets/images/team-cover.webp")}") type("image/webp"), url("${withBase("/assets/images/team-cover.png")}") type("image/png"))`}>
+  <section
+    class="page-hero page-hero-honors"
+    style={`--page-hero-image: image-set(url("${withBase("/assets/images/team-cover.webp")}") type("image/webp"), url("${withBase("/assets/images/team-cover.png")}") type("image/png"))`}
+  >
     <div class="page-hero-content">
       <p class="eyebrow">HONORS / RESULTS</p>
       <h1>荣誉与成果</h1>
-      <p>把赛季战绩、训练影像和阶段记录集中沉淀为一份持续更新的 RoboMaster 成果档案。</p>
+      <p>机器人影像、赛季混剪与历年奖项，集中记录群星战队的赛场历程。</p>
     </div>
   </section>
 
   <section class="honors-overview" aria-label="成果统计">
-    <div class="honors-stat-grid">
-      <div class="honor-stat">
-        <span class="honor-stat-value">{itemCount}</span>
-        <span class="honor-stat-label">成果条目</span>
+    <div class="honors-overview-inner">
+      <div class="honors-overview-copy">
+        <p class="eyebrow">Archive</p>
+        <h2>成果目录</h2>
       </div>
-      <div class="honor-stat">
-        <span class="honor-stat-value">{categories.length}</span>
-        <span class="honor-stat-label">成果分类</span>
-      </div>
-      <div class="honor-stat">
-        <span class="honor-stat-value">{imageCount + videoCount + recordCount}</span>
-        <span class="honor-stat-label">图像 / 视频 / 记录</span>
+      <div class="honors-stat-grid">
+        <div class="honor-stat">
+          <span class="honor-stat-value">{String(albumCount).padStart(2, "0")}</span>
+          <span class="honor-stat-label">目录</span>
+        </div>
+        <div class="honor-stat">
+          <span class="honor-stat-value">{String(photoCount).padStart(2, "0")}</span>
+          <span class="honor-stat-label">照片</span>
+        </div>
+        <div class="honor-stat">
+          <span class="honor-stat-value">{String(videoCount).padStart(2, "0")}</span>
+          <span class="honor-stat-label">影像</span>
+        </div>
+        <div class="honor-stat">
+          <span class="honor-stat-value">{String(awardAlbumCount).padStart(2, "0")}</span>
+          <span class="honor-stat-label">奖项档案</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section honors-index-section" id="honors-index" aria-labelledby="honors-index-title">
-    <div class="section-heading">
-      <p class="eyebrow">Archive Index</p>
-      <h2 id="honors-index-title">成果索引</h2>
+  <section class="section honors-index-section" aria-labelledby="honors-index-title">
+    <div class="honors-index-heading">
+      <div>
+        <p class="eyebrow">Contents</p>
+        <h2 id="honors-index-title">查看成果</h2>
+      </div>
     </div>
-    <nav class="honors-index-nav" aria-label="成果分类导航">
-      {
-        categories.map((category, index) => (
-          <a href={`#${category.id}`}>
-            <span class="honors-index-number">{String(index + 1).padStart(2, "0")}</span>
-            <span class="honors-index-label">{category.label}</span>
-            <small>{category.items.length.toString().padStart(2, "0")} ITEMS</small>
-            <span class="honors-index-arrow" aria-hidden="true">→</span>
-          </a>
-        ))
-      }
+    <nav class="honors-index-nav" aria-label="成果目录">
+      {showcaseAlbums.map((album, index) => (
+        <a href={withBase(`/honors/${album.slug}/`)}>
+          <span class="honors-index-number">{String(index + 1).padStart(2, "0")}</span>
+          <span class="honors-index-label">
+            <strong>{album.title}</strong>
+            <small>{album.description}</small>
+          </span>
+          <small>{albumMeta(album)}</small>
+          <span class="honors-index-arrow" aria-hidden="true">→</span>
+        </a>
+      ))}
     </nav>
   </section>
-
-  <div class="honors-content">
-    {
-      categories.map((category, categoryIndex) => (
-        <section class="honors-category-section" id={category.id} aria-labelledby={`${category.id}-title`}>
-          <div class="honors-category-heading">
-            <span class="honors-category-number">{String(categoryIndex + 1).padStart(2, "0")}</span>
-            <div>
-              <p class="eyebrow">Collection {String(categoryIndex + 1).padStart(2, "0")}</p>
-              <h2 id={`${category.id}-title`}>{category.label}</h2>
-              <p>{category.description}</p>
-            </div>
-          </div>
-
-          <div class="honors-items-grid">
-            {
-              category.items.map((item, itemIndex) => (
-                <article class:list={["honors-item", `honors-item-${item.type}`, { "is-featured": itemIndex === 0 }]}>
-                  <div class="honors-item-media">
-                    {item.type === "video" && item.src ? (
-                      <video controls preload="metadata" poster={item.poster ? withBase(item.poster) : undefined}>
-                        <source src={withBase(item.src)} />
-                      </video>
-                    ) : item.src || item.poster ? (
-                      <img
-                        src={withBase(item.src || item.poster || "")}
-                        alt={item.imageAlt ?? item.title}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    ) : (
-                      <div class="honors-item-placeholder" aria-label="待补充视频素材">VIDEO / PENDING</div>
-                    )}
-                    <span class="honors-item-type">{typeLabel(item.type)}</span>
-                  </div>
-                  <div class="honors-item-body">
-                    <div class="honors-item-heading">
-                      <span>{typeLabel(item.type)}</span>
-                      <small>{String(itemIndex + 1).padStart(2, "0")}</small>
-                    </div>
-                    <h3>{item.title}</h3>
-                    {item.caption && <p>{item.caption}</p>}
-                    {item.result && <span class="honors-item-result">{item.result}</span>}
-                  </div>
-                </article>
-              ))
-            }
-          </div>
-        </section>
-      ))
-    }
-  </div>
 </Layout>

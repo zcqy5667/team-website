@@ -1,0 +1,58 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { qaItems } from "../data/siteData";
+import { withBase } from "../utils/paths";
+
+const categories = [...new Set(qaItems.map((item) => item.category))];
+---
+
+<Layout
+  title="Q&A"
+  description="桂林理工大学群星战队常见问题与回答，涵盖加入战队、日常训练、赛事成果与联系咨询。"
+  footerBackHref="/"
+  footerBackLabel="返回首页"
+>
+  <section
+    class="page-hero page-hero-qa"
+    style={`--page-hero-image: image-set(url("${withBase("/assets/images/team-cover.webp")}") type("image/webp"), url("${withBase("/assets/images/team-cover.png")}") type("image/png"))`}
+  >
+    <div class="page-hero-content">
+      <p class="eyebrow">QUESTIONS / ANSWERS</p>
+      <h1>常见问题</h1>
+      <p>把加入战队、日常训练、赛事参与和联系咨询集中整理，快速找到你想了解的答案。</p>
+    </div>
+  </section>
+
+  <section class="section qa-section" aria-labelledby="qa-title">
+    <div class="qa-heading">
+      <div>
+        <p class="eyebrow">Quick Answers</p>
+        <h2 id="qa-title">Q&A</h2>
+        <p>这里会持续补充新问题。需要新增内容时，只需在 <code>src/data/siteData.ts</code> 的 <code>qaItems</code> 数组中追加一项。</p>
+      </div>
+      <div class="qa-summary" aria-label="问答统计">
+        <strong>{String(qaItems.length).padStart(2, "0")}</strong>
+        <span>个常见问题</span>
+        <small>{categories.length} 个主题分类</small>
+      </div>
+    </div>
+
+    <div class="qa-list">
+      {qaItems.map((item, index) => (
+        <details class="qa-item" open={index === 0}>
+          <summary>
+            <span class="qa-index">{String(index + 1).padStart(2, "0")}</span>
+            <span class="qa-summary-copy">
+              <span class="qa-category">{item.category}</span>
+              <strong>{item.question}</strong>
+            </span>
+            <span class="qa-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="qa-answer">
+            {item.answer.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+        </details>
+      ))}
+    </div>
+  </section>
+</Layout>
