@@ -1,0 +1,126 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - link [ref=f1e3] [cursor=pointer]:
+      - /url: /
+      - img "桂林理工大学群星战队" [ref=f1e5]
+    - navigation "主导航" [ref=f1e6]:
+      - link "首页" [ref=f1e7] [cursor=pointer]:
+        - /url: /
+      - link "战队" [ref=f1e8] [cursor=pointer]:
+        - /url: /#team
+      - link "兵种" [ref=f1e9] [cursor=pointer]:
+        - /url: /units/
+      - link "分工" [ref=f1e10] [cursor=pointer]:
+        - /url: /division/
+      - link "成果" [ref=f1e11] [cursor=pointer]:
+        - /url: /honors/
+      - link "Q&A" [ref=f1e12] [cursor=pointer]:
+        - /url: /qa/
+      - link "联系" [ref=f1e13] [cursor=pointer]:
+        - /url: /contact/
+    - button "查看网站公告" [ref=f1e14] [cursor=pointer]
+    - button "切换为浅色模式" [ref=f1e17] [cursor=pointer]:
+      - generic [aria-hidden] [ref=f1e18]: ☀
+      - generic [aria-hidden] [ref=f1e19]: ☾
+  - main [ref=f1e20]:
+    - generic [ref=f1e22]:
+      - paragraph [ref=f1e23]: Recruitment / Apply
+      - heading "报名加入战队" [level=1] [ref=f1e24]
+      - paragraph [ref=f1e25]: 选择你感兴趣的方向，认真填写信息。我们会根据报名内容联系你安排后续培训与考核。
+    - region [ref=f1e26]:
+      - generic [ref=f1e27]:
+        - paragraph [ref=f1e28]: Join The Team
+        - heading "在线报名" [level=2] [ref=f1e29]
+        - paragraph [ref=f1e30]: 带有 * 的项目为必填项。报名信息仅用于战队招新联系与审核。
+      - generic [ref=f1e31]:
+        - group "基本信息" [ref=f1e32]:
+          - generic [ref=f1e34]:
+            - generic [ref=f1e35]:
+              - generic [ref=f1e36]: 姓名 *
+              - textbox "姓名 *" [ref=f1e37]:
+                - /placeholder: 你的姓名
+            - group "性别 *" [ref=f1e38]:
+              - generic [ref=f1e40]:
+                - generic [ref=f1e41]:
+                  - radio "男" [ref=f1e42]
+                  - text: 男
+                - generic [ref=f1e43]:
+                  - radio "女" [ref=f1e44]
+                  - text: 女
+                - generic [ref=f1e45]:
+                  - radio "不便透露" [ref=f1e46]
+                  - text: 不便透露
+            - generic [ref=f1e47]:
+              - generic [ref=f1e48]: 学院 *
+              - textbox "学院 *" [ref=f1e49]:
+                - /placeholder: 例如：信息科学与工程学院
+            - generic [ref=f1e50]:
+              - generic [ref=f1e51]: 专业与班级 *
+              - textbox "专业与班级 *" [ref=f1e52]:
+                - /placeholder: 例如：机械设计 2301 班
+        - group "联系方式" [ref=f1e53]:
+          - generic [ref=f1e55]:
+            - generic [ref=f1e56]:
+              - generic [ref=f1e57]: QQ *
+              - textbox "QQ *" [ref=f1e58]:
+                - /placeholder: QQ 号码
+            - generic [ref=f1e59]:
+              - generic [ref=f1e60]: 微信 *
+              - textbox "微信 *" [ref=f1e61]:
+                - /placeholder: 微信号
+            - generic [ref=f1e62]:
+              - generic [ref=f1e63]: 邮箱 *
+              - textbox "邮箱 *" [ref=f1e64]:
+                - /placeholder: name@example.com
+            - generic [ref=f1e65]:
+              - generic [ref=f1e66]: 手机号码 *
+              - textbox "手机号码 *" [ref=f1e67]:
+                - /placeholder: 常用手机号
+        - group "志愿方向" [ref=f1e68]:
+          - generic [ref=f1e71]:
+            - generic [ref=f1e72]: 第一志愿 *
+            - combobox "第一志愿 *" [ref=f1e73]:
+              - option "请选择最想加入的组别" [selected]
+              - option "机械组"
+              - option "电控组"
+              - option "算法组"
+              - option "硬件组"
+              - option "运营组"
+          - generic [ref=f1e74]:
+            - checkbox "我愿意服从组别调剂" [ref=f1e75]
+            - generic [ref=f1e76]: 我愿意服从组别调剂
+        - group "个人情况" [ref=f1e77]:
+          - generic [ref=f1e79]:
+            - generic [ref=f1e80]:
+              - generic [ref=f1e81]: 个人简介 *
+              - textbox "个人简介 *" [ref=f1e82]:
+                - /placeholder: 兴趣、性格、学习经历
+            - generic [ref=f1e83]:
+              - generic [ref=f1e84]: 个人荣誉 *
+              - textbox "个人荣誉 *" [ref=f1e85]:
+                - /placeholder: 奖项、证书、表彰；没有请填写“无”
+            - generic [ref=f1e86]:
+              - generic [ref=f1e87]: 任职情况 *
+              - textbox "任职情况 *" [ref=f1e88]:
+                - /placeholder: 社团、班级、学生组织任职；没有请填写“无”
+            - generic [ref=f1e89]:
+              - generic [ref=f1e90]: 技术基础 *
+              - textbox "技术基础 *" [ref=f1e91]:
+                - /placeholder: 相关知识、工具和技能；没有请填写“无”
+            - generic [ref=f1e92]:
+              - generic [ref=f1e93]: 项目或竞赛经历 *
+              - textbox "项目或竞赛经历 *" [ref=f1e94]:
+                - /placeholder: 项目、竞赛、作品链接或相关经历；没有请填写“无”
+        - generic [ref=f1e95]:
+          - checkbox "我同意战队仅为本次招新收集、使用以上个人信息。 *" [ref=f1e96]
+          - generic [ref=f1e97]: 我同意战队仅为本次招新收集、使用以上个人信息。 *
+        - generic [ref=f1e98]:
+          - button "提交报名" [ref=f1e99] [cursor=pointer]:
+            - text: 提交报名
+            - generic [aria-hidden] [ref=f1e100]: →
+          - status
+  - contentinfo [ref=f1e101]:
+    - generic [ref=f1e102]: RoboMaster Team Showcase
+    - link "返回首页" [ref=f1e103] [cursor=pointer]:
+      - /url: /
+  - text: ">"

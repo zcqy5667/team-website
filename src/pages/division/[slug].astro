@@ -4,9 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import OptimizedImage from "../../components/OptimizedImage.astro";
 import TagList from "../../components/TagList.astro";
 import { divisionGroups } from "../../data/siteData";
-import { withBase } from "../../utils/paths";
-
-const webpPath = (path: string) => path.replace(/\.png(?=($|[?#]))/i, ".webp");
+import { responsiveImageSet } from "../../utils/images";
 
 export function getStaticPaths() {
   // 将完整的分工对象作为 props 传入，模板渲染各个路由时无需再次查找数据。
@@ -19,14 +17,8 @@ export function getStaticPaths() {
 const { group } = Astro.props;
 // 硬件组首屏使用单独的展示图；职责正文继续沿用 group.image。
 const heroImage = group.slug === "hardware" ? "/assets/images/yingjian1.png" : group.image;
-// CSS 背景图需要拼接 image-set 字符串；内容图片使用 OptimizedImage，
-// 以获得相同的 PNG/WebP 回退能力。
-const backgroundImage =
-  heroImage === "/assets/images/yingjian1.png"
-    ? `url("${withBase(heroImage)}")`
-    : heroImage.toLowerCase().includes(".png")
-      ? `image-set(url("${withBase(webpPath(heroImage))}") type("image/webp"), url("${withBase(heroImage)}") type("image/png"))`
-      : `url("${withBase(heroImage)}")`;
+// 首屏背景图也使用构建生成的响应式资源，避免加载原始 PNG。
+const backgroundImage = responsiveImageSet(heroImage, 1600);
 ---
 
 <Layout title={`RoboMaster ${group.name}`} description={group.summary} footerBackHref="/division/" footerBackLabel="返回分工">

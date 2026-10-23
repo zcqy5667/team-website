@@ -119,6 +119,45 @@ type ShowcaseItem = {
 npm run build
 ```
 
+## Cloudflare 报名后台
+
+报名入口为 `/recruit/`，管理入口为 `/admin/`。管理入口不会出现在公开导航中，但仍然必须使用管理员账号登录；报名数据接口会在未登录时拒绝读取。
+
+Cloudflare Pages 部署时需要完成以下配置：
+
+1. 创建一个 D1 数据库，例如 `team-recruitment`，并在 Pages 项目的 Settings → Bindings 中添加 D1 binding，变量名固定为 `DB`。
+2. 使用 `migrations/0001_recruitment.sql` 初始化数据表。使用 Wrangler 时可以执行：
+
+   ```bash
+   npx wrangler d1 migrations apply team-recruitment --remote
+   ```
+
+3. 在 Pages 项目的 Settings → Environment variables 中添加以下 Secrets：
+
+   ```text
+   ADMIN_USERNAME=管理员账号
+   ADMIN_PASSWORD=管理员密码
+   SESSION_SECRET=至少 32 位的随机字符串
+   ```
+
+   可参考 `.dev.vars.example`，本地 Pages Functions 调试时复制为 `.dev.vars`。
+4. 将 `wrangler.toml.example` 复制为 `wrangler.toml`，填入真实的 D1 `database_id`。Cloudflare Pages 的构建命令仍为 `npm run build`，输出目录仍为 `dist`。
+
+本地只运行 `npm run dev` 时，Astro 会渲染报名页和后台页面，但不会加载 `functions/` 下的 Cloudflare 接口。要连同 Functions 调试，需要使用 Wrangler 的 Pages 模式：
+
+```bash
+npx wrangler pages dev dist
+```
+
+部署后可以使用以下地址：
+
+```text
+https://你的项目.pages.dev/recruit/
+https://你的项目.pages.dev/admin/
+```
+
+后台登录凭据只放在 Cloudflare Secrets 中，不写入前端代码或提交到仓库。
+
 确认：
 
 - `/honors/` 分类链接可以通过 hash 跳到对应内容区

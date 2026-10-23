@@ -17,7 +17,7 @@ const { slides } = Astro.props;
     {
       slides.map((slide, index) => (
         <article class:list={["hero-slide", { "is-active": index === 0 }]} data-slide={index} aria-hidden={index === 0 ? "false" : "true"}>
-          <OptimizedImage class="hero-slide-image" src={slide.image} alt="" loading={index === 0 ? "eager" : "lazy"} fetchpriority={index === 0 ? "high" : "low"} />
+          <OptimizedImage class="hero-slide-image" src={slide.image} alt="" loading={index === 0 ? "eager" : "lazy"} fetchpriority={index === 0 ? "high" : "low"} sizes={index === 1 ? "(max-width: 820px) 84vw, 640px" : "100vw"} />
           <div class="hero-slide-shade"></div>
           <div class="hero-slide-content">
             <p class="eyebrow">{slide.kicker}</p>

@@ -1,7 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import OptimizedImage from "../../components/OptimizedImage.astro";
 import { showcaseAlbums } from "../../data/siteData";
 import { withBase } from "../../utils/paths";
+import { imageVariant, responsiveImageSet } from "../../utils/images";
 export function getStaticPaths() {
   return showcaseAlbums.map((album) => ({
     params: { slug: album.slug },
@@ -23,7 +25,7 @@ const galleryDescription = album.type === "awards" ? "群星战队已获得的�
   footerBackLabel="返回成果目录"
   enableInteractions={false}
 >
-  <section class="album-hero" style={`--album-cover: url("${withBase(album.cover)}")`}>
+  <section class="album-hero" style={`--album-cover: ${responsiveImageSet(album.cover, 1600)}`}>
     <div class="album-hero-inner">
       <a class="album-back-link" href={withBase("/honors/")}>← 返回目录</a>
       <p class="eyebrow">{album.kicker}</p>
@@ -47,20 +49,21 @@ const galleryDescription = album.type === "awards" ? "群星战队已获得的�
         {album.photos.map((photo, index) => (
           <a
             class="album-photo"
-            href={withBase(photo.full)}
+            href={withBase(imageVariant(photo.full, 1600, "webp"))}
             data-gallery-photo
             data-photo-width={photo.width}
             data-photo-height={photo.height}
             data-photo-caption={photo.caption ?? photo.alt}
             aria-label={`查看${photo.alt}大图`}
           >
-            <img
-              src={withBase(photo.thumb)}
+            <OptimizedImage
+              src={photo.thumb}
               alt={photo.alt}
               width={photo.width}
               height={photo.height}
-              loading={index < 6 ? "eager" : "lazy"}
+              loading={index < 2 ? "eager" : "lazy"}
               decoding="async"
+              sizes="(max-width: 640px) 92vw, (max-width: 980px) 48vw, 360px"
             />
             <span class="album-photo-index">{String(index + 1).padStart(2, "0")}</span>
           </a>
@@ -78,11 +81,11 @@ const galleryDescription = album.type === "awards" ? "群星战队已获得的�
       </div>
       <div class="album-video-frame">
         {album.video ? (
-          <video controls preload="metadata" poster={withBase(album.poster ?? album.cover)}>
+          <video controls preload="metadata" poster={withBase(imageVariant(album.poster ?? album.cover, 1600, "webp"))}>
             <source src={withBase(album.video)} />
           </video>
         ) : (
-          <img src={withBase(album.poster ?? album.cover)} alt="赛季混剪视频封面" width="1672" height="941" loading="eager" decoding="async" />
+          <OptimizedImage src={album.poster ?? album.cover} alt="赛季混剪视频封面" width="1672" height="941" loading="eager" decoding="async" sizes="(max-width: 900px) 92vw, 1100px" />
         )}
       </div>
     </section>

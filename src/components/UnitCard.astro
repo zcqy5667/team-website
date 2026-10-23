@@ -28,7 +28,7 @@ const unitHref = withBase(`/units/${unit.id}/`);
 >
   <div class="unit-card-link">
     <div class="unit-visual">
-      <OptimizedImage src={unit.image} alt={`${unit.name}示意图`} loading="lazy" />
+      <OptimizedImage src={unit.image} alt={`${unit.name}示意图`} loading="lazy" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 360px" />
       <span class="unit-number">{unit.number}</span>
     </div>
     <div class="unit-body">

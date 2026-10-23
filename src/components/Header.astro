@@ -2,6 +2,7 @@
 // 页头负责导航文字、当前路由判断和移动端菜单状态。
 // 新增或删除一级页面时修改 navItems，下面的点击逻辑无需跟着改。
 import { team } from "../data/siteData";
+import OptimizedImage from "./OptimizedImage.astro";
 import { withBase } from "../utils/paths";
 
 type NavItem = {
@@ -22,7 +23,8 @@ const navItems: NavItem[] = [
   { label: "分工", href: "/division/", match: "/division/" },
   { label: "成果", href: "/honors/", match: "/honors/" },
   { label: "Q&A", href: "/qa/", match: "/qa/" },
-  { label: "联系", href: "/contact/", match: "/contact/" }
+  { label: "联系", href: "/contact/", match: "/contact/" },
+  { label: "报名", href: "/recruit/", match: "/recruit/" }
 ];
 
 function isCurrent(item: NavItem) {
@@ -37,7 +39,7 @@ function isCurrent(item: NavItem) {
 
 <header class="site-header" data-site-header>
   <a class="site-header-brand" href={withBase("/")}>
-    <img src={withBase(team.emblem)} alt={team.name} />
+    <OptimizedImage src={team.emblem} alt={team.name} width="64" height="64" loading="eager" sizes="64px" />
   </a>
   <button
     class="nav-toggle"

@@ -110,9 +110,8 @@ export const teamMapHref =
 export const homeMoreLinks: HomeMoreLink[] = [
   {
     label: "加入招新群",
-    description: "加入 QQ 群，和我们一起聊聊机器人、比赛与赛季生活。",
-    href: recruitGroupHref,
-    external: true
+    description: "在线填写报名信息，选择你感兴趣的技术方向。",
+    href: "/recruit/"
   },
   {
     label: "加入我们",
@@ -286,7 +285,7 @@ export const qaItems: QAItem[] = [
   },
 ];
 
-// 成果目录详情。图片使用 thumb/full 双资源字段。
+// 成果目录详情。thumb 用于页面内浏览，full 只在灯箱打开时加载。
 // width/height 用于按行排版时避免布局跳动。
 export const showcaseAlbums: ShowcaseAlbum[] = [
   {

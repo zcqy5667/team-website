@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "predev": "node scripts/generate-image-variants.mjs",
     "dev": "astro dev",
+    "prebuild": "node scripts/generate-image-variants.mjs",
     "build": "astro build",
     "preview": "astro preview"
   },
@@ -14,7 +16,10 @@
   },
   "description": "这是一个使用 Astro + TypeScript 重构后的 RoboMaster 单战队展示网站。网站源码在 `src/` 中维护，构建后会输出静态页面到 `dist/`，适合部署到任意静态托管平台。",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261021.1",
+    "sharp": "^0.34.5"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zcqy5667/team-website.git"

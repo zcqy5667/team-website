@@ -4,8 +4,16 @@
 import Layout from "../layouts/Layout.astro";
 import { recruitGroupHref, teamMapHref } from "../data/siteData";
 import { withBase } from "../utils/paths";
+import { responsiveImageSet } from "../utils/images";
 
 const contactItems = [
+  {
+    label: "在线报名",
+    value: "填写报名信息",
+    detail: "选择机械、电控、算法、硬件或运营方向，提交报名信息加入基地。",
+    href: "/recruit/",
+    actionLabel: "立即报名"
+  },
   {
     label: "招新咨询",
     value: "731699482",
@@ -29,7 +37,7 @@ const contactItems = [
 ---
 
 <Layout title="联系我们" description="桂林理工大学机器人基地联系、招新咨询与合作沟通入口。" footerBackHref="/" footerBackLabel="返回首页">
-  <section class="page-hero page-hero-contact" style={`--page-hero-image: image-set(url("${withBase("/assets/images/media-stage.webp")}") type("image/webp"), url("${withBase("/assets/images/media-stage.png")}") type("image/png"))`}>
+  <section class="page-hero page-hero-contact" style={`--page-hero-image: ${responsiveImageSet("/assets/images/media-stage.png", 1600)}`}>
     <div class="page-hero-content">
       <p class="eyebrow">Contact</p>
       <h1>联系我们</h1>

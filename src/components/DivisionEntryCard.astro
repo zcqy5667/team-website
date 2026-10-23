@@ -15,7 +15,7 @@ const { group } = Astro.props;
 
 <a class="division-entry-card media-entry-card" href={withBase(`/division/${group.slug}/`)}>
   <div class="media-frame division-frame">
-    <OptimizedImage src={group.image} alt={`${group.name}代表图`} loading="lazy" />
+    <OptimizedImage src={group.image} alt={`${group.name}代表图`} loading="lazy" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 520px" />
   </div>
   <div class="media-meta division-meta">
     <span class="media-entry-kicker">{group.kicker}</span>

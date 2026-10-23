@@ -1,9 +1,7 @@
 ---
-// 卡片和详情页统一使用的图片组件。
-// 如果 PNG 旁边存在同名 WebP 文件，就自动优先提供 WebP 资源。
-import { existsSync } from "node:fs";
-import { resolve } from "node:path";
+// 卡片、详情页和相册缩略图统一使用的响应式图片组件。
 import { withBase } from "../utils/paths";
+import { imageSrcSet } from "../utils/images";
 
 type Props = {
   src: string;
@@ -14,6 +12,7 @@ type Props = {
   height?: number | string;
   fetchpriority?: "high" | "low" | "auto";
   decoding?: "async" | "sync" | "auto";
+  sizes?: string;
 };
 
 const {
@@ -24,13 +23,11 @@ const {
   width,
   height,
   fetchpriority,
-  decoding = "async"
+  decoding = "async",
+  sizes = "(max-width: 720px) 92vw, (max-width: 1200px) 48vw, 640px"
 } = Astro.props;
 
-const webpSrc = src.replace(/\.png(?=($|[?#]))/i, ".webp");
-const webpFile = webpSrc.startsWith("/") ? webpSrc.slice(1) : webpSrc;
-const hasWebp = webpSrc !== src && existsSync(resolve(process.cwd(), "public", webpFile));
-// 保证 picture 分支和普通 img 分支使用相同的回退属性。
+const supportsGeneratedVariants = /\.(png|jpe?g)(?:$|[?#])/i.test(src);
 const imageAttrs = {
   src: withBase(src),
   alt,
@@ -39,14 +36,16 @@ const imageAttrs = {
   width,
   height,
   fetchpriority,
-  decoding
+  decoding,
+  sizes
 };
 ---
 
 {
-  hasWebp ? (
+  supportsGeneratedVariants ? (
     <picture>
-      <source srcset={withBase(webpSrc)} type="image/webp" />
+      <source srcset={imageSrcSet(src, "avif")} type="image/avif" sizes={sizes} />
+      <source srcset={imageSrcSet(src, "webp")} type="image/webp" sizes={sizes} />
       <img {...imageAttrs} />
     </picture>
   ) : (

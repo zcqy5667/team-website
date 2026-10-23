@@ -5,9 +5,8 @@ import Layout from "../../layouts/Layout.astro";
 import OptimizedImage from "../../components/OptimizedImage.astro";
 import TagList from "../../components/TagList.astro";
 import { units } from "../../data/siteData";
+import { responsiveImageSet } from "../../utils/images";
 import { withBase } from "../../utils/paths";
-
-const webpPath = (path: string) => path.replace(/\.png(?=($|[?#]))/i, ".webp");
 
 export function getStaticPaths() {
   // 执行 `astro build` 时，Astro 会为目录中的每项预渲染一个页面。
@@ -19,9 +18,7 @@ export function getStaticPaths() {
 
 const { unit } = Astro.props;
 // 首屏使用 CSS 背景图，详情内容区域使用 OptimizedImage。
-const backgroundImage = unit.image.toLowerCase().includes(".png")
-  ? `image-set(url("${withBase(webpPath(unit.image))}") type("image/webp"), url("${withBase(unit.image)}") type("image/png"))`
-  : `url("${withBase(unit.image)}")`;
+const backgroundImage = responsiveImageSet(unit.image, 1600);
 ---
 
 <Layout title={`RoboMaster ${unit.name}`} description={unit.summary} footerBackHref="/units/" footerBackLabel="返回兵种图鉴">
@@ -36,7 +33,7 @@ const backgroundImage = unit.image.toLowerCase().includes(".png")
   <section class="section unit-detail-section" aria-labelledby="unit-detail-title">
     <div class="unit-detail">
       <div class="unit-detail-media">
-        <OptimizedImage src={unit.image} alt={`${unit.name}展示图`} loading="lazy" />
+        <OptimizedImage src={unit.image} alt={`${unit.name}展示图`} loading="lazy" sizes="(max-width: 820px) 92vw, 560px" />
       </div>
       <div class="unit-detail-content">
         <p class="eyebrow">Role Detail</p>

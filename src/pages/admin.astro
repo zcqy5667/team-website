@@ -1,0 +1,68 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="报名管理" description="报名信息管理后台" footerBackHref="/" footerBackLabel="返回首页" enableInteractions={false}>
+  <section class="section admin-page" data-admin-app>
+    <div class="section-heading"><p class="eyebrow">Private / Admin</p><h1>报名管理</h1><p>此页面仅供战队负责人使用，报名数据不会公开展示。</p></div>
+    <div class="admin-login-card" data-admin-login>
+      <form class="admin-login-form" data-login-form><label><span>管理员账号</span><input name="username" autocomplete="username" required /></label><label><span>管理员密码</span><input type="password" name="password" autocomplete="current-password" required /></label><button class="primary-button" type="submit">登录</button><p class="admin-message" data-login-message role="alert"></p></form>
+    </div>
+    <div class="admin-dashboard" data-admin-dashboard hidden>
+      <div class="admin-toolbar"><div><strong data-admin-user></strong><span class="admin-count" data-admin-count></span></div><div class="admin-toolbar-actions"><button class="secondary-button" type="button" data-refresh>刷新</button><a class="secondary-button" href="/api/recruitment/applications/export">导出 CSV</a><button class="secondary-button" type="button" data-logout>退出</button></div></div>
+      <div class="admin-filters"><input data-search placeholder="搜索姓名、邮箱、学院、QQ…" /><select data-status><option value="">全部状态</option><option value="new">待处理</option><option value="reviewing">审核中</option><option value="interview">面试</option><option value="accepted">已录取</option><option value="rejected">未通过</option></select><button class="primary-button" type="button" data-filter>查询</button></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>报名人</th><th>联系方式</th><th>志愿</th><th>状态</th><th>提交时间</th><th>操作</th></tr></thead><tbody data-application-rows><tr><td colspan="6">正在读取报名信息…</td></tr></tbody></table></div>
+      <div class="admin-detail" data-admin-detail hidden><div class="admin-detail-header"><h2 data-detail-title>报名详情</h2><button class="secondary-button" type="button" data-close-detail>关闭</button></div><dl data-detail-content></dl><form data-update-form><label><span>处理状态</span><select name="status"><option value="new">待处理</option><option value="reviewing">审核中</option><option value="interview">面试</option><option value="accepted">已录取</option><option value="rejected">未通过</option></select></label><label><span>管理员备注</span><textarea name="admin_note" maxlength="2000"></textarea></label><button class="primary-button" type="submit">保存处理结果</button><p class="admin-message" data-update-message role="status"></p></form></div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  type Application = Record<string, string | number | null>;
+  const app = document.querySelector<HTMLElement>("[data-admin-app]");
+  if (app) {
+    const login = app.querySelector<HTMLElement>("[data-admin-login]");
+    const dashboard = app.querySelector<HTMLElement>("[data-admin-dashboard]");
+    const loginForm = app.querySelector<HTMLFormElement>("[data-login-form]");
+    const loginMessage = app.querySelector<HTMLElement>("[data-login-message]");
+    const rows = app.querySelector<HTMLElement>("[data-application-rows]");
+    const count = app.querySelector<HTMLElement>("[data-admin-count]");
+    const detail = app.querySelector<HTMLElement>("[data-admin-detail]");
+    const detailContent = app.querySelector<HTMLElement>("[data-detail-content]");
+    const updateForm = app.querySelector<HTMLFormElement>("[data-update-form]");
+    const updateMessage = app.querySelector<HTMLElement>("[data-update-message]");
+    let applications: Application[] = [];
+    let selected: Application | null = null;
+    const escape = (value: unknown) => String(value ?? "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char] || char));
+    const statusLabel: Record<string, string> = { new: "待处理", reviewing: "审核中", interview: "面试", accepted: "已录取", rejected: "未通过" };
+    const showMessage = (node: HTMLElement | null, text: string, kind = "") => { if (node) { node.textContent = text; node.className = `admin-message ${kind}`; } };
+    async function loadApplications() {
+      const search = app.querySelector<HTMLInputElement>("[data-search]")?.value.trim() || "";
+      const status = app.querySelector<HTMLSelectElement>("[data-status]")?.value || "";
+      const response = await fetch(`/api/recruitment/applications/?q=${encodeURIComponent(search)}&status=${encodeURIComponent(status)}`);
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || "读取报名信息失败");
+      applications = data.applications || [];
+      if (count) count.textContent = `共 ${applications.length} 条`;
+      if (rows) rows.innerHTML = applications.length ? applications.map((item, index) => `<tr><td><strong>${escape(item.name)}</strong><small>${escape(item.college)}<br />${escape(item.major_class)}</small></td><td>${escape(item.email)}<small>${escape(item.phone)}<br />QQ ${escape(item.qq)}</small></td><td>${escape(item.primary_choice)}${Number(item.willing_transfer) ? "<small>接受调剂</small>" : ""}</td><td><span class="admin-status status-${escape(item.status)}">${escape(statusLabel[String(item.status)] || item.status)}</span></td><td>${escape(item.created_at)}</td><td><button class="secondary-button" type="button" data-view-index="${index}">查看</button></td></tr>`).join("") : '<tr><td colspan="6">暂无报名记录</td></tr>';
+    }
+    function openDetail(item: Application) {
+      selected = item;
+      if (!detail || !detailContent || !updateForm) return;
+      detail.hidden = false;
+      detailContent.innerHTML = Object.entries({ 姓名: item.name, 性别: item.gender, 学院: item.college, 专业班级: item.major_class, QQ: item.qq, 微信: item.wechat, 邮箱: item.email, 手机: item.phone, 第一志愿: item.primary_choice, 服从调剂: Number(item.willing_transfer) ? "是" : "否", 个人简介: item.bio, 个人荣誉: item.honors, 任职情况: item.roles, 技术基础: item.technical_basis, 项目或竞赛经历: item.projects }).map(([key, value]) => `<div><dt>${escape(key)}</dt><dd>${escape(value).replace(/\n/g, "<br />")}</dd></div>`).join("");
+      (updateForm.elements.namedItem("status") as HTMLSelectElement).value = String(item.status || "new");
+      (updateForm.elements.namedItem("admin_note") as HTMLTextAreaElement).value = String(item.admin_note || "");
+      detail.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    async function enterDashboard(username: string) { if (login) login.hidden = true; if (dashboard) dashboard.hidden = false; const user = app.querySelector<HTMLElement>("[data-admin-user]"); if (user) user.textContent = username; try { await loadApplications(); } catch (error) { showMessage(loginMessage, error instanceof Error ? error.message : "读取失败", "is-error"); } }
+    loginForm?.addEventListener("submit", async (event) => { event.preventDefault(); const values = Object.fromEntries(new FormData(loginForm).entries()); try { const response = await fetch("/api/admin/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(values) }); const data = await response.json().catch(() => ({})); if (!response.ok) throw new Error(data.error || "登录失败"); await enterDashboard(data.username); } catch (error) { showMessage(loginMessage, error instanceof Error ? error.message : "登录失败", "is-error"); } });
+    app.querySelector("[data-filter]")?.addEventListener("click", () => loadApplications().catch((error) => showMessage(loginMessage, error.message, "is-error")));
+    app.querySelector("[data-refresh]")?.addEventListener("click", () => loadApplications().catch((error) => showMessage(loginMessage, error.message, "is-error")));
+    app.querySelector("[data-logout]")?.addEventListener("click", async () => { await fetch("/api/admin/logout", { method: "POST" }); window.location.reload(); });
+    app.querySelector("[data-close-detail]")?.addEventListener("click", () => { if (detail) detail.hidden = true; });
+    rows?.addEventListener("click", (event) => { const button = (event.target as HTMLElement).closest<HTMLButtonElement>("[data-view-index]"); if (button) openDetail(applications[Number(button.dataset.viewIndex)]); });
+    updateForm?.addEventListener("submit", async (event) => { event.preventDefault(); if (!selected) return; const values = Object.fromEntries(new FormData(updateForm).entries()); const response = await fetch(`/api/recruitment/applications/${selected.id}`, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify(values) }); const data = await response.json().catch(() => ({})); if (!response.ok) { showMessage(updateMessage, data.error || "保存失败", "is-error"); return; } showMessage(updateMessage, "保存成功", "is-success"); await loadApplications(); });
+    fetch("/api/admin/session").then(async (response) => { if (!response.ok) return; const data = await response.json(); await enterDashboard(data.username); }).catch(() => undefined);
+  }
+</script>

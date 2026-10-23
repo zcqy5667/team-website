@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { qaItems } from "../data/siteData";
 import { withBase } from "../utils/paths";
+import { responsiveImageSet } from "../utils/images";
 
 ---
 
@@ -13,7 +14,7 @@ import { withBase } from "../utils/paths";
 >
   <section
     class="page-hero page-hero-qa"
-    style={`--page-hero-image: image-set(url("${withBase("/assets/images/team-cover.webp")}") type("image/webp"), url("${withBase("/assets/images/team-cover.png")}") type("image/png"))`}
+    style={`--page-hero-image: ${responsiveImageSet("/assets/images/team-cover.png", 1600)}`}
   >
     <div class="page-hero-content">
       <p class="eyebrow">QUESTIONS / ANSWERS</p>

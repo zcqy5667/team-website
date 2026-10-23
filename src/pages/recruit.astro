@@ -1,0 +1,102 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { divisionGroups } from "../data/siteData";
+import { responsiveImageSet } from "../utils/images";
+
+const field = (name: string, label: string, placeholder: string, required = true) => ({ name, label, placeholder, required });
+const textFields = [
+  field("bio", "个人简介", "兴趣、性格、学习经历", false),
+  field("honors", "个人荣誉", "奖项、证书、表彰；没有可留空", false),
+  field("roles", "任职情况", "社团、班级、学生组织任职；没有可留空", false),
+  field("technical_basis", "技术基础", "相关知识、工具和技能；没有可留空", false),
+  field("projects", "项目或竞赛经历", "项目、竞赛、作品链接或相关经历；没有可留空", false),
+];
+---
+
+<Layout title="报名加入" description="桂林理工大学机器人基地报名入口，填写信息加入机械、电控、算法、硬件或运营组。" footerBackHref="/" footerBackLabel="返回首页">
+  <section class="page-hero page-hero-contact recruit-hero" style={`--page-hero-image: ${responsiveImageSet("/assets/images/team-cover.png", 1600)}`}>
+    <div class="page-hero-content">
+      <p class="eyebrow">Recruitment / Apply</p>
+      <h1>报名加入战队</h1>
+      <p>选择你感兴趣的方向，认真填写信息。我们会根据报名内容联系你安排后续培训与考核。</p>
+    </div>
+  </section>
+
+  <section class="section recruit-section" aria-labelledby="recruit-title">
+    <div class="section-heading">
+      <p class="eyebrow">Join The Team</p>
+      <h2 id="recruit-title">在线报名</h2>
+      <p>带有 <span aria-hidden="true">*</span> 的项目为必填项。报名信息仅用于战队招新联系与审核。</p>
+    </div>
+    <form class="recruit-form" data-recruit-form novalidate>
+      <fieldset>
+        <legend>基本信息</legend>
+        <div class="recruit-form-grid">
+          <label><span>姓名 <b>*</b></span><input name="name" required maxlength="50" placeholder="你的姓名" /></label>
+          <fieldset class="recruit-choice-fieldset"><legend>性别 <b>*</b></legend><div class="recruit-options">
+            <label><input type="radio" name="gender" value="male" required /> 男</label>
+            <label><input type="radio" name="gender" value="female" /> 女</label>
+          </div></fieldset>
+          <label><span>学院 <b>*</b></span><input name="college" required maxlength="100" placeholder="例如：信息科学与工程学院" /></label>
+          <label><span>专业与班级 <b>*</b></span><input name="major_class" required maxlength="120" placeholder="例如：机械设计 2301 班" /></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>联系方式</legend>
+        <div class="recruit-form-grid">
+          <label><span>QQ <b>*</b></span><input name="qq" required maxlength="30" placeholder="QQ 号码" /></label>
+          <label><span>微信</span><input name="wechat" maxlength="60" placeholder="微信号（选填）" /></label>
+          <label><span>邮箱 <b>*</b></span><input type="email" name="email" required maxlength="160" placeholder="name@example.com" /></label>
+          <label><span>手机号码 <b>*</b></span><input type="tel" name="phone" required maxlength="30" placeholder="常用手机号" /></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>志愿方向</legend>
+        <div class="recruit-form-grid">
+          <label><span>第一志愿 <b>*</b></span><select name="primary_choice" required><option value="">请选择最想加入的组别</option>{divisionGroups.map((group) => <option value={group.name}>{group.name}</option>)}</select></label>
+        </div>
+        <label class="recruit-check"><input type="checkbox" name="willing_transfer" /> <span>我愿意服从组别调剂</span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>个人情况</legend>
+        <div class="recruit-long-grid">
+          {textFields.map((item) => <label><span>{item.label}</span><textarea name={item.name} maxlength={item.name === "projects" ? 2000 : 1600} placeholder={item.placeholder}></textarea></label>)}
+        </div>
+      </fieldset>
+
+      <label class="recruit-consent"><input type="checkbox" name="consent" required /> <span>我同意战队仅为本次招新收集、使用以上个人信息。 <b>*</b></span></label>
+      <div class="recruit-submit-row"><button class="primary-button" type="submit">提交报名 <span aria-hidden="true">→</span></button><p class="recruit-form-message" data-recruit-message role="status" aria-live="polite"></p></div>
+    </form>
+  </section>
+</Layout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("[data-recruit-form]");
+  const message = document.querySelector<HTMLElement>("[data-recruit-message]");
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity() || !message) return;
+    const submit = form.querySelector<HTMLButtonElement>("button[type=submit]");
+    if (submit) submit.disabled = true;
+    message.className = "recruit-form-message";
+    message.textContent = "正在提交…";
+    const values = Object.fromEntries(new FormData(form).entries());
+    const payload = { ...values, willing_transfer: form.elements.namedItem("willing_transfer") instanceof HTMLInputElement && (form.elements.namedItem("willing_transfer") as HTMLInputElement).checked, consent: true };
+    try {
+      const response = await fetch("/api/recruitment/applications/", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || "提交失败，请稍后重试");
+      form.reset();
+      message.className = "recruit-form-message is-success";
+      message.textContent = "报名提交成功，我们会通过你填写的联系方式联系你。";
+    } catch (error) {
+      message.className = "recruit-form-message is-error";
+      message.textContent = error instanceof Error ? error.message : "提交失败，请稍后重试";
+    } finally {
+      if (submit) submit.disabled = false;
+    }
+  });
+</script>

@@ -45,6 +45,54 @@ body {
     linear-gradient(180deg, #030303 0%, var(--bg) 38rem, #050505 100%);
 }
 
+/* 报名页和管理页 */
+.recruit-section { padding-bottom: clamp(4rem, 8vw, 8rem); }
+.recruit-form { display: grid; gap: 1.2rem; max-width: 1080px; margin: 0 auto; }
+.recruit-form fieldset { min-width: 0; margin: 0; padding: clamp(1.1rem, 2vw, 1.8rem); border: 1px solid var(--line); background: rgba(16, 16, 16, 0.78); }
+.recruit-form legend { padding: 0 .55rem; color: var(--text); font-size: 1.1rem; font-weight: 800; letter-spacing: .08em; }
+.recruit-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.recruit-form label, .recruit-choice-fieldset { display: grid; gap: .45rem; color: var(--muted); font-size: .94rem; }
+.recruit-form label > span, .recruit-choice-fieldset legend { font-weight: 700; }
+.recruit-form b { color: var(--red); }
+.recruit-form input:not([type="radio"]):not([type="checkbox"]), .recruit-form select, .recruit-form textarea, .admin-login-form input, .admin-filters input, .admin-filters select, .admin-detail textarea, .admin-detail select { width: 100%; border: 1px solid var(--line-strong); border-radius: 0; padding: .78rem .85rem; color: var(--text); background: rgba(0, 0, 0, .52); outline: none; transition: border-color .2s ease, background .2s ease; }
+.recruit-form textarea, .admin-detail textarea { min-height: 7.5rem; resize: vertical; }
+.recruit-form input:focus, .recruit-form select:focus, .recruit-form textarea:focus, .admin-login-form input:focus, .admin-filters input:focus, .admin-filters select:focus, .admin-detail textarea:focus, .admin-detail select:focus { border-color: var(--cyan); background: rgba(28, 105, 212, .08); }
+.recruit-options { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; min-height: 2.75rem; }
+.recruit-options label, .recruit-check, .recruit-consent { display: flex; grid-template-columns: auto 1fr; align-items: center; gap: .5rem; }
+.recruit-options input, .recruit-check input, .recruit-consent input { accent-color: var(--cyan); }
+.recruit-long-grid { display: grid; gap: 1rem; }
+.recruit-consent { color: var(--muted); margin: .25rem .15rem; }
+.recruit-submit-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+.primary-button, .secondary-button { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 2.8rem; padding: .65rem 1rem; border: 1px solid var(--line-strong); border-radius: 0; cursor: pointer; font-weight: 800; color: var(--text); background: var(--surface-2); }
+.primary-button { border-color: var(--cyan); background: var(--cyan); }
+.primary-button:hover, .primary-button:focus-visible { background: #2c7ce5; }
+.secondary-button:hover, .secondary-button:focus-visible { border-color: var(--cyan); }
+.primary-button:disabled { cursor: wait; opacity: .6; }
+.recruit-form-message, .admin-message { min-height: 1.5rem; margin: 0; color: var(--muted); }
+.recruit-form-message.is-success, .admin-message.is-success { color: #75db9b; }
+.recruit-form-message.is-error, .admin-message.is-error { color: #ff8a80; }
+.admin-page { min-height: 65vh; }
+.admin-login-card { max-width: 480px; margin: 2rem auto; padding: 1.5rem; border: 1px solid var(--line); background: rgba(16, 16, 16, .82); }
+.admin-login-form, .admin-detail form { display: grid; gap: 1rem; }
+.admin-login-form label, .admin-detail label { display: grid; gap: .4rem; color: var(--muted); }
+.admin-dashboard { display: grid; gap: 1rem; }
+.admin-toolbar, .admin-filters, .admin-toolbar-actions, .admin-detail-header { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
+.admin-toolbar { justify-content: space-between; padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
+.admin-toolbar strong { margin-right: .75rem; }
+.admin-count { color: var(--muted-2); }
+.admin-filters input { flex: 1 1 280px; }
+.admin-table-wrap { overflow-x: auto; border: 1px solid var(--line); }
+.admin-table { width: 100%; min-width: 850px; border-collapse: collapse; }
+.admin-table th, .admin-table td { padding: .85rem .75rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.admin-table th { color: var(--muted); font-size: .82rem; letter-spacing: .08em; }
+.admin-table small { display: block; margin-top: .28rem; color: var(--muted-2); line-height: 1.5; }
+.admin-status { display: inline-block; padding: .3rem .5rem; color: var(--text); border: 1px solid var(--line-strong); font-size: .82rem; white-space: nowrap; }
+.status-accepted { border-color: #3c9b62; color: #75db9b; }.status-rejected { border-color: #9b4b44; color: #ff8a80; }.status-reviewing, .status-interview { border-color: #8b702e; color: #f5c96a; }
+.admin-detail { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(260px, .8fr); gap: 1.5rem; padding: 1.5rem; border: 1px solid var(--line); background: rgba(16, 16, 16, .82); }
+.admin-detail-header { grid-column: 1 / -1; justify-content: space-between; }.admin-detail h2 { margin: 0; }
+.admin-detail dl { display: grid; gap: .8rem; margin: 0; }.admin-detail dl > div { padding-bottom: .65rem; border-bottom: 1px solid rgba(255,255,255,.1); }.admin-detail dt { color: var(--muted-2); font-size: .82rem; }.admin-detail dd { margin: .2rem 0 0; white-space: pre-wrap; line-height: 1.65; }
+@media (max-width: 760px) { .recruit-form-grid, .admin-detail { grid-template-columns: 1fr; } .admin-detail-header { grid-column: auto; } .admin-toolbar { align-items: flex-start; } }
+
 /* 装饰性网格背景层，不承载任何语义内容。 */
 body::before {
   position: fixed;
@@ -1963,6 +2011,7 @@ body.is-modal-open {
     align-content: start;
     padding: 1.1rem;
   }
+
 }
 
 /* 窄屏手机布局。 */
@@ -4293,8 +4342,11 @@ html[data-theme="light"] body.page-home .slide-progress::before {
 
   .theme-toggle {
     position: static;
+    grid-column: 3;
+    grid-row: 1;
     justify-self: end;
   }
+
 }
 
 /* BMW-inspired light theme normalization: white canvas, ink hierarchy, blue actions. */

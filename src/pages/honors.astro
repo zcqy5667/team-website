@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { showcaseAlbums } from "../data/siteData";
 import { withBase } from "../utils/paths";
+import { responsiveImageSet } from "../utils/images";
 
 const albumCount = showcaseAlbums.length;
 const photoCount = showcaseAlbums.reduce((total, album) => total + album.photos.length, 0);
@@ -24,7 +25,7 @@ function albumMeta(album: (typeof showcaseAlbums)[number]) {
 >
   <section
     class="page-hero page-hero-honors"
-    style={`--page-hero-image: image-set(url("${withBase("/assets/images/team-cover.webp")}") type("image/webp"), url("${withBase("/assets/images/team-cover.png")}") type("image/png"))`}
+    style={`--page-hero-image: ${responsiveImageSet("/assets/images/team-cover.png", 1600)}`}
   >
     <div class="page-hero-content">
       <p class="eyebrow">HONORS / RESULTS</p>
